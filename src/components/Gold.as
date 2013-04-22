@@ -6,12 +6,7 @@ package components
 	 */
 	public class Gold 
 	{
-		
-		public function Gold() 
-		{
-			
-		}
-		
+		private var gold:Number;
 	}
 
 }

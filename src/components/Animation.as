@@ -1,5 +1,6 @@
 package components 
 {
+	import graphics.Animatable;
 	/**
 	 * ...
 	 * @author Jeremy
@@ -7,9 +8,11 @@ package components
 	public class Animation 
 	{
 		
-		public function Animation() 
+		private var animation:Animatable;
+		
+		public function Animation(animation:Animatable) 
 		{
-			
+			this.animation = animation;			
 		}
 		
 	}
