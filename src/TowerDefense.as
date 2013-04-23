@@ -3,9 +3,20 @@ package
 	
 	import ash.core.Engine;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
-	import ash.integration.swiftsuspenders.NodeListProvider;
 	import ash.tick.FrameTickProvider;
+	
+	import systems.BulletAgeSystem;
+	import systems.CollisionSystem;
+	import systems.GameManager;
+	import systems.GoldSystem;
+	import systems.MonsterDeathSystem;
+	import systems.MonsterMovementSystem;
+	import systems.RenderSystem;
+	import systems.SystemPriorities;
+	import systems.TileSystem;
+	
 	import flash.display.DisplayObjectContainer;
+	
 	import org.swiftsuspenders.Injector;
 	
 	public class TowerDefense
@@ -25,9 +36,14 @@ package
 		{
 			injector = new Injector();
 			engine = new SwiftSuspendersEngine(injector);
-			
-			
 		
+		}
+		
+		public function start():void 
+		{
+			tickProvider = new FrameTickProvider(container);
+			tickProvider.add(engine.update);
+			tickProvider.start();
 		}
 	
 	}

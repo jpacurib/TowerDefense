@@ -8,7 +8,7 @@ package components
 	public class Animation 
 	{
 		
-		private var animation:Animatable;
+		public var animation:Animatable;
 		
 		public function Animation(animation:Animatable) 
 		{

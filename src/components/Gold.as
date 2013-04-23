@@ -6,7 +6,7 @@ package components
 	 */
 	public class Gold 
 	{
-		private var gold:Number;
+		public var gold:Number;
 	}
 
 }

@@ -6,12 +6,7 @@ package components
 	 */
 	public class Monster 
 	{
-		
-		public function Monster() 
-		{
-			
-		}
-		
+				
 	}
 
 }

@@ -3,7 +3,7 @@ package components
 
 	public class Bullet 
 	{
-		private var lifeRemaining:Number;
+		public var lifeRemaining:Number;
 		
 		public function Bullet(lifetime:Number) 
 		{

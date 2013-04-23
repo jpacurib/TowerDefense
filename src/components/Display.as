@@ -7,7 +7,7 @@ package components
 	 */
 	public class Display 
 	{
-		private var displayObject:DisplayObject = null;
+		public var displayObject:DisplayObject = null;
 		
 		public function Display(displayObject:DisplayObject) 
 		{

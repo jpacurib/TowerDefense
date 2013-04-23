@@ -7,8 +7,8 @@ package components
 	 */
 	public class Position 
 	{
-		private var position:Point;
-		private var rotation:Number;
+		public var position:Point;
+		public var rotation:Number;
 		
 		public function Position(x:Number, y:Number, rotation:Number) 
 		{
