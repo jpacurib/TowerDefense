@@ -4,6 +4,7 @@ package
 	import ash.core.Engine;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import ash.tick.FrameTickProvider;
+	//import flash.display.Sprite;
 	
 	import systems.BulletAgeSystem;
 	import systems.CollisionSystem;
@@ -32,7 +33,7 @@ package
 			prepare(width, height);
 		}
 		
-		private function prepare(width:Number, height:Number)
+		private function prepare(width:Number, height:Number):void
 		{
 			injector = new Injector();
 			engine = new SwiftSuspendersEngine(injector);
