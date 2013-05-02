@@ -1,1 +1,9 @@
+bin
+obj
+cert
+release
+TowerDefense.as3proj
+.project
+.settings
+.DS_Store
 Thumbs.db
