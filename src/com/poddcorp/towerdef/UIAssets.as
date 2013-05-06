@@ -9,28 +9,28 @@ com.poddcorp.towerdef{
 	 */
 	public class UIAssets 
 	{
-		[Embed(source = "../assets/blue.PNG")]
+		[Embed(source="../../../../assets/blue.PNG")]
 		public static const btnBlue:Class;
 		
-		[Embed(source = "../assets/brown.PNG")]
+		[Embed(source="../../../../assets/brown.PNG")]
 		public static const btnBrown:Class;
 		
-		[Embed(source = "../assets/green.PNG")]
+		[Embed(source="../../../../assets/green.PNG")]
 		public static const btnGreen:Class;
 		
-		[Embed(source = "../assets/orange.PNG")]
+		[Embed(source="../../../../assets/orange.PNG")]
 		public static const btnOrange:Class;
 		
-		[Embed(source = "../assets/red.PNG")]
+		[Embed(source="../../../../assets/red.PNG")]
 		public static const btnRed:Class;
 		
-		[Embed(source = "../assets/yellow.PNG")]
+		[Embed(source="../../../../assets/yellow.PNG")]
 		public static const btnYellow:Class;
 		
-		[Embed(source = "../assets/dok.PNG")]
+		[Embed(source="../../../../assets/dok.PNG")]
 		public static const dok:Class;
 		
-		[Embed(source = "../assets/pause.PNG")]
+		[Embed(source="../../../../assets/pause.PNG")]
 		public static const pause:Class;
 		
 		public static var UITextures:Dictionary = new Dictionary();

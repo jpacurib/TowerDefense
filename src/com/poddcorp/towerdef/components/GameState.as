@@ -6,12 +6,9 @@ package com.poddcorp.towerdef.components
 	 */
 	public class GameState 
 	{
-		
-		public function GameState() 
-		{
-			
-		}
-		
+		public var lives:int = 50;
+		public var level:int = 0;
+		public var points:int = 0;
 	}
 
 }

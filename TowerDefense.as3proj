@@ -8,17 +8,15 @@
     <movie fps="30" />
     <movie width="800" />
     <movie height="600" />
-    <movie version="11" />
+    <movie version="3" />
     <movie minorVersion="6" />
-    <movie platform="Flash Player" />
+    <movie platform="AIR Mobile" />
     <movie background="#FFFFFF" />
   </output>
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
     <class path="..\..\Experiments\Libraries\SwiftSuspenders-master\src" />
-    <class path="..\..\Experiments\Libraries\feathers-1.0.1\source" />
-    <class path="..\..\Experiments\Libraries\PrimaryFeather-Starling-Framework-v1.3-0-g0ac3592\PrimaryFeather-Starling-Framework-0ac3592\starling\src" />
     <class path="..\..\Experiments\Libraries\feathers-1.0.1\themes\MetalWorksMobileTheme\source" />
     <class path="..\..\Experiments\Libraries\feathers-1.0.1\swc" />
   </classpaths>
@@ -56,6 +54,9 @@
   <!-- SWC Libraries -->
   <libraryPaths>
     <element path="..\..\Experiments\Libraries\feathers-1.0.1\swc\feathers.swc" />
+    <element path="lib\Ash.swc" />
+    <element path="lib\feathers.swc" />
+    <element path="lib\starling.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
@@ -75,7 +76,7 @@
   </library>
   <!-- Class files to compile (other referenced classes will automatically be included) -->
   <compileTargets>
-    <compile path="src\Main.as" />
+    <compile path="src\com\poddcorp\towerdef\Main.as" />
   </compileTargets>
   <!-- Paths to exclude from the Project Explorer tree -->
   <hiddenPaths>
@@ -88,7 +89,7 @@
   <!-- Other project options -->
   <options>
     <option showHiddenPaths="False" />
-    <option testMovie="Default" />
+    <option testMovie="Unknown" />
   </options>
   <!-- Plugin storage -->
   <storage />
