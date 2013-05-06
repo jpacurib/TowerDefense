@@ -9,7 +9,7 @@ package com.poddcorp.towerdef.systems
 	 */
 	public class AnimationSystem extends System
 	{
-		[Inject(nodeType="Nodes.AnimationNode")]
+		[Inject(nodeType="com.poddcorp.towerdef.nodes.AnimationNode")]
 		public var nodes:NodeList;
 		
 		override public function update(time:Number):void 

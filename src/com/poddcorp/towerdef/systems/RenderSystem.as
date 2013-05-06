@@ -16,7 +16,7 @@ package com.poddcorp.towerdef.systems
 		[Inject]
 		public var container:DisplayObjectContainer;
 		
-		[Inject(nodeType = "Nodes.RenderNode")]
+		[Inject(nodeType = "com.poddcorp.towerdef.nodes.RenderNode")]
 		public var nodes:NodeList;
 		
 		[PostConstruct]
