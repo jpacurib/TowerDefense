@@ -46,7 +46,7 @@ package com.poddcorp.towerdef {
 
 				// entry point
 				trace("Starting Mobile App");
-				_starlingApp = new Starling(GameUI, stage);
+				_starlingApp = new Starling(TowerDefense, stage, viewPort);
 				_starlingApp.simulateMultitouch = false;
 				_starlingApp.enableErrorChecking = false;
 				_starlingApp.showStats = true;

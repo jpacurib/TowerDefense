@@ -1,7 +1,6 @@
 package com.poddcorp.towerdef 
 {
 	import flash.display.Sprite;
-	import flash.events.Event;
 	/**
 	 * ...
 	 * @author Jeremy

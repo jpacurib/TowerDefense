@@ -39,11 +39,12 @@ package com.poddcorp.towerdef {
 		public function GameUI()
 		{
 			super();
-			addEventListener(Event.ADDED_TO_STAGE, onAddedtoStage);
+			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
 		
-		private function onAddedtoStage(e:Event):void
+		private function onEnterFrame(event:Event):void
 		{
+			removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 			SetButtonSettings();
 			MainMenuAdd();
 			this.Gametheme = new MetalWorksMobileTheme(this.stage);

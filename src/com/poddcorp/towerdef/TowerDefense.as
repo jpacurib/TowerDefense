@@ -1,61 +1,68 @@
-package
-com.poddcorp.towerdef{
-	
+package com.poddcorp.towerdef {
+	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
+	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
-	import ash.tick.FrameTickProvider;
-	import com.poddcorp.towerdef.systems.AnimationSystem;
+
+	import starling.core.Starling;
+	import starling.display.DisplayObjectContainer;
+	import starling.display.Sprite;
+	import starling.events.Event;
+
 	import com.poddcorp.towerdef.systems.RenderSystem;
-	
-	import com.poddcorp.towerdef.systems.GameManager;
 	import com.poddcorp.towerdef.systems.SystemPriorities;
 
 	import org.swiftsuspenders.Injector;
-
-	import flash.display.DisplayObjectContainer;
+	
 	//import flash.display.Sprite;
 	
 	
-	public class TowerDefense
+	public class TowerDefense extends Sprite
 	{
-		private var engine:Engine;
-		private var tickProvider:FrameTickProvider;
-		private var injector:Injector;
-		private var container:DisplayObjectContainer;
+		private var _engine:Engine;
+		private var _tickProvider:StarlingFrameTickProvider;
+		private var _injector:Injector;
 		
-		public function TowerDefense(container:DisplayObjectContainer, width:Number, height:Number):void
+		public function TowerDefense():void
 		{
-			this.container = container;
-			prepare(width, height);
+			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+		}
+
+		private function onEnterFrame(event:Event) : void {
+			removeEventListener(Event.ENTER_FRAME, onEnterFrame);
+			prepare();
+			start();
 		}
 		
-		private function prepare(width:Number, height:Number):void 
+		
+		
+		private function prepare():void 
 		{
-			injector = new Injector();
-			engine = new SwiftSuspendersEngine(injector);
+			_injector = new Injector();
+			_engine = new SwiftSuspendersEngine(_injector);
 			
-			injector.map(Engine).toValue(engine);
-			injector.map(DisplayObjectContainer).toValue(container);
-			injector.map(GameConfig).asSingleton();
-			injector.map(EntityCreator).asSingleton();
+			_injector.map(Engine).toValue(_engine);
+			_injector.map(DisplayObjectContainer).toValue(this);
+			_injector.map(GameConfig).asSingleton();
+			_injector.map(EntityCreator).asSingleton();
 			
-			var config:GameConfig = injector.getInstance(GameConfig);
+			var config:GameConfig = _injector.getInstance(GameConfig);
 			config.height = height;
 			config.width = width;
 			
-			engine.addSystem(new GameManager(), SystemPriorities.preUpdate);
-			engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
-			engine.addSystem(new RenderSystem(), SystemPriorities.render);
+			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
+			//_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
+			//_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
-			var creator:EntityCreator = injector.getInstance(EntityCreator);
+			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
 		}
 		
 		public function start():void
 		{
-			tickProvider = new FrameTickProvider(container);
-			tickProvider.add(engine.update);
-			tickProvider.start();
+			_tickProvider = new StarlingFrameTickProvider(Starling.current.juggler);
+			_tickProvider.add(_engine.update);
+			_tickProvider.start();
 		}
 	
 	}

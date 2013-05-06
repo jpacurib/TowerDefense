@@ -1,6 +1,6 @@
 package com.poddcorp.towerdef.components 
 {
-	import flash.display.DisplayObject;
+	import starling.display.DisplayObject;
 	/**
 	 * ...
 	 * @author Jeremy
