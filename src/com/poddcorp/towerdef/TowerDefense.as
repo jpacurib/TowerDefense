@@ -4,6 +4,8 @@ com.poddcorp.towerdef{
 	import ash.core.Engine;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import ash.tick.FrameTickProvider;
+	import com.poddcorp.towerdef.systems.AnimationSystem;
+	import com.poddcorp.towerdef.systems.RenderSystem;
 	
 	import com.poddcorp.towerdef.systems.GameManager;
 	import com.poddcorp.towerdef.systems.SystemPriorities;
@@ -42,6 +44,8 @@ com.poddcorp.towerdef{
 			config.width = width;
 			
 			engine.addSystem(new GameManager(), SystemPriorities.preUpdate);
+			engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
+			engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = injector.getInstance(EntityCreator);
 			creator.createGame();

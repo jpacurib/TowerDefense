@@ -4,14 +4,9 @@ package com.poddcorp.towerdef.graphics
 	 * ...
 	 * @author Jeremy
 	 */
-	public class Animatable 
+	public interface Animatable 
 	{
-		
-		public function Animatable() 
-		{
-			
-		}
-		
+		function animate(time:Number):void;
 	}
 
 }

@@ -1,10 +1,11 @@
 package com.poddcorp.towerdef.graphics 
 {
+	import flash.display.Shape;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class MonsterView 
+	public class MonsterView extends Shape
 	{
 		public function MonsterView(radius:Number) 
 		{

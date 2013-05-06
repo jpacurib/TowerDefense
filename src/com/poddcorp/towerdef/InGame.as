@@ -23,6 +23,7 @@ com.poddcorp.towerdef{
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, gameAddedToStage);
+			
 		}
 		
 		private function gameAddedToStage(e:Event):void 
