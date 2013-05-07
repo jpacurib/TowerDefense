@@ -1,40 +1,31 @@
 package com.poddcorp.towerdef.graphics 
 {
-	import starling.textures.Texture;
-	import starling.display.Image;
+	
 	import flash.display.BitmapData;
 	import flash.display.Shape;
+	import starling.display.Image;
 	import starling.display.Sprite;
+	import starling.textures.Texture;
+	import com.poddcorp.towerdef.UIAssets;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
 	public class MonsterView extends Sprite
 	{
-		public function MonsterView(radius:Number) 
+		private var monsterShape:Shape = new Shape();
+		
+		public function MonsterView() 
 		{
-			var angle : Number = 0;
+			monsterShape.graphics.beginFill(0xFF0000);
+			monsterShape.graphics.drawRect(0, 0, 50, 50);
+			monsterShape.graphics.endFill();
 			
-			var s:Shape = new Shape();
-			s.graphics.beginFill(0xFF0000);
-			s.graphics.moveTo(radius, 0);
-			while(angle < Math.PI * 2)
-			{
-				var length : Number = (0.75 + Math.random() * 0.25) * radius;
-				var posX : Number = Math.cos(angle) * length;
-				var posY : Number = Math.sin(angle) * length;
-				s.graphics.lineTo(posX, posY);
-				angle += Math.random() * 0.5;
-			}
-			s.graphics.lineTo(radius, 0);
-			s.graphics.endFill();
-			
-			var bmpData:BitmapData = new BitmapData(s.width, s.height);
-			bmpData.draw(s);
+			var bmpData:BitmapData = new BitmapData(monsterShape.width, monsterShape.height);
+			bmpData.draw(monsterShape);
 			
 			this.addChild(new Image(Texture.fromBitmapData(bmpData)));
-		}
-		
+		}	
 	}
 
 }

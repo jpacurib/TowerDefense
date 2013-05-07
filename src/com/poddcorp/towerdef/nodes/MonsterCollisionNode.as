@@ -14,7 +14,6 @@ package com.poddcorp.towerdef.nodes
 		public var monster:Monster;
 		public var position:Position;
 		public var collision:Collision;
-		
 	}
 
 }

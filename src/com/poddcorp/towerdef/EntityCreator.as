@@ -5,7 +5,9 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Monster;
 	import com.poddcorp.towerdef.components.Position;
+	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.graphics.MonsterView;
+	import com.poddcorp.towerdef.graphics.TileView;
 	
 	import com.poddcorp.towerdef.components.GameState;
 	/**
@@ -39,11 +41,23 @@ package com.poddcorp.towerdef
 			var monster:Entity = new Entity()
 				.add(new Monster())
 				.add(new Position(x, y, 0))
-				.add(new Display(new MonsterView(radius)));
+				.add(new Display(new MonsterView()));
 				
 			engine.addEntity(monster);
 			return monster;
 		}
+		
+		public function createTile(x:Number, y:Number):Entity
+		{
+			var tile:Entity = new Entity()
+				.add(new Tile())
+				.add(new Position(x, y, 0))
+				.add(new Display(new TileView));
+			engine.addEntity(tile);
+			return tile;
+		}
+		
+
 	}
 
 }
