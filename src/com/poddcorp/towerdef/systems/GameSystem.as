@@ -6,14 +6,18 @@ package com.poddcorp.towerdef.systems {
 	/**
 	 * @author christiannoelmascarinas
 	 */
-	public class GameSystem extends System {
+	public class GameSystem extends System 
+	{
+		
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.GameNode")]
 		public var gameNodes:NodeList;
 			
-		override public function update(time : Number) : void {
+		override public function update(time : Number) : void 
+		{
 			var node:GameNode;
-			for (node = gameNodes.head; node; node = node.next) {
-				trace(node);
+			for (node = gameNodes.head; node; node = node.next) 
+			{
+				
 			}
 		}
 	}

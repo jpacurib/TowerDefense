@@ -17,7 +17,7 @@ package com.poddcorp.towerdef
 		
 		private function init():void 
 		{
-			_ash = new TowerDefense(this, stage.stageWidth, stage.stageHeight);
+			_ash = new TowerDefense();
 			_ash.start();
 		}		
 	}

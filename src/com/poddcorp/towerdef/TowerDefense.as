@@ -1,4 +1,5 @@
 package com.poddcorp.towerdef {
+	import com.poddcorp.towerdef.systems.AnimationSystem;
 	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
@@ -51,8 +52,8 @@ package com.poddcorp.towerdef {
 			config.width = width;
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
-			//_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
-			//_engine.addSystem(new RenderSystem(), SystemPriorities.render);
+			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
+			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
