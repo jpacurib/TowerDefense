@@ -53,6 +53,7 @@ package com.poddcorp.towerdef
 				.add(new Tile())
 				.add(new Position(x, y, 0))
 				.add(new Display(new TileView));
+				
 			engine.addEntity(tile);
 			return tile;
 		}

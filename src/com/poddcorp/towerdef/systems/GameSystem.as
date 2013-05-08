@@ -3,7 +3,6 @@ package com.poddcorp.towerdef.systems {
 	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.nodes.GameNode;
 	import starling.display.Sprite;
-	//import com.poddcorp.towerdef.nodes.MonsterCollisionNode;
 	import ash.core.NodeList;
 	import ash.core.System;
 
@@ -18,17 +17,23 @@ package com.poddcorp.towerdef.systems {
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.GameNode")]
 		public var gameNodes:NodeList;
 		
+		private var mapDrawn:Boolean = false;
+		
 		override public function update(time : Number) : void 
 		{
 			var node:GameNode;
 			
 			//Create Tiles
-			for (var col:int = 0; col <= 10; col++)
+			if (!mapDrawn)
 			{
-				for (var row:int = 0; row <= 10; row++)
+				for (var col:int = 0; col <= 10; col++)
 				{
-					creator.createTile(row*51, col*51);
+					for (var row:int = 0; row <= 10; row++)
+					{
+						creator.createTile(row*51, col*51);
+					}
 				}
+				mapDrawn = true;
 			}
 			
 			//Constant Check
@@ -39,16 +44,11 @@ package com.poddcorp.towerdef.systems {
 				if (node.state.lives > 0)
 				{
 					
-					
 				}
 				else
 				{
 					//Life == 0
 				}
-				
-				//
-				
-				
 			}
 		}
 	}

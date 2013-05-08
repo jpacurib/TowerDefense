@@ -16,13 +16,13 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="..\..\Experiments\Libraries\SwiftSuspenders-master\src" />
-    <class path="..\..\Experiments\Libraries\feathers-1.0.1\themes\MetalWorksMobileTheme\source" />
-    <class path="..\..\Experiments\Libraries\feathers-1.0.1\swc" />
+    <class path="swift_suspenders_source" />
+    <class path="metal_works_mobile_theme_source" />
   </classpaths>
   <!-- Build options -->
   <build>
     <option accessible="False" />
+    <option advancedTelemetry="False" />
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
     <option es="False" />
