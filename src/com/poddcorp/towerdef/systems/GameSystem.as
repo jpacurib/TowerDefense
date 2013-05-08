@@ -26,7 +26,13 @@ package com.poddcorp.towerdef.systems {
 			//Create Tiles
 			if (!mapDrawn)
 			{
-				
+				for (var col:int = 0; col < 15; col++)
+				{
+					for (var row:int = 0; row < 15; row++)
+					{
+						creator.createTile(((1024/2)-32) + (row - col) * 64 / 2, (768/4) + (col+row) * 32 / 2);
+					}
+				}
 				mapDrawn = true;
 			}
 			
