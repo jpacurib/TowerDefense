@@ -1,5 +1,6 @@
 package com.poddcorp.towerdef.systems 
 {
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.net.URLLoader;
 	import flash.net.URLRequest;
@@ -7,11 +8,12 @@ package com.poddcorp.towerdef.systems
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TileSystem
+	public class TileSystem extends Sprite
 	{
 		private var _XMLLoader:URLLoader = new URLLoader();
 		public var mapWidth:int, mapHeight:int;
-		public var mapTerrain:String, mapTerrainData:String;
+		public var mapTerrain:String;
+		public var mapTerrainData:Array;
 		public var mapXML:XML;
 		
 		public function TileSystem() 
@@ -28,10 +30,9 @@ package com.poddcorp.towerdef.systems
 			
 			mapTerrain = mapXML.terrain;
 			mapTerrain = mapTerrain.split("\t").join("\n");
-			mapTerrainData:Array = mapTerrain.split("\n");
 			
 			//Col load: mapColData:Array = mapTerrain[col + 1].split(',');
-			
+			trace(mapTerrain);
 		}
 		
 	}

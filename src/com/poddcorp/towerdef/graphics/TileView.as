@@ -3,7 +3,6 @@ package com.poddcorp.towerdef.graphics
 	import com.poddcorp.towerdef.UIAssets;
 	import flash.display.BitmapData;
 	import flash.display.Shape;
-	//import flash.events.Event;
 	import starling.display.Image;
 	import starling.display.Sprite;
 	import starling.events.Event;
@@ -13,9 +12,16 @@ package com.poddcorp.towerdef.graphics
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TileView extends Sprite
+	public class TileView extends Image
 	{
-		private var myTile:Shape = new Shape();
+		
+		public function TileView()
+		{
+			super(UIAssets.getUITexture("tile"));
+		}
+		
+		//Used Sprite
+		/*private var myTile:Shape = new Shape();
 		
 		public function TileView() 
 		{
@@ -29,8 +35,7 @@ package com.poddcorp.towerdef.graphics
 			bmpData.draw(myTile);
 			
 			this.addChild(new Image(Texture.fromBitmapData(bmpData)));
-		}
-			
+		}*/
 	}
 
 }

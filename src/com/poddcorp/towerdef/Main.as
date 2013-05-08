@@ -35,7 +35,7 @@ package com.poddcorp.towerdef {
 				Starling.handleLostContext = false;
 				// not necessary on iOS. Saves a lot of memory!
 
-				// touch or gesture?
+				// touch or gesture?2
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 
 				var viewPort : Rectangle = new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);

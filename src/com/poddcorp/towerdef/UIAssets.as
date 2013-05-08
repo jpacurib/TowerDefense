@@ -33,6 +33,9 @@ com.poddcorp.towerdef{
 		[Embed(source="../../../../assets/pause.PNG")]
 		public static const pause:Class;
 		
+		[Embed(source = "../../../../assets/tile.png")]
+		public static const tile:Class;
+		
 		public static var UITextures:Dictionary = new Dictionary();
 		
 		public static function getUITexture(myString:String):Texture

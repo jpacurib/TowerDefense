@@ -22,7 +22,6 @@
   <!-- Build options -->
   <build>
     <option accessible="False" />
-    <option advancedTelemetry="False" />
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
     <option es="False" />
@@ -53,7 +52,6 @@
   </includeLibraries>
   <!-- SWC Libraries -->
   <libraryPaths>
-    <element path="..\..\Experiments\Libraries\feathers-1.0.1\swc\feathers.swc" />
     <element path="lib\Ash.swc" />
     <element path="lib\feathers.swc" />
     <element path="lib\starling.swc" />
