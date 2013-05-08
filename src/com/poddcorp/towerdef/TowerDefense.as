@@ -48,8 +48,8 @@ package com.poddcorp.towerdef {
 			_injector.map(EntityCreator).asSingleton();
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
-			config.height = height;
-			config.width = width;
+			config.height = 768;
+			config.width = 1024;
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);

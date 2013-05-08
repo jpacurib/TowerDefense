@@ -18,6 +18,7 @@ package com.poddcorp.towerdef.graphics
 		public function TileView()
 		{
 			super(UIAssets.getUITexture("tile"));
+			this.touchable = true;
 		}
 		
 		//Used Sprite
