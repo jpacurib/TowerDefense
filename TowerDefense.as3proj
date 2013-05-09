@@ -18,11 +18,11 @@
     <class path="src" />
     <class path="swift_suspenders_source" />
     <class path="metal_works_mobile_theme_source" />
+    <class path="..\..\New folder\Downloads\feathers-1.0.1\themes\AzureMobileTheme\source" />
   </classpaths>
   <!-- Build options -->
   <build>
     <option accessible="False" />
-    <option advancedTelemetry="False" />
     <option allowSourcePathOverlap="False" />
     <option benchmark="False" />
     <option es="False" />

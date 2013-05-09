@@ -4,6 +4,9 @@ com.poddcorp.towerdef{
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
+	import com.poddcorp.towerdef.UI.SettingsUI;
+		import feathers.controls.Label;
+		import com.poddcorp.towerdef.GameUI;
 	/**
 	 * ...
 	 * @author Jeremy
@@ -17,7 +20,9 @@ com.poddcorp.towerdef{
 		private var btnBack:Button;
 		
 		private var heightButton:Number = 50;
-		private var widthButton:Number = 250;
+		private var widthButton:Number =  650;
+		
+		private var UIsettings:SettingsUI;
 		
 		public function InGame() 
 		{
@@ -45,7 +50,7 @@ com.poddcorp.towerdef{
 			btnBackMainMenu.text = ("BACK TO MAIN MENU");
 			btnBack.text = ("BACK");
 			
-			btnResume.x = (stage.stageWidth / 2) - (widthButton / 2);
+			btnResume.x = (stage.stageWidth / 2) -(widthButton / 2);
 			btnSettings.x = btnResume.x;
 			btnBackMainMenu.x = btnResume.x;
 			btnPause.x = 0;
@@ -55,7 +60,7 @@ com.poddcorp.towerdef{
 			btnSettings.y = btnResume.y + 75;
 			btnBackMainMenu.y = btnSettings.y + 75;
 			btnPause.y = 0;
-			btnBack.y = btnBackMainMenu.y;
+			btnBack.y = btnSettings.y + 150;
 			
 			btnPause.addEventListener(Event.TRIGGERED, onPauseEvent);
 			btnResume.addEventListener(Event.TRIGGERED, onResumeEvent);
@@ -69,6 +74,7 @@ com.poddcorp.towerdef{
 		private function onBackEvent(e:Event):void 
 		{
 			this.removeChild(btnBack);
+			this.removeChild(UIsettings);
 			showPauseMenu();
 		}
 		
@@ -89,11 +95,8 @@ com.poddcorp.towerdef{
 		
 		private function onSettingButtons():void 
 		{
-			//var settingUI:GameUI = new GameUI();
-			
-			//addChild(settingUI.tabQuality);
-			//addChild(settingUI.sliderVolume);
-			//addChild(settingUI.labelVol);
+			UIsettings = new SettingsUI();
+			addChild(UIsettings);
 			this.addChild(btnBack);
 		}
 		
@@ -120,6 +123,7 @@ com.poddcorp.towerdef{
 			this.addChild(btnSettings);
 			this.addChild(btnBackMainMenu);
 		}
+		
 		
 	}
 
