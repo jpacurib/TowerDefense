@@ -1,38 +1,32 @@
 package com.poddcorp.towerdef.systems 
 {
-	import flash.display.Sprite;
-	import flash.events.Event;
-	import flash.net.URLLoader;
-	import flash.net.URLRequest;
+	import ash.core.System;
+	import com.poddcorp.towerdef.EntityCreator;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TileSystem extends Sprite
+	public class TileSystem extends System
 	{
-		private var _XMLLoader:URLLoader = new URLLoader();
-		public var mapWidth:int, mapHeight:int;
-		public var mapTerrain:String;
-		public var mapTerrainData:Array;
-		public var mapXML:XML;
+		[Inject]
+		public var creator:EntityCreator;
+		
+		private var isMapDrawn:Boolean = false;
 		
 		public function TileSystem() 
 		{
-			_XMLLoader.load(new URLRequest('map1.xml'));
-			_XMLLoader.addEventListener(Event.COMPLETE, onXMLRead);
-		}
-		
-		private function onXMLRead(e:Event):void 
-		{
-			mapXML = new XML(e.target.data);
-			mapWidth = int(mapXML.width);
-			mapHeight = int(mapXML.height);
-			
-			mapTerrain = mapXML.terrain;
-			mapTerrain = mapTerrain.split("\t").join("\n");
-			
-			//Col load: mapColData:Array = mapTerrain[col + 1].split(',');
-			trace(mapTerrain);
+			for (var col:int = 0; col < 15; col++)
+				{
+					for (var row:int = 0; row < 15; row++)
+					{
+						var colX:Number = ((1024 / 2) - 32) + (row - col) * 64 / 2;
+						var colY:Number = (768 / 4) + (col + row) * 32 / 2;
+						
+						if (Math.random() < .8) creator.createTile(colX , colY);
+						else creator.createWall(colX+2, colY-30);
+					}
+				}
+			isMapDrawn = true;
 		}
 		
 	}

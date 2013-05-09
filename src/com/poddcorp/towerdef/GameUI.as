@@ -161,7 +161,11 @@ package com.poddcorp.towerdef
 		private function onStartEvent(e:Event):void
 		{
 			myGame = new InGame();
+			this.removeChildren(0, -1);
+			this.addChild(new TowerDefense());
 			this.addChild(myGame);
+			
+			//new TowerDefense();
 			MainMenuRemove();
 		}
 		

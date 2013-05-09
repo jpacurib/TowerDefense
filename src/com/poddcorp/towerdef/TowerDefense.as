@@ -21,7 +21,7 @@ package com.poddcorp.towerdef {
 	public class TowerDefense extends Sprite
 	{
 		private var _engine:Engine;
-		private var _tickProvider:StarlingFrameTickProvider;
+		public var _tickProvider:StarlingFrameTickProvider;
 		private var _injector:Injector;
 		
 		public function TowerDefense():void

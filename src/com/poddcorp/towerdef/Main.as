@@ -14,7 +14,7 @@ package com.poddcorp.towerdef {
 	 * ...
 	 * @author Jeremy
 	 */
-	[SWF(width="1024", height="768", frameRate="60", backgroundColor="#000000")]
+	[SWF(width="1024", height="768", frameRate="60", backgroundColor="#FFFFFF")]
 	public class Main extends Sprite {
 		private var _starlingApp : Starling;
 

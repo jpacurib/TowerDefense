@@ -24,11 +24,12 @@ com.poddcorp.towerdef{
 		
 		private var UIsettings:SettingsUI;
 		
+		private var _towerDefense:TowerDefense = new TowerDefense();
+		
 		public function InGame() 
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, gameAddedToStage);
-			
 		}
 		
 		private function gameAddedToStage(e:Event):void 
@@ -85,6 +86,7 @@ com.poddcorp.towerdef{
 			
 			removeAllMenu();
 			removeChild(btnPause);
+			
 		}
 		
 		private function onSettingsEvent(e:Event):void 

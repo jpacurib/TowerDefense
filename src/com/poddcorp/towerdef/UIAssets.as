@@ -64,6 +64,12 @@ com.poddcorp.towerdef{
 		[Embed(source = "../../../../assets/tile.png")]
 		public static const tile:Class;
 		
+		[Embed(source = "../../../../assets/lubi.png")]
+		public static const lubi:Class;
+		
+		[Embed(source = "../../../../assets/podd.png")]
+		public static const splash:Class;
+		
 		
 		
 		public static var UITextures:Dictionary = new Dictionary();
