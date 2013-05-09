@@ -1,5 +1,6 @@
 package com.poddcorp.towerdef.UI 
 {
+	import flash.net.SharedObject;
 	import starling.display.Sprite;
 	
 	import com.poddcorp.towerdef.GameUI;
@@ -24,8 +25,10 @@ package com.poddcorp.towerdef.UI
 		public var tabQuality:TabBar
 		public var sliderVolume:Slider;
 		public var labelVol:Label;
+		public var varholder:Number;
 		
 		public var _Set:GameUI = new GameUI();
+		public var mySharedObject:SharedObject;
 		
 		public function SettingsUI() 
 		{
@@ -39,7 +42,7 @@ package com.poddcorp.towerdef.UI
 		
 		}
 		
-		private function SettingsDetail():void
+		public function SettingsDetail():void
 		{
 			
 			//Volume Label
@@ -57,12 +60,14 @@ package com.poddcorp.towerdef.UI
 			sliderVolume.step = 1;
 			sliderVolume.x = (stage.stageWidth / 2) - 355;
 			sliderVolume.y = vol.y + 75;
+			sliderVolume.value = 50;
 			this.addChild(sliderVolume);
 			sliderVolume.useHandCursor = true;
 			sliderVolume.addEventListener(Event.CHANGE, slider_changeHandler);
 			
-			//et = sliderVolume.value();
 			
+			
+	
 			//Quality Label
 			qlty = new Image(UIAssets.getUITexture("Qlty"));
 			qlty.x = (stage.stageWidth / 2) - (275);
@@ -83,14 +88,26 @@ package com.poddcorp.towerdef.UI
 		
 		private function tabs_changeHandler(e:Event):void
 		{
+			
+		
 			var tab:TabBar = TabBar(e.currentTarget);
 			
+		
 			trace("tab.value change:", tab.selectedIndex);
 		}
 		
-		private function slider_changeHandler(event:Event):void
+		public function slider_changeHandler(event:Event):void
 		{
+
+			
 			var slider:Slider = Slider(event.currentTarget);
+			
+			mySharedObject = SharedObject.getLocal("ShareObjct");
+			mySharedObject.data.value = sliderVolume.value;
+			
+			mySharedObject.flush();
+			
+			trace(mySharedObject.data.value);		
 			trace("slider.value changed:", slider.value);
 		
 		}

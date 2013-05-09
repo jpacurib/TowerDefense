@@ -60,7 +60,7 @@ com.poddcorp.towerdef{
 			btnSettings.y = btnResume.y + 75;
 			btnBackMainMenu.y = btnSettings.y + 75;
 			btnPause.y = 0;
-			btnBack.y = btnSettings.y + 150;
+			btnBack.y = btnSettings.y + 250;
 			
 			btnPause.addEventListener(Event.TRIGGERED, onPauseEvent);
 			btnResume.addEventListener(Event.TRIGGERED, onResumeEvent);

@@ -15,6 +15,9 @@ com.poddcorp.towerdef{
 		public static const no:Class;
 		[Embed(source = "../../../../assets/or.png")]
 		public static const or:Class;
+		
+		[Embed(source = "../../../../assets/scroll.png")]
+		public static const Scroll:Class;
 	
 		
 		[Embed(source="../../../../assets/MainMenuBG.png")]

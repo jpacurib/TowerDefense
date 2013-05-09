@@ -2,7 +2,7 @@ package com.poddcorp.towerdef
 {
 	import com.poddcorp.towerdef.UI.QuitGame;
 	import feathers.controls.Label;
-	import flash.net.SharedObject;
+	//import flash.net.SharedObject;
 	
 	import feathers.themes.MetalWorksMobileTheme;
 	
@@ -35,7 +35,7 @@ package com.poddcorp.towerdef
 		private var btnHelp:Button;
 		public var dok:Image;
 		public var callout:Callout;
-		//private var scrll:Image;
+		private var scrll:Image;
 		
 		private var heightButton:Number = 50;
 		private var widthButton:Number = 650;
@@ -114,7 +114,7 @@ package com.poddcorp.towerdef
 			btnBack.x = btnHelp.x;
 			
 			//Y coordinate config
-			btnStart.y = 300;
+			btnStart.y = 450;
 			btnSetting.y = btnStart.y + 75;
 			btnHelp.y = btnSetting.y + 75;
 			btnExit.y = btnHelp.y + 75;
@@ -122,34 +122,38 @@ package com.poddcorp.towerdef
 			
 			dok = new Image(UIAssets.getUITexture("dok"));
 			dok.x = (stage.stageWidth / 2) - (widthButton / 2) - 125;
-			dok.y = btnStart.y - 75;
+			dok.y = btnStart.y - 250;
 			
 			bg = new Image(UIAssets.getUITexture("bgimge"));
 			this.addChild(bg);
 			
+			scrll = new Image(UIAssets.getUITexture("Scroll"));
+			scrll.x = dok.x - 290;
 			
+			var Set:SettingsUI = new SettingsUI();
 			
+		
 			
-			//var newSet:SettingsUI = new SettingsUI();
-			//var InGameSet:InGame = new InGame();
-			
-			//newSet.sliderVolume.value =  mySharedObject.data.volvalue;
-			
-			
-			
-			var mySharedObject:SharedObject = SharedObject.getLocal("ShareObjct");
-			mySharedObject.data.value = 100;
-			mySharedObject.data.value2 = 200;
-			mySharedObject.flush();
-			trace(mySharedObject.data.value);
-			trace(mySharedObject.data.value2);
+		//	var mySharedObject:SharedObject = SharedObject.getLocal("ShareObjct");
+		//	mySharedObject.data.value = 100;
+		//	mySharedObject.data.value2 = 200;
+		//	mySharedObject.flush();
+		//	trace(mySharedObject.data.value);
+		//	trace(mySharedObject.data.value2);
+		}
+		private function handler(e:Event):void
+		{
+		
 		}
 		
 		private function onBackEvent(e:Event):void
 		{
 			removeChild(btnBack);
 			removeChild(UIsettings);
-			//removeChild(scrll);
+			removeChild(scrll);
+		//	var button:Button = new Button(e.currentTarget);
+			
+			
 			
 			MainMenuAdd();
 		}
@@ -171,7 +175,7 @@ package com.poddcorp.towerdef
 		private function onHelpMenu(e:Event):void
 		{
 			MainMenuRemove();
-			
+			this.addChild(scrll);
 			this.addChild(btnBack)
 		
 		}
