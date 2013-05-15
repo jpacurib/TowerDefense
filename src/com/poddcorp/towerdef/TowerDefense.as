@@ -4,6 +4,7 @@ package com.poddcorp.towerdef {
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
+	import com.poddcorp.towerdef.systems.TileSystem;
 
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -54,6 +55,8 @@ package com.poddcorp.towerdef {
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
+			
+			_engine.addSystem(new TileSystem(), SystemPriorities.mapDraw);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();

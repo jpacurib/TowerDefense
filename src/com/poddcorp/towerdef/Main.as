@@ -14,7 +14,7 @@ package com.poddcorp.towerdef {
 	 * ...
 	 * @author Jeremy
 	 */
-	[SWF(width="1024", height="768", frameRate="60", backgroundColor="#FFFFFF")]
+	[SWF(width="1024", height="768", frameRate="60", backgroundColor="#000000")]
 	public class Main extends Sprite {
 		private var _starlingApp : Starling;
 
@@ -46,7 +46,7 @@ package com.poddcorp.towerdef {
 
 				// entry point
 				trace("Starting Mobile App");
-				_starlingApp = new Starling(GameUI, stage, viewPort);
+				_starlingApp = new Starling(TowerDefense, stage, viewPort);
 				_starlingApp.simulateMultitouch = false;
 				_starlingApp.enableErrorChecking = false;
 				_starlingApp.showStats = true;

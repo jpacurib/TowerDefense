@@ -1,7 +1,10 @@
-package com.poddcorp.towerdef.systems 
+package com.poddcorp.towerdef.systems
 {
 	import ash.core.System;
 	import com.poddcorp.towerdef.EntityCreator;
+	import com.poddcorp.towerdef.graphics.TileView;
+	import com.poddcorp.towerdef.nodes.TileNode;
+	
 	/**
 	 * ...
 	 * @author Jeremy
@@ -13,22 +16,27 @@ package com.poddcorp.towerdef.systems
 		
 		private var isMapDrawn:Boolean = false;
 		
-		public function TileSystem() 
+		override public function update(time:Number):void
 		{
-			for (var col:int = 0; col < 15; col++)
+
+			var colX:Number;
+			var colY:Number;
+			if (!isMapDrawn)
+			{
+				for (var col:int = 0; col < 15; col++)
 				{
 					for (var row:int = 0; row < 15; row++)
 					{
-						var colX:Number = ((1024 / 2) - 32) + (row - col) * 64 / 2;
-						var colY:Number = (768 / 4) + (col + row) * 32 / 2;
-						
-						if (Math.random() < .8) creator.createTile(colX , colY);
-						else creator.createWall(colX+2, colY-30);
+						colX = ((1024 / 2) - 32) + (row - col) * 64 / 2;
+						colY = (768 / 4) + (col + row) * 32 / 2;
+							creator.createTile(colX, colY);				
 					}
 				}
-			isMapDrawn = true;
-		}
+				isMapDrawn = true;
+			}
 		
+		}
+	
 	}
 
 }

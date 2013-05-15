@@ -19,24 +19,9 @@ package com.poddcorp.towerdef.graphics
 		{
 			super(UIAssets.getUITexture("tile"));
 			this.touchable = true;
+			
 		}
 		
-		//Used Sprite
-		/*private var myTile:Shape = new Shape();
-		
-		public function TileView() 
-		{
-			//super(UIAssets.getUITexture("iso_tile");
-			
-			myTile.graphics.beginFill(0x00FF00, .4);
-			myTile.graphics.drawRect(0, 0, 50, 50);
-			myTile.graphics.endFill();
-			
-			var bmpData:BitmapData = new BitmapData(myTile.width, myTile.height);
-			bmpData.draw(myTile);
-			
-			this.addChild(new Image(Texture.fromBitmapData(bmpData)));
-		}*/
 	}
 
 }
