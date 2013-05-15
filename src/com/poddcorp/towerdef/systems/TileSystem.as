@@ -29,7 +29,7 @@ package com.poddcorp.towerdef.systems
 					{
 						colX = ((1024 / 2) - 32) + (row - col) * 64 / 2;
 						colY = (768 / 4) + (col + row) * 32 / 2;
-							creator.createTile(colX, colY);				
+						creator.createTile(colX, colY);				
 					}
 				}
 				isMapDrawn = true;

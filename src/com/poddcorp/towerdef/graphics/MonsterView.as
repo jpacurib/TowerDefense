@@ -20,23 +20,14 @@ package com.poddcorp.towerdef.graphics
 		{
 			monsterShape.graphics.beginFill(0xFF0000);
 			monsterShape.graphics.drawRect(0, 0, 32, 32);
-			monsterShape.rotation = 180;
+			//monsterShape.rotation = 45;
 			monsterShape.graphics.endFill();
-			
 			
 			var bmpData:BitmapData = new BitmapData(monsterShape.width, monsterShape.height);
 			bmpData.draw(monsterShape);
 			
 			this.addChild(new Image(Texture.fromBitmapData(bmpData)));
-			
-			this.addEventListener(Event.ADDED, onEnterFrame);
 		}	
-		
-		private function onEnterFrame(e:Event):void 
-		{
-			monsterShape.x += 1;
-			monsterShape.y += 1;
-		}
 	}
 
 }

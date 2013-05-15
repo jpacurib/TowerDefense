@@ -4,6 +4,7 @@ package com.poddcorp.towerdef
 	import ash.core.Entity;
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Monster;
+	import com.poddcorp.towerdef.components.MonsterMotion;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.graphics.MonsterView;
@@ -41,6 +42,7 @@ package com.poddcorp.towerdef
 			var monster:Entity = new Entity()
 				.add(new Monster())
 				.add(new Position(x, y, 0))
+				.add(new MonsterMotion(Math.random(), Math.random()))
 				.add(new Display(new MonsterView()));
 				
 			engine.addEntity(monster);

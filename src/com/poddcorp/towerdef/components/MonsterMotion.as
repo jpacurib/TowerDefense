@@ -1,6 +1,5 @@
 package com.poddcorp.towerdef.components 
 {
-	import ash.core.NodeList;
 	import flash.geom.Point;
 	/**
 	 * ...
@@ -8,11 +7,11 @@ package com.poddcorp.towerdef.components
 	 */
 	public class MonsterMotion 
 	{
-		public var movement:Point = new Point();
-		
-		public function MonsterMotion(movementX:Number, movementY:Number) 
+		public var velocity : Point = new Point();
+	
+		public function MonsterMotion(velocityX:Number, velocityY:Number) 
 		{
-			movement = new Point(movementX, movementY);
+			velocity = new Point(velocityX, velocityY);
 		}
 		
 	}

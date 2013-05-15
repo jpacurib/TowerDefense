@@ -13,7 +13,7 @@ package com.poddcorp.towerdef.input
 	public class TouchPoll 
 	{
 		private var _displayObject:DisplayObject;
-		private var isTilePressed:Boolean = false;
+		private var isPressed:Boolean = false;
 		
 		public function TouchPoll(displayObject:DisplayObject) 
 		{
@@ -33,11 +33,11 @@ package com.poddcorp.towerdef.input
 				
 				if (touch.phase == TouchPhase.BEGAN)
 				{
-					isTilePressed = (className == "com.poddcorp.towerdef.graphics::TileView");
+					isPressed = (className == "com.poddcorp.towerdef.graphics::TileView");
 				}
 				else if (touch.phase == TouchPhase.ENDED)
 				{
-					isTilePressed = !(className == "com.poddcorp.towerdef.graphics::TileView");
+					isPressed = !(className == "com.poddcorp.towerdef.graphics::TileView");
 				}
 			}
 		}

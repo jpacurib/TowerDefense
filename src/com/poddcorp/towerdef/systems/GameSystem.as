@@ -15,24 +15,32 @@ package com.poddcorp.towerdef.systems {
 	{
 		[Inject]
 		public var creator:EntityCreator;
-		
-		
+				
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.GameNode")]
 		public var gameNodes:NodeList;
-		
+			
 		private var isMapDrawn:Boolean = false;
+		private var delay:Number = new Number;
 		
 		override public function update(time : Number) : void 
 		{
 			var node:GameNode;
+			
+			delay += time;
 									
 			//Constant Check
 			for (node = gameNodes.head; node; node = node.next) 
 			{
-				if (!isMapDrawn)
-				{
-					isMapDrawn = true;
-				}
+					if (node.state.monperwave > 0)
+					{
+							if (delay > 8) 
+							{
+							creator.createMonster(480 + 16, 192, 0);
+							node.state.monperwave--;
+							delay = 0;
+							}
+									
+					}
 			}
 			
 			//Movement of Monster
