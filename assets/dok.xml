@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:c984c17ee30e9c143589ed1072c54289$ -->
+<TextureAtlas imagePath="dok.png">
+    <SubTexture name="lubi" x="3" y="3" width="64" height="64"/>
+    <SubTexture name="no" x="71" y="3" width="44" height="24" frameX="-17" frameY="-13" frameWidth="80" frameHeight="50"/>
+    <SubTexture name="or" x="119" y="3" width="44" height="24" frameX="-3" frameY="-13" frameWidth="50" frameHeight="50"/>
+    <SubTexture name="pause" x="167" y="3" width="50" height="50"/>
+    <SubTexture name="ply" x="221" y="3" width="50" height="50"/>
+    <SubTexture name="podd" x="275" y="3" width="1024" height="329"/>
+    <SubTexture name="qlty" x="1303" y="3" width="152" height="50"/>
+    <SubTexture name="scroll" x="3" y="336" width="762" height="726" frameX="-139" frameY="-15" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="vol" x="769" y="336" width="152" height="50"/>
+    <SubTexture name="yes" x="925" y="336" width="58" height="24" frameX="-11" frameY="-12" frameWidth="80" frameHeight="50"/>
+</TextureAtlas>
