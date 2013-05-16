@@ -8,6 +8,7 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.graphics.MonsterView;
+	import com.poddcorp.towerdef.graphics.TestedTile;
 	import com.poddcorp.towerdef.graphics.TileView;
 	
 	import com.poddcorp.towerdef.components.GameState;
@@ -59,6 +60,17 @@ package com.poddcorp.towerdef
 			engine.addEntity(tile);
 			return tile;
 		}	
+		
+		public function createWall(x:Number, y:Number):Entity
+		{
+			var tile:Entity = new Entity()
+				.add(new Tile())
+				.add(new Position(x, y, 0))
+				.add(new Display(new TestedTile));
+				
+			engine.addEntity(tile);
+			return tile;
+		}
 
 	}
 

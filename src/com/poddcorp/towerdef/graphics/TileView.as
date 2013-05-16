@@ -1,27 +1,23 @@
 package com.poddcorp.towerdef.graphics 
 {
 	import com.poddcorp.towerdef.UIAssets;
-	import flash.display.BitmapData;
-	import flash.display.Shape;
+	import starling.display.Button;
 	import starling.display.Image;
-	import starling.display.Sprite;
-	import starling.events.Event;
-	import starling.events.EventDispatcher;
+	import starling.events.TouchEvent;
 	import starling.textures.Texture;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TileView extends Image
+	public class TileView extends Button
 	{
-		
 		public function TileView()
 		{
 			super(UIAssets.getUITexture("tile"));
 			this.touchable = true;
-			
+			//this.addEventListener(TouchEvent.TOUCH, onTriggerClick);
 		}
-		
+			
 	}
 
 }

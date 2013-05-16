@@ -1,0 +1,124 @@
+package com.poddcorp.towerdef.pathfinding 
+{
+	/**
+	 * ...
+	 * @author Jeremy
+	 */
+	public class Pathfinder
+	{
+		public static var heuristic:Function = Pathfinder.manhattanHeuristic;			
+		
+		public static function findPath( firstNode:INode, destinationNode:INode, connectedNodeFunction:Function ):Array 
+		{
+			var openNodes:Array = [];
+			var closedNodes:Array = [];			
+			
+			var currentNode:INode = firstNode;
+			var testNode:INode;
+			
+			var l:int;
+			var i:int;
+		
+			var connectedNodes:Array;
+			var travelCost:Number = 1.0;
+			
+			var g:Number;
+			var h:Number;
+			var f:Number;
+			
+			currentNode.g = 0;
+			currentNode.h = Pathfinder.heuristic(currentNode, destinationNode, travelCost);
+			currentNode.f = currentNode.g + currentNode.h;
+			
+			while (currentNode != destinationNode) {
+				
+				connectedNodes = connectedNodeFunction( currentNode );			
+				
+				l = connectedNodes.length;
+				
+				for (i = 0; i < l; ++i) {
+					
+					testNode = connectedNodes[i];
+					
+					if (testNode == currentNode || testNode.traversable == false) continue;					
+					
+					//Higlight tested node
+					//Node(testNode).highlight(0xFF80C0);
+					
+					g = currentNode.g + travelCost;
+					h = Pathfinder.heuristic( testNode, destinationNode, travelCost);
+					f = g + h;
+					
+					if ( Pathfinder.isOpen(testNode, openNodes) || Pathfinder.isClosed( testNode, closedNodes) )
+					{
+						if(testNode.f > f)
+						{
+							testNode.f = f;
+							testNode.g = g;
+							testNode.h = h;
+							testNode.parentNode = currentNode;
+						}
+					}
+					else {
+						testNode.f = f;
+						testNode.g = g;
+						testNode.h = h;
+						testNode.parentNode = currentNode;
+						openNodes.push(testNode);
+					}
+					
+				}
+				closedNodes.push( currentNode );
+				
+				if (openNodes.length == 0) {
+					return null;
+				}
+				openNodes.sortOn('f', Array.NUMERIC);
+				currentNode = openNodes.shift() as INode;
+			}
+			
+			return Pathfinder.buildPath(destinationNode, firstNode);
+		}
+		
+		
+		public static function buildPath(destinationNode:INode, startNode:INode):Array {			
+			var path:Array = [];
+			var node:INode = destinationNode;
+			path.push(node);
+			while (node != startNode) {
+				node = node.parentNode;
+				path.unshift( node );
+			}
+			
+			return path;			
+		}
+		
+		public static function isOpen(node:INode, openNodes:Array):Boolean {
+			
+			var l:int = openNodes.length;
+			for (var i:int = 0; i < l; ++i) {
+				if ( openNodes[i] == node ) return true;
+			}
+			
+			return false;			
+		}
+		
+		public static function isClosed(node:INode, closedNodes:Array):Boolean {
+			
+			var l:int = closedNodes.length;
+			for (var i:int = 0; i < l; ++i) {
+				if (closedNodes[i] == node ) return true;
+			}
+			
+			return false;
+		}
+		
+		public static function manhattanHeuristic(node:INode, destinationNode:INode, cost:Number = 1.0):Number
+		{
+			return Math.abs(node.x - destinationNode.x) * cost + 
+				   Math.abs(node.y + destinationNode.y) * cost;
+		}
+		
+	}
+
+}

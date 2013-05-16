@@ -29,10 +29,10 @@ package com.poddcorp.towerdef.systems
 				position = node.position;
 				motion = node.motion;
 				
-				position.position.x += 0;//motion.velocity.x * time + .5;
-				position.position.y += motion.velocity.y * time + .5;
+				position.position.x += motion.velocity.y * time + .5;//motion.velocity.x * time + .5;
+				position.position.y += 0;
 				
-				if (position.position.y > 640)
+				if (position.position.x > 928 + 16 && position.position.y == 416)
 				{
 					creator.destroyEntity(node.entity);
 				}

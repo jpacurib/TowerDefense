@@ -7,6 +7,7 @@ package com.poddcorp.towerdef {
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import com.poddcorp.towerdef.systems.MonsterMovementSystem;
 	import com.poddcorp.towerdef.systems.TileSystem;
+	import com.poddcorp.towerdef.systems.TowerSystem;
 
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -26,6 +27,7 @@ package com.poddcorp.towerdef {
 		private var _engine:Engine;
 		public var _tickProvider:StarlingFrameTickProvider;
 		private var _injector:Injector;
+		private var _touchPoll:TouchPoll;
 		
 		public function TowerDefense():void
 		{
@@ -44,12 +46,13 @@ package com.poddcorp.towerdef {
 		{
 			_injector = new Injector();
 			_engine = new SwiftSuspendersEngine(_injector);
+			_touchPoll = new TouchPoll(this);
 			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(this);
 			_injector.map(GameConfig).asSingleton();
 			_injector.map(EntityCreator).asSingleton();
-			_injector.map(TouchPoll).toValue(new TouchPoll(this.stage));
+			_injector.map(TouchPoll).toValue(_touchPoll);
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
 			config.height = 768;
@@ -58,9 +61,9 @@ package com.poddcorp.towerdef {
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
 			_engine.addSystem(new MonsterMovementSystem(), SystemPriorities.move);
-			_engine.addSystem(new TileSystem(), SystemPriorities.mapDraw);
+			_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
+			_engine.addSystem(new TowerSystem(), SystemPriorities.mapDraw);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
-			
 			
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
@@ -73,7 +76,7 @@ package com.poddcorp.towerdef {
 			_tickProvider.add(_engine.update);
 			_tickProvider.start();
 		}
-	
+
 	}
 
 }

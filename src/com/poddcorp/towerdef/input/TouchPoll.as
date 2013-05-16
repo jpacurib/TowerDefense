@@ -1,5 +1,8 @@
 package com.poddcorp.towerdef.input 
 {
+	import ash.core.NodeList;
+	import com.poddcorp.towerdef.graphics.TileView;
+	import flash.utils.ByteArray;
 	import flash.utils.getQualifiedClassName;
 	import starling.display.DisplayObject;
 	import starling.events.EventDispatcher;
@@ -12,8 +15,12 @@ package com.poddcorp.towerdef.input
 	 */
 	public class TouchPoll 
 	{
+		[Inject(nodeType = "com.poddcorp.towerdef.nodes.TileNode")]
+		public var tileNode:NodeList;
+		
+		
 		private var _displayObject:DisplayObject;
-		private var isPressed:Boolean = false;
+		public var isPressed:Boolean = false;
 		
 		public function TouchPoll(displayObject:DisplayObject) 
 		{
@@ -33,11 +40,13 @@ package com.poddcorp.towerdef.input
 				
 				if (touch.phase == TouchPhase.BEGAN)
 				{
-					isPressed = (className == "com.poddcorp.towerdef.graphics::TileView");
+				
 				}
 				else if (touch.phase == TouchPhase.ENDED)
 				{
-					isPressed = !(className == "com.poddcorp.towerdef.graphics::TileView");
+					trace('touched');
+					isPressed = (className == "com.poddcorp.towerdef.graphics.TestedTile");
+
 				}
 			}
 		}

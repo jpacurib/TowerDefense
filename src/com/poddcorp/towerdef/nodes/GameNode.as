@@ -9,7 +9,7 @@ package com.poddcorp.towerdef.nodes
 	 */
 	public class GameNode extends Node
 	{
-		public var state:GameState;			
+		public var state:GameState;		
 	}
 
 }

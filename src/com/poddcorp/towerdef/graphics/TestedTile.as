@@ -1,17 +1,17 @@
 package com.poddcorp.towerdef.graphics 
 {
 	import com.poddcorp.towerdef.UIAssets;
-	import starling.display.Button;
+	import starling.display.Image;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TowerView extends Button
+	public class TestedTile extends Image
 	{
 		
-		public function TowerView() 
+		public function TestedTile() 
 		{
-			super(UIAssets.getUITexture('lubi'));
+			super(UIAssets.getUITexture('tile'));
 			this.touchable = false;
 		}
 		
