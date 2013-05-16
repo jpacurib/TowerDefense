@@ -40,12 +40,12 @@ package com.poddcorp.towerdef.input
 				
 				if (touch.phase == TouchPhase.BEGAN)
 				{
-				
+					isPressed = !(className == "com.poddcorp.towerdef.components.Tile");
+
 				}
 				else if (touch.phase == TouchPhase.ENDED)
 				{
-					trace('touched');
-					isPressed = (className == "com.poddcorp.towerdef.graphics.TestedTile");
+					isPressed = (className == "com.poddcorp.towerdef.components.Tile");
 
 				}
 			}

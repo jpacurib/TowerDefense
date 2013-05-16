@@ -18,7 +18,7 @@ package com.poddcorp.towerdef.components
 			level = 0;
 			points = 0;
 			wave = 10;
-			monperwave = 5;
+			monperwave = 30;
 		}
 	}
 

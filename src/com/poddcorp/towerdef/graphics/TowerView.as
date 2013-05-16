@@ -11,7 +11,7 @@ package com.poddcorp.towerdef.graphics
 		
 		public function TowerView() 
 		{
-			super(UIAssets.getUITexture('lubi'));
+			super(UIAssets.getUITexture('tower'));
 			this.touchable = false;
 		}
 		

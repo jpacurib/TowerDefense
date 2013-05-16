@@ -33,9 +33,9 @@ package com.poddcorp.towerdef.systems
 						rowX = ((1024 / 2) - 32) + (col - row) * 64 / 2;
 						rowY = (768 / 4) + (col + row) * 32 / 2;
 
-						if(Math.random() < .92)
-							creator.createTile(rowX, rowY);	
-						else creator.createWall(rowX, rowY);	
+							if(Math.random() < .92)
+								creator.createTile(rowX, rowY);	
+							else creator.createWall(rowX, rowY);
 							
 						//if (row == 0 && col == 14) trace(rowX + ' ' + rowY);
 					}

@@ -23,31 +23,34 @@ com.poddcorp.towerdef{
 		[Embed(source="../../../../assets/MainMenuBG.png")]
 		public static const bgimge:Class;
 		
-		[Embed(source = "../../../../assets/blue.PNG")]
+	[Embed(source="../../../../assets/btnStart.png")]
 		public static const btnBlue:Class;
 	
-		[Embed(source="../../../../assets/brown.PNG")]
+		[Embed(source="../../../../assets/btnOptions.png")]
 		public static const btnBrown:Class;
 		
-		[Embed(source = "../../../../assets/green.PNG")]
+		[Embed(source="../../../../assets/btnQuit.png")]
 		public static const btnGreen:Class;
 		
-		[Embed(source = "../../../../assets/orange.PNG")]
+		[Embed(source="../../../../assets/btnRsm.png")]
 		public static const btnOrange:Class;
 		
-		[Embed(source = "../../../../assets/red.PNG")]
+		[Embed(source="../../../../assets/btnBack.png")]
 		public static const btnRed:Class;
 		
-		[Embed(source = "../../../../assets/yellow.PNG")]
+		[Embed(source="../../../../assets/btnBM.png")]
 		public static const btnYellow:Class;
 		
-		[Embed(source="../../../../assets/yellow.PNG")]
+		[Embed(source="../../../../assets/btnHelp.png")]
 		public static const btnHelp:Class;
 		
 		
 		
 		[Embed(source = "../../../../assets/dok.PNG")]
 		public static const dok:Class;
+		
+	[Embed(source="../../../../assets/ply.png")]
+		public static const play:Class;
 		
 		[Embed(source = "../../../../assets/pause.PNG")]
 		public static const pause:Class;
@@ -70,6 +73,14 @@ com.poddcorp.towerdef{
 		[Embed(source = "../../../../assets/podd.png")]
 		public static const splash:Class;
 		
+		[Embed(source = "../../../../assets/wall.png")]
+		public static const wall:Class;
+		
+		[Embed(source = "../../../../assets/tower.png")]
+		public static const tower:Class;
+		
+	[Embed(source="../../../../assets/ModerneFraktur.ttf",fontFamily="MyFont",embedAsCFF="false")]	
+		public static var GameFont:Class;
 		
 		
 		public static var UITextures:Dictionary = new Dictionary();

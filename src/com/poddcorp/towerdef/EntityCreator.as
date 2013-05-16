@@ -7,9 +7,11 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.MonsterMotion;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.Tile;
+	import com.poddcorp.towerdef.components.Tower;
 	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.graphics.TestedTile;
 	import com.poddcorp.towerdef.graphics.TileView;
+	import com.poddcorp.towerdef.graphics.TowerView;
 	
 	import com.poddcorp.towerdef.components.GameState;
 	/**
@@ -70,6 +72,17 @@ package com.poddcorp.towerdef
 				
 			engine.addEntity(tile);
 			return tile;
+		}
+		
+		public function createTower(x:Number, y:Number):Entity
+		{
+			var tower:Entity = new Entity()
+				.add(new Tower())
+				.add(new Position(x, y, 0))
+				.add(new Display(new TowerView));
+				
+			engine.addEntity(tower);
+			return tower;
 		}
 
 	}

@@ -18,7 +18,7 @@ package com.poddcorp.towerdef.graphics
 		
 		public function MonsterView() 
 		{
-			monsterShape.graphics.beginFill(0x00CC00);
+			monsterShape.graphics.beginFill(0x00FF00);
 			monsterShape.graphics.drawRect(0, 0, 32, 32);
 
 			//monsterShape.rotation = 45;

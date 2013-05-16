@@ -33,7 +33,7 @@ package com.poddcorp.towerdef.systems {
 			{
 					if (node.state.monperwave > 0)
 					{
-							if (delay > 8) 
+							if (delay > 2) 
 							{
 							creator.createMonster(32 + 16, 416, 0);
 							node.state.monperwave--;

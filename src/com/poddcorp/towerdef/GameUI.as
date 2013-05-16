@@ -2,6 +2,7 @@ package com.poddcorp.towerdef
 {
 	import com.poddcorp.towerdef.UI.QuitGame;
 	import feathers.controls.Label;
+	import flash.ui.Keyboard;
 	//import flash.net.SharedObject;
 	
 	import feathers.themes.MetalWorksMobileTheme;
@@ -86,18 +87,24 @@ package com.poddcorp.towerdef
 		{
 			//MAIN
 			//setting textures
+			
+			
 			btnStart = new Button(UIAssets.getUITexture("btnBlue"));
 			btnSetting = new Button(UIAssets.getUITexture("btnBrown"));
 			btnExit = new Button(UIAssets.getUITexture("btnGreen"));
 			btnBack = new Button(UIAssets.getUITexture("btnRed"));
 			btnHelp = new Button(UIAssets.getUITexture("btnHelp"));
 			
+			
+	
 			//texts
-			btnStart.text = ("PLAY");
-			btnSetting.text = ("SETTINGS");
-			btnHelp.text = ("HELP");
-			btnExit.text = ("EXIT");
-			btnBack.text = ("BACK");
+			
+		//		var text:Label = new Label();
+		//	btnStart.text = ("PLAY");
+		//	btnSetting.text = ("SETTINGS");
+		//	btnHelp.text = ("HELP");
+		//	btnExit.text = ("EXIT");
+		//	btnBack.text = ("BACK");
 			
 			//events
 			btnStart.addEventListener(Event.TRIGGERED, onStartEvent);
@@ -130,9 +137,10 @@ package com.poddcorp.towerdef
 			scrll = new Image(UIAssets.getUITexture("Scroll"));
 			scrll.x = dok.x - 290;
 			
-			var Set:SettingsUI = new SettingsUI();
-			
 		
+			
+			var shit:QuitGame = new QuitGame();
+			shit.btnNo.addEventListener(Event.TRIGGERED, hoho);
 			
 		//	var mySharedObject:SharedObject = SharedObject.getLocal("ShareObjct");
 		//	mySharedObject.data.value = 100;
@@ -141,20 +149,21 @@ package com.poddcorp.towerdef
 		//	trace(mySharedObject.data.value);
 		//	trace(mySharedObject.data.value2);
 		}
-		private function handler(e:Event):void
+		
+		private function hoho(e:Event):void 
 		{
 		
+		
 		}
+		
+		
+	
 		
 		private function onBackEvent(e:Event):void
 		{
 			removeChild(btnBack);
 			removeChild(UIsettings);
 			removeChild(scrll);
-		//	var button:Button = new Button(e.currentTarget);
-			
-			
-			
 			MainMenuAdd();
 		}
 		
@@ -164,8 +173,6 @@ package com.poddcorp.towerdef
 			this.removeChildren(0, -1);
 			this.addChild(new TowerDefense());
 			this.addChild(myGame);
-			
-			//new TowerDefense();
 			MainMenuRemove();
 		}
 		
@@ -173,7 +180,6 @@ package com.poddcorp.towerdef
 		{
 			MainMenuRemove();
 			onSettingMenus();
-		
 		}
 		
 		private function onHelpMenu(e:Event):void
@@ -181,28 +187,26 @@ package com.poddcorp.towerdef
 			MainMenuRemove();
 			this.addChild(scrll);
 			this.addChild(btnBack)
-		
 		}
 		
 		private function onSettingMenus():void
 		{
-			
 			UIsettings = new SettingsUI();
 			addChild(UIsettings);
 			this.addChild(btnBack);
 		}
-		
+		 
 		private function onExitEvent(e:Event):void
 		{
 			var button:Button = Button(e.currentTarget);
-			var content:Sprite = new QuitGame();
+			 var content:Sprite = new QuitGame();
 			callout = Callout.show(content, button, Callout.DIRECTION_UP, function():Callout
 				{
 					callout = new Callout();
 					callout.topArrowGap = 300;
-					//callout.setSize(500, 500);
 					callout.nameList.add("my-custom-callout");
 					return callout;
+				
 				});
 		}
 	

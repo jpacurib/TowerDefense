@@ -1,70 +1,87 @@
 package com.poddcorp.towerdef.UI
-{
 
+{
 	
 	import com.poddcorp.towerdef.GameUI;
-	import flash.sampler.NewObjectSample;
+	import flash.ui.Keyboard;
+	
 	import starling.display.Sprite;
-	import feathers.controls.Label;
 	import starling.display.Button;
 	import starling.display.Image;
 	import starling.events.Event;
 	import com.poddcorp.towerdef.UIAssets;
 	import flash.system.fscommand;
 	import feathers.controls.Callout;
+	import starling.text.TextField;
 	/*...
 	 * @author janssen
 	 */
 	public class QuitGame extends Sprite
 	{
 		private var btnYes:Button;
+		public var btnNo:Button;	
 		private var btnor:Image;
-		public var btnNo:Button;
+		
+		private var quitText:TextField;
 	
-		
-		
-		private static const CONTENT_TEXT:String = "ARE YOU AFRAID TO DEFEND?";
 		
 		public function QuitGame()
 		{
-			
-			const content:Label = new Label();
-			content.text = CONTENT_TEXT;
+			Display();
 		
-			this.addChild(content);
+		}
+		
+		public function Display():void
+		{
 			
-			//quit pop up
+			quitText = new TextField(300, 150, "ARE YOU AFRAID TO DEFEND?", "myFont", 40, 0xDF8C4F);
+			this.addChild(quitText);
+			
+			
+			//quit pop up buttons
 			btnYes = new Button(UIAssets.getUITexture("yes"));
-			btnYes.100;
+			btnYes.x = quitText.x + 55;
+			btnYes.y = quitText.y + 150;
 			this.addChild(btnYes);
 			
 			btnor = new Image(UIAssets.getUITexture("or"));
 			this.addChild(btnor);
 			btnor.x = btnYes.x + 75;
+			btnor.y = btnYes.y;
 			
 			btnNo = new Button(UIAssets.getUITexture("no"));
 			btnNo.x = btnor.x +35;
+			btnNo.y = btnYes.y;
 			this.addChild(btnNo);
 			
-			
+		
 			btnYes.addEventListener(Event.TRIGGERED, onYes);
-			btnNo.addEventListener(Event.TRIGGERED, onNo);
+			//btnNo.addEventListener(Event.CLOSE, closeThis);
+		
+		//	btnNo.addEventListener(Event.TRIGGERED, closeThis)
+		
+			//var hit:GameUI = new GameUI();
+			// hit.callout.closeOnKeys = new <uint>[Keyboard.ENTER];
 		}
 		
-		private function onNo(e:Event):void 
-		{
-			
-			trace ("You choose to continue..");
 		
+//	public function closeThis():void
+	//	{
+			
 
 			
-		}
+			
+		//	trace ("close");
+		
+		//}
+		
+		
 		private function onYes():void
 		{
 			trace ("You Click Yes.. Game will Quit");
 			fscommand("quit");
 		}
-		
+	
 		
 	}
 

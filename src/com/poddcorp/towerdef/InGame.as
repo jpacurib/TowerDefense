@@ -1,12 +1,14 @@
-package  
-com.poddcorp.towerdef{
+package com.poddcorp.towerdef
+{
 	import starling.display.Button;
 	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.events.Event;
 	import com.poddcorp.towerdef.UI.SettingsUI;
-		import feathers.controls.Label;
-		import com.poddcorp.towerdef.GameUI;
+	import feathers.controls.Label;
+	import com.poddcorp.towerdef.GameUI;
+	import starling.display.Image;
+	
 	/**
 	 * ...
 	 * @author Jeremy
@@ -18,40 +20,43 @@ com.poddcorp.towerdef{
 		private var btnSettings:Button;
 		private var btnBackMainMenu:Button;
 		private var btnBack:Button;
-		
+		public var btnP:Image;
 		private var heightButton:Number = 50;
-		private var widthButton:Number =  650;
+		private var widthButton:Number = 650;
 		
 		private var UIsettings:SettingsUI;
 		
 		private var _towerDefense:TowerDefense = new TowerDefense();
 		
-		public function InGame() 
+		public function InGame()
 		{
 			super();
 			addEventListener(Event.ADDED_TO_STAGE, gameAddedToStage);
 		}
 		
-		private function gameAddedToStage(e:Event):void 
+		private function gameAddedToStage(e:Event):void
 		{
 			createIngameButton();
 			addChild(btnPause);
 		}
 		
-		private function createIngameButton():void 
+		private function createIngameButton():void
 		{
 			btnPause = new Button(UIAssets.getUITexture("pause"));
 			btnResume = new Button(UIAssets.getUITexture("btnOrange"));
-			btnSettings = new Button(UIAssets.getUITexture("btnRed"));
+			btnSettings = new Button(UIAssets.getUITexture("btnBrown"));
 			btnBackMainMenu = new Button(UIAssets.getUITexture("btnYellow"));
-			btnBack = new Button(UIAssets.getUITexture("btnBlue"));
+			btnBack = new Button(UIAssets.getUITexture("btnRed"));
+			btnP = new Image(UIAssets.getUITexture("play"));
 			
-			btnResume.text = ("RESUME");
-			btnSettings.text = ("SETTINGS");
-			btnBackMainMenu.text = ("BACK TO MAIN MENU");
-			btnBack.text = ("BACK");
+			//btnResume.text = ("RESUME");
+			//btnSettings.text = ("SETTINGS");
+			//btnBackMainMenu.text = ("BACK TO MAIN MENU");
+			//btnBack.text = ("BACK");
+			btnP.y = 30;
 			
-			btnResume.x = (stage.stageWidth / 2) -(widthButton / 2);
+			
+			btnResume.x = (stage.stageWidth / 2) - (widthButton / 2);
 			btnSettings.x = btnResume.x;
 			btnBackMainMenu.x = btnResume.x;
 			btnPause.x = 0;
@@ -60,7 +65,7 @@ com.poddcorp.towerdef{
 			btnResume.y = 300;
 			btnSettings.y = btnResume.y + 75;
 			btnBackMainMenu.y = btnSettings.y + 75;
-			btnPause.y = 0;
+			btnPause.y = 30;
 			btnBack.y = btnSettings.y + 250;
 			
 			btnPause.addEventListener(Event.TRIGGERED, onPauseEvent);
@@ -68,65 +73,68 @@ com.poddcorp.towerdef{
 			btnSettings.addEventListener(Event.TRIGGERED, onSettingsEvent);
 			btnBackMainMenu.addEventListener(Event.TRIGGERED, onBackMainMenuEvent);
 			btnBack.addEventListener(Event.TRIGGERED, onBackEvent);
-			
-			
+		
 		}
 		
-		private function onBackEvent(e:Event):void 
+		private function onBackEvent(e:Event):void
 		{
 			this.removeChild(btnBack);
 			this.removeChild(UIsettings);
 			showPauseMenu();
 		}
 		
-		private function onBackMainMenuEvent(e:Event):void 
+		private function onBackMainMenuEvent(e:Event):void
 		{
 			var backtoGameUI:GameUI = new GameUI();
 			addChild(backtoGameUI);
 			
 			removeAllMenu();
 			removeChild(btnPause);
-			
+		
 		}
 		
-		private function onSettingsEvent(e:Event):void 
+		private function onSettingsEvent(e:Event):void
 		{
 			removeAllMenu();
 			onSettingButtons();
 		}
 		
-		private function onSettingButtons():void 
+		private function onSettingButtons():void
 		{
 			UIsettings = new SettingsUI();
 			addChild(UIsettings);
 			this.addChild(btnBack);
 		}
 		
-		private function onResumeEvent(e:Event):void 
+		private function onResumeEvent(e:Event):void
 		{
 			removeAllMenu();
+			removeChild(btnP);
+			addChild(btnPause);
 		}
 		
-		private function removeAllMenu():void 
+		private function removeAllMenu():void
 		{
 			this.removeChild(btnResume);
 			this.removeChild(btnSettings);
 			this.removeChild(btnBackMainMenu);
 		}
 		
-		private function onPauseEvent(e:Event):void 
+		private function onPauseEvent(e:Event):void
 		{
 			showPauseMenu();
+			removeChild(btnPause);
+			
+			addChild(btnP);
 		}
 		
-		private function showPauseMenu():void 
+		private function showPauseMenu():void
 		{
 			this.addChild(btnResume);
 			this.addChild(btnSettings);
 			this.addChild(btnBackMainMenu);
 		}
-		
-		
+	
 	}
 
 }

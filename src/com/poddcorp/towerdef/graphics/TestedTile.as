@@ -11,7 +11,7 @@ package com.poddcorp.towerdef.graphics
 		
 		public function TestedTile() 
 		{
-			super(UIAssets.getUITexture('tile'));
+			super(UIAssets.getUITexture('wall'));
 			this.touchable = false;
 		}
 		
