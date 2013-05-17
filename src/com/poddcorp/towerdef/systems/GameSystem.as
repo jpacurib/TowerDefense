@@ -2,7 +2,7 @@ package com.poddcorp.towerdef.systems {
 	
 	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.nodes.GameNode;
-	import com.poddcorp.towerdef.nodes.MonsterMovementNode;
+	import com.poddcorp.towerdef.nodes.MovementNode;
 	import flash.geom.Point;
 	import starling.display.Sprite;
 	import ash.core.NodeList;
@@ -31,16 +31,11 @@ package com.poddcorp.towerdef.systems {
 			//Constant Check
 			for (node = gameNodes.head; node; node = node.next) 
 			{
-					/*if (node.state.monperwave > 0)
+					if (node.state.monperwave > 0)
 					{
-							if (delay > 2) 
-							{
-							creator.createMonster(32 + 16, 416, 0);
-							node.state.monperwave--;
-							delay = 0;
-							}
-									
-					}*/
+						creator.createMonster(0, 0, 0);
+						node.state.monperwave--;
+					}
 					
 					
 			}

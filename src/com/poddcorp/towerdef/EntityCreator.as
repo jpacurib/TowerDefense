@@ -9,10 +9,6 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.components.Tower;
 	import com.poddcorp.towerdef.graphics.MonsterView;
-	import com.poddcorp.towerdef.graphics.TestedTile;
-	import com.poddcorp.towerdef.graphics.TileView;
-	import com.poddcorp.towerdef.graphics.TowerView;
-	
 	import com.poddcorp.towerdef.components.GameState;
 	/**
 	 * ...
@@ -53,7 +49,7 @@ package com.poddcorp.towerdef
 			return monster;
 		}
 		
-		public function createTile(x:Number, y:Number):Entity
+		/*public function createTile(x:Number, y:Number):Entity
 		{
 			var tile:Entity = new Entity()
 				.add(new Tile())
@@ -61,9 +57,9 @@ package com.poddcorp.towerdef
 				.add(new Display(new TileView));
 			engine.addEntity(tile);
 			return tile;
-		}	
+		}	*/
 		
-		public function createWall(x:Number, y:Number):Entity
+		/*public function createWall(x:Number, y:Number):Entity
 		{
 			var tile:Entity = new Entity()
 				.add(new Tile())
@@ -72,9 +68,9 @@ package com.poddcorp.towerdef
 				
 			//engine.addEntity(tile);
 			return tile;
-		}
+		}*/
 		
-		public function createTower(x:Number, y:Number):Entity
+		/*public function createTower(x:Number, y:Number):Entity
 		{
 			var tower:Entity = new Entity()
 				.add(new Tower())
@@ -83,7 +79,7 @@ package com.poddcorp.towerdef
 				
 			engine.addEntity(tower);
 			return tower;
-		}
+		}*/
 
 	}
 

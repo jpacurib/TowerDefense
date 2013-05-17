@@ -6,7 +6,6 @@ package com.poddcorp.towerdef {
 	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import com.poddcorp.towerdef.systems.MonsterMovementSystem;
-	import com.poddcorp.towerdef.systems.TileSystem;
 	import com.poddcorp.towerdef.systems.TileTraversalSystem;
 	import flash.display.Stage;
 
@@ -77,6 +76,7 @@ package com.poddcorp.towerdef {
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
+			
 		}
 		
 		public function start():void

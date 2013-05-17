@@ -48,7 +48,7 @@ package com.poddcorp.towerdef.pathfinding
 						continue;
 					
 					//Higlight tested node
-					IsoTile(testNode).highlight(0xFF80C0);
+					//IsoTile(testNode).highlight(0xFF80C0);
 					
 					//g = currentNode.g + travelCost;
 					g = currentNode.g + Pathfinder.heuristic( currentNode, testNode, travelCost); 

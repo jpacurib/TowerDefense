@@ -66,7 +66,7 @@ package com.poddcorp.towerdef
 			var s:Shape = new Shape();
 			s.graphics.lineStyle(1, 0x000000);
 			s.graphics.beginFill(color);
-			s.graphics.drawRect(0, 0, 30, 30);
+			s.graphics.drawRect(0, 0, 45, 45);
 			s.graphics.endFill();
 			
 			var bmd:BitmapData = new BitmapData(s.width, s.height);

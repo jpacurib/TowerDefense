@@ -1,7 +1,7 @@
 package com.poddcorp.towerdef.input 
 {
 	import ash.core.NodeList;
-	import com.poddcorp.towerdef.graphics.TileView;
+	//import com.poddcorp.towerdef.graphics.TileView;
 	import com.poddcorp.towerdef.nodes.TileNode;
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import flash.utils.ByteArray;
