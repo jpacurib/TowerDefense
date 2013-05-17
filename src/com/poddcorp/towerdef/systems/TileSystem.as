@@ -1,12 +1,9 @@
 package com.poddcorp.towerdef.systems
 {
+	import ash.core.Engine;
 	import ash.core.Entity;
 	import ash.core.System;
 	import com.poddcorp.towerdef.EntityCreator;
-	import com.poddcorp.towerdef.graphics.TileView;
-	import com.poddcorp.towerdef.input.TouchPoll;
-	import com.poddcorp.towerdef.nodes.TileNode;
-	import starling.display.Sprite;
 	
 	/**
 	 * ...
@@ -18,12 +15,21 @@ package com.poddcorp.towerdef.systems
 		public var creator:EntityCreator;
 		
 		private var isMapDrawn:Boolean = false;
+		private var entityMapHolder:Entity = new Entity();
 				
+		private var rowX:Number;
+		private var rowY:Number;
+		
+						
 		override public function update(time:Number):void
 		{
-			var rowX:Number;
-			var rowY:Number;
-						
+				
+			createNodes();
+		
+		}
+		
+		private function createNodes():void 
+		{
 			if (!isMapDrawn)
 			{
 				for (var row:int = 0; row < 15; row++)
@@ -32,18 +38,16 @@ package com.poddcorp.towerdef.systems
 					{
 						rowX = ((1024 / 2) - 32) + (col - row) * 64 / 2;
 						rowY = (768 / 4) + (col + row) * 32 / 2;
-
-							if(Math.random() < .92)
-								creator.createTile(rowX, rowY);	
-							else creator.createWall(rowX, rowY);
-							
-						//if (row == 0 && col == 14) trace(rowX + ' ' + rowY);
+						
+						entityMapHolder = (creator.createTile(rowX, rowY));
+						//_nodes.push(emtityHolder);	
+						
+						//engine.addEntity(entityHolder);
 					}
 				}
 				
-				isMapDrawn = true;
+			isMapDrawn = true;
 			}
-		
 		}
 	
 	}

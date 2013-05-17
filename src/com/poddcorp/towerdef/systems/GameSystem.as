@@ -31,7 +31,7 @@ package com.poddcorp.towerdef.systems {
 			//Constant Check
 			for (node = gameNodes.head; node; node = node.next) 
 			{
-					if (node.state.monperwave > 0)
+					/*if (node.state.monperwave > 0)
 					{
 							if (delay > 2) 
 							{
@@ -40,7 +40,9 @@ package com.poddcorp.towerdef.systems {
 							delay = 0;
 							}
 									
-					}
+					}*/
+					
+					
 			}
 			
 			//Movement of Monster

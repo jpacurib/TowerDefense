@@ -1,24 +1,26 @@
-package com.poddcorp.towerdef.pathfinding 
+package com.poddcorp.towerdef.pathfinding
 {
+	import com.poddcorp.towerdef.IsoTile;
+	
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
 	public class Pathfinder
 	{
-		public static var heuristic:Function = Pathfinder.manhattanHeuristic;			
+		public static var heuristic:Function = Pathfinder.euclidianHeuristic;
 		
-		public static function findPath( firstNode:INode, destinationNode:INode, connectedNodeFunction:Function ):Array 
+		public static function findPath(firstNode:INode, destinationNode:INode, connectedNodeFunction:Function):Array
 		{
 			var openNodes:Array = [];
-			var closedNodes:Array = [];			
+			var closedNodes:Array = [];
 			
 			var currentNode:INode = firstNode;
 			var testNode:INode;
 			
 			var l:int;
 			var i:int;
-		
+			
 			var connectedNodes:Array;
 			var travelCost:Number = 1.0;
 			
@@ -30,28 +32,32 @@ package com.poddcorp.towerdef.pathfinding
 			currentNode.h = Pathfinder.heuristic(currentNode, destinationNode, travelCost);
 			currentNode.f = currentNode.g + currentNode.h;
 			
-			while (currentNode != destinationNode) {
+			while (currentNode != destinationNode)
+			{
 				
-				connectedNodes = connectedNodeFunction( currentNode );			
+				connectedNodes = connectedNodeFunction(currentNode);
 				
 				l = connectedNodes.length;
 				
-				for (i = 0; i < l; ++i) {
+				for (i = 0; i < l; ++i)
+				{
 					
 					testNode = connectedNodes[i];
 					
-					if (testNode == currentNode || testNode.traversable == false) continue;					
+					if (testNode == currentNode || testNode.traversable == false)
+						continue;
 					
 					//Higlight tested node
-					//Node(testNode).highlight(0xFF80C0);
+					IsoTile(testNode).highlight(0xFF80C0);
 					
-					g = currentNode.g + travelCost;
-					h = Pathfinder.heuristic( testNode, destinationNode, travelCost);
+					//g = currentNode.g + travelCost;
+					g = currentNode.g + Pathfinder.heuristic( currentNode, testNode, travelCost); 
+					h = Pathfinder.heuristic(testNode, destinationNode, travelCost);
 					f = g + h;
 					
-					if ( Pathfinder.isOpen(testNode, openNodes) || Pathfinder.isClosed( testNode, closedNodes) )
+					if (Pathfinder.isOpen(testNode, openNodes) || Pathfinder.isClosed(testNode, closedNodes))
 					{
-						if(testNode.f > f)
+						if (testNode.f > f)
 						{
 							testNode.f = f;
 							testNode.g = g;
@@ -59,7 +65,8 @@ package com.poddcorp.towerdef.pathfinding
 							testNode.parentNode = currentNode;
 						}
 					}
-					else {
+					else
+					{
 						testNode.f = f;
 						testNode.g = g;
 						testNode.h = h;
@@ -68,9 +75,10 @@ package com.poddcorp.towerdef.pathfinding
 					}
 					
 				}
-				closedNodes.push( currentNode );
+				closedNodes.push(currentNode);
 				
-				if (openNodes.length == 0) {
+				if (openNodes.length == 0)
+				{
 					return null;
 				}
 				openNodes.sortOn('f', Array.NUMERIC);
@@ -80,34 +88,41 @@ package com.poddcorp.towerdef.pathfinding
 			return Pathfinder.buildPath(destinationNode, firstNode);
 		}
 		
-		
-		public static function buildPath(destinationNode:INode, startNode:INode):Array {			
+		public static function buildPath(destinationNode:INode, startNode:INode):Array
+		{
 			var path:Array = [];
 			var node:INode = destinationNode;
 			path.push(node);
-			while (node != startNode) {
+			while (node != startNode)
+			{
 				node = node.parentNode;
-				path.unshift( node );
+				path.unshift(node);
 			}
 			
-			return path;			
+			return path;
 		}
 		
-		public static function isOpen(node:INode, openNodes:Array):Boolean {
+		public static function isOpen(node:INode, openNodes:Array):Boolean
+		{
 			
 			var l:int = openNodes.length;
-			for (var i:int = 0; i < l; ++i) {
-				if ( openNodes[i] == node ) return true;
+			for (var i:int = 0; i < l; ++i)
+			{
+				if (openNodes[i] == node)
+					return true;
 			}
 			
-			return false;			
+			return false;
 		}
 		
-		public static function isClosed(node:INode, closedNodes:Array):Boolean {
+		public static function isClosed(node:INode, closedNodes:Array):Boolean
+		{
 			
 			var l:int = closedNodes.length;
-			for (var i:int = 0; i < l; ++i) {
-				if (closedNodes[i] == node ) return true;
+			for (var i:int = 0; i < l; ++i)
+			{
+				if (closedNodes[i] == node)
+					return true;
 			}
 			
 			return false;
@@ -115,10 +130,25 @@ package com.poddcorp.towerdef.pathfinding
 		
 		public static function manhattanHeuristic(node:INode, destinationNode:INode, cost:Number = 1.0):Number
 		{
-			return Math.abs(node.x - destinationNode.x) * cost + 
-				   Math.abs(node.y + destinationNode.y) * cost;
+			return Math.abs(node.x - destinationNode.x) * cost + Math.abs(node.y + destinationNode.y) * cost;
 		}
 		
+		public static function euclidianHeuristic(node:INode, destinationNode:INode, cost:Number = 1.0):Number
+		{
+			var dx:Number = node.x - destinationNode.x;
+			var dy:Number = node.y - destinationNode.y;
+			
+			return Math.sqrt(dx * dx + dy * dy) * cost;
+		}
+		
+		public static function diagonalHeuristic(node:INode, destinationNode:INode, cost:Number = 1.0, diagonalCost:Number = 1.0):Number
+		{
+			var dx:Number = Math.abs(node.x - destinationNode.x);
+			var dy:Number = Math.abs(node.y - destinationNode.y);
+			var diag:Number = Math.min(dx, dy);
+			var straight:Number = dx + dy;
+			return diagonalCost * diag + cost * (straight - 2 * diag);
+		}
 	}
 
 }

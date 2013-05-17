@@ -6,7 +6,7 @@ package com.poddcorp.towerdef.components
 	 */
 	public class Tile
 	{
-		public var pressed:Boolean = false;		
+		
 	}
 
 }

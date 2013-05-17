@@ -27,8 +27,6 @@ package com.poddcorp.towerdef
 	public class GameUI extends Sprite
 	{
 		
-
-		
 		private var btnStart:Button;
 		private var btnSetting:Button;
 		public var btnExit:Button;
@@ -88,23 +86,20 @@ package com.poddcorp.towerdef
 			//MAIN
 			//setting textures
 			
-			
 			btnStart = new Button(UIAssets.getUITexture("btnBlue"));
 			btnSetting = new Button(UIAssets.getUITexture("btnBrown"));
 			btnExit = new Button(UIAssets.getUITexture("btnGreen"));
 			btnBack = new Button(UIAssets.getUITexture("btnRed"));
 			btnHelp = new Button(UIAssets.getUITexture("btnHelp"));
 			
-			
-	
 			//texts
 			
-		//		var text:Label = new Label();
-		//	btnStart.text = ("PLAY");
-		//	btnSetting.text = ("SETTINGS");
-		//	btnHelp.text = ("HELP");
-		//	btnExit.text = ("EXIT");
-		//	btnBack.text = ("BACK");
+			//		var text:Label = new Label();
+			//	btnStart.text = ("PLAY");
+			//	btnSetting.text = ("SETTINGS");
+			//	btnHelp.text = ("HELP");
+			//	btnExit.text = ("EXIT");
+			//	btnBack.text = ("BACK");
 			
 			//events
 			btnStart.addEventListener(Event.TRIGGERED, onStartEvent);
@@ -137,27 +132,21 @@ package com.poddcorp.towerdef
 			scrll = new Image(UIAssets.getUITexture("Scroll"));
 			scrll.x = dok.x - 290;
 			
-		
-			
 			var shit:QuitGame = new QuitGame();
 			shit.btnNo.addEventListener(Event.TRIGGERED, hoho);
-			
-		//	var mySharedObject:SharedObject = SharedObject.getLocal("ShareObjct");
-		//	mySharedObject.data.value = 100;
-		//	mySharedObject.data.value2 = 200;
-		//	mySharedObject.flush();
-		//	trace(mySharedObject.data.value);
-		//	trace(mySharedObject.data.value2);
+		
+			//	var mySharedObject:SharedObject = SharedObject.getLocal("ShareObjct");
+			//	mySharedObject.data.value = 100;
+			//	mySharedObject.data.value2 = 200;
+			//	mySharedObject.flush();
+			//	trace(mySharedObject.data.value);
+			//	trace(mySharedObject.data.value2);
 		}
 		
-		private function hoho(e:Event):void 
+		private function hoho(e:Event):void
 		{
 		
-		
 		}
-		
-		
-	
 		
 		private function onBackEvent(e:Event):void
 		{
@@ -195,11 +184,12 @@ package com.poddcorp.towerdef
 			addChild(UIsettings);
 			this.addChild(btnBack);
 		}
-		 
+		
 		private function onExitEvent(e:Event):void
 		{
 			var button:Button = Button(e.currentTarget);
-			 var content:Sprite = new QuitGame();
+			var content:QuitGame = new QuitGame();
+			
 			callout = Callout.show(content, button, Callout.DIRECTION_UP, function():Callout
 				{
 					callout = new Callout();
@@ -208,8 +198,7 @@ package com.poddcorp.towerdef
 					return callout;
 				
 				});
+			content.parentCallOut = callout;
 		}
-	
 	}
-
 }

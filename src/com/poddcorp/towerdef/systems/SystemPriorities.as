@@ -12,6 +12,7 @@ package com.poddcorp.towerdef.systems
 		public static const resolveCollision:int = 4;
 		public static const animate:int = 5;
 		public static const mapDraw:int = 6;
+		public static const prerender:int = 6;
 		public static const render:int = 7;
 		
 	}

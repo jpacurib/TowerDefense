@@ -3,11 +3,13 @@ package com.poddcorp.towerdef.pathfinding
 	import ash.core.Entity;
 	import ash.core.System;
 	import com.poddcorp.towerdef.EntityCreator;
+	import starling.display.Sprite;
+
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class IPath extends System implements INode
+	public class IPath extends Sprite implements INode
 	{
 		[Inject]
 		public var creator:EntityCreator;
@@ -21,16 +23,16 @@ package com.poddcorp.towerdef.pathfinding
 		private var _row:int;
 		private var _col:int;
 		
-		public function IPath(row:int, col:int, rowX:Number, rowY:Number) 
+		public function IPath(row:int, col:int) 
 		{
 			this.row = row;
 			this.col = col;
-			this.createMyTile(rowX, rowY);
+			this.createTile();
 		}
 		
-		public function createMyTile(rowX:Number, rowY:Number):void 
+		private function createTile():void 
 		{
-			creator.createTile(rowX, rowY);
+			
 		}
 		
 		public function get parentNode():INode { return _parentNode; }		

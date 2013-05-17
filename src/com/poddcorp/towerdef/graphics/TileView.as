@@ -1,7 +1,6 @@
 package com.poddcorp.towerdef.graphics 
 {
 	import com.poddcorp.towerdef.UIAssets;
-	import starling.display.Button;
 	import starling.display.Image;
 	import starling.events.TouchEvent;
 	import starling.textures.Texture;
@@ -9,7 +8,7 @@ package com.poddcorp.towerdef.graphics
 	 * ...
 	 * @author Jeremy
 	 */
-	public class TileView extends Button
+	public class TileView extends Image
 	{
 		public function TileView()
 		{

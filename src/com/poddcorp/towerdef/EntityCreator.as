@@ -4,7 +4,7 @@ package com.poddcorp.towerdef
 	import ash.core.Entity;
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Monster;
-	import com.poddcorp.towerdef.components.MonsterMotion;
+	import com.poddcorp.towerdef.components.Motion;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.components.Tower;
@@ -44,8 +44,9 @@ package com.poddcorp.towerdef
 		{
 			var monster:Entity = new Entity()
 				.add(new Monster())
+				.add(new Tile())
 				.add(new Position(x, y, 0))
-				.add(new MonsterMotion(Math.random(), Math.random()))
+				.add(new Motion(0, 0))
 				.add(new Display(new MonsterView()));
 				
 			engine.addEntity(monster);
@@ -58,7 +59,6 @@ package com.poddcorp.towerdef
 				.add(new Tile())
 				.add(new Position(x, y, 0))
 				.add(new Display(new TileView));
-				
 			engine.addEntity(tile);
 			return tile;
 		}	
@@ -70,7 +70,7 @@ package com.poddcorp.towerdef
 				.add(new Position(x, y, 0))
 				.add(new Display(new TestedTile));
 				
-			engine.addEntity(tile);
+			//engine.addEntity(tile);
 			return tile;
 		}
 		

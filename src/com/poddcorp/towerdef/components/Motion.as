@@ -5,11 +5,11 @@ package com.poddcorp.towerdef.components
 	 * ...
 	 * @author Jeremy
 	 */
-	public class MonsterMotion 
+	public class Motion 
 	{
 		public var velocity : Point = new Point();
 	
-		public function MonsterMotion(velocityX:Number, velocityY:Number) 
+		public function Motion(velocityX:Number, velocityY:Number) 
 		{
 			velocity = new Point(velocityX, velocityY);
 		}

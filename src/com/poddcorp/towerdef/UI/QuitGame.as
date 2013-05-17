@@ -1,10 +1,6 @@
 package com.poddcorp.towerdef.UI
 
 {
-	
-	import com.poddcorp.towerdef.GameUI;
-	import flash.ui.Keyboard;
-	
 	import starling.display.Sprite;
 	import starling.display.Button;
 	import starling.display.Image;
@@ -13,17 +9,19 @@ package com.poddcorp.towerdef.UI
 	import flash.system.fscommand;
 	import feathers.controls.Callout;
 	import starling.text.TextField;
+	
 	/*...
 	 * @author janssen
 	 */
+	
 	public class QuitGame extends Sprite
 	{
 		private var btnYes:Button;
-		public var btnNo:Button;	
+		public var btnNo:Button;
 		private var btnor:Image;
 		
 		private var quitText:TextField;
-	
+		private var _parentCallOut:Callout;
 		
 		public function QuitGame()
 		{
@@ -37,7 +35,6 @@ package com.poddcorp.towerdef.UI
 			quitText = new TextField(300, 150, "ARE YOU AFRAID TO DEFEND?", "myFont", 40, 0xDF8C4F);
 			this.addChild(quitText);
 			
-			
 			//quit pop up buttons
 			btnYes = new Button(UIAssets.getUITexture("yes"));
 			btnYes.x = quitText.x + 55;
@@ -50,39 +47,36 @@ package com.poddcorp.towerdef.UI
 			btnor.y = btnYes.y;
 			
 			btnNo = new Button(UIAssets.getUITexture("no"));
-			btnNo.x = btnor.x +35;
+			btnNo.x = btnor.x + 35;
 			btnNo.y = btnYes.y;
 			this.addChild(btnNo);
 			
-		
 			btnYes.addEventListener(Event.TRIGGERED, onYes);
-			//btnNo.addEventListener(Event.CLOSE, closeThis);
+			btnNo.addEventListener(Event.TRIGGERED, closeThis)
 		
-		//	btnNo.addEventListener(Event.TRIGGERED, closeThis)
-		
-			//var hit:GameUI = new GameUI();
-			// hit.callout.closeOnKeys = new <uint>[Keyboard.ENTER];
 		}
 		
-		
-//	public function closeThis():void
-	//	{
-			
-
-			
-			
-		//	trace ("close");
-		
-		//}
-		
+		public function closeThis():void
+		{
+			_parentCallOut.close();
+		}
 		
 		private function onYes():void
 		{
-			trace ("You Click Yes.. Game will Quit");
+			trace("You Click Yes.. Game will Quit");
 			fscommand("quit");
 		}
-	
 		
+		public function get parentCallOut():Callout
+		{
+			return _parentCallOut;
+		}
+		
+		public function set parentCallOut(value:Callout):void
+		{
+			_parentCallOut = value;
+		}
+	
 	}
 
 }

@@ -7,7 +7,8 @@ package com.poddcorp.towerdef {
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import com.poddcorp.towerdef.systems.MonsterMovementSystem;
 	import com.poddcorp.towerdef.systems.TileSystem;
-	import com.poddcorp.towerdef.systems.TowerSystem;
+	import com.poddcorp.towerdef.systems.TileTraversalSystem;
+	import flash.display.Stage;
 
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -28,6 +29,7 @@ package com.poddcorp.towerdef {
 		public var _tickProvider:StarlingFrameTickProvider;
 		private var _injector:Injector;
 		private var _touchPoll:TouchPoll;
+		private var _map:IsoMap;
 		
 		public function TowerDefense():void
 		{
@@ -40,29 +42,36 @@ package com.poddcorp.towerdef {
 			start();
 		}
 		
-		
-		
 		private function prepare():void 
 		{
 			_injector = new Injector();
 			_engine = new SwiftSuspendersEngine(_injector);
 			_touchPoll = new TouchPoll(this);
 			
+			_map = new IsoMap(15, 15);
+			_map.drawMap();
+			addChild(_map);
+			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(this);
 			_injector.map(GameConfig).asSingleton();
 			_injector.map(EntityCreator).asSingleton();
 			_injector.map(TouchPoll).toValue(_touchPoll);
+			_injector.map(IsoMap).toValue(_map);
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
-			config.height = 768;
-			config.width = 1024;
+			var stage:Stage = Starling.current.nativeStage;
+			config.height = stage.stageHeight;
+			config.width = stage.stageWidth;
+			
+			_map.x = stage.stageWidth >> 1;
+			_map.y = stage.stageHeight - _map.height >> 1;
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
-			_engine.addSystem(new MonsterMovementSystem(), SystemPriorities.move);
-			_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
-			_engine.addSystem(new TowerSystem(), SystemPriorities.mapDraw);
+			//_engine.addSystem(new MonsterMovementSystem(), SystemPriorities.move);
+			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
+			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			
