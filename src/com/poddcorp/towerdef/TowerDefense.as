@@ -61,6 +61,9 @@ package com.poddcorp.towerdef {
 			endTile.highlight(0x00FF00);
 			
 			Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
+			//_map.drawPath(Pathfinder.findPath(startTile, endTile, _map.findConnectedNodes));
+			
+			
 			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(this);

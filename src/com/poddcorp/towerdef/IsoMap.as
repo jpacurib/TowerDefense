@@ -70,32 +70,9 @@ package com.poddcorp.towerdef
 								   drawPath(Pathfinder.findPath(_startTile, _endTile, findConnectedNodes));
 								}*/
 								//End of Start and Click Tile
-								 
-								//Experiment: After 10 clicks for non traversal tile, redraw path
-								/* if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) == null)
-								 {
-									
-								 }
-								 else
-								 {
-									 
-									counter++;
-									tile.highlight(0xCCCC00);
-									tile.traversable = false;
-									
-									//Draw or redraw path after 10 non traversable tiles
-									if (counter >= 10)
-									{
-										Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
-										drawPath(Pathfinder.findPath(_startTile, _endTile, findConnectedNodes));
-											//trace(tile.x, tile.y);
-									}
-								 }*/
-								 //if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
-								 //{
+								
 								 tile.highlight(0xCCCC00);
 								 tile.traversable = false;
-								 //}
 								 
 			
 								
@@ -120,7 +97,6 @@ package com.poddcorp.towerdef
 					tile.x = (col - row) * tile.width / 2;
 					tile.y = (row + col) * tile.height / 2;
 					
-					trace(tile.x, tile.y);
 					_tileHolder.addChild(tile);
 					
 					_tiles.push(tile);
@@ -130,11 +106,9 @@ package com.poddcorp.towerdef
 		
 		public function drawPath(tiles:Array):void
 		{
-			//trace(tiles);
 			for each (var tile:IsoTile in tiles)
 			{
 				tile.highlight(0x0000FF);
-				//_path.push(tile);
 			}
 		}
 		

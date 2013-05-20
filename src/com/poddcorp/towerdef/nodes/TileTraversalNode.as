@@ -12,7 +12,6 @@ package com.poddcorp.towerdef.nodes
 	public class TileTraversalNode extends Node 
 	{
 		public var tile:Tile;
-		public var position:Position;
 		public var motion:Motion;
 	}
 
