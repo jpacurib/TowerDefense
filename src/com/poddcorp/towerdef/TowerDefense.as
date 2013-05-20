@@ -1,5 +1,6 @@
 package com.poddcorp.towerdef {
 	import com.poddcorp.towerdef.input.TouchPoll;
+	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.systems.AnimationSystem;
 	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
@@ -29,6 +30,7 @@ package com.poddcorp.towerdef {
 		private var _injector:Injector;
 		private var _touchPoll:TouchPoll;
 		private var _map:IsoMap;
+		private var _inode:INode;
 		
 		public function TowerDefense():void
 		{
@@ -57,6 +59,7 @@ package com.poddcorp.towerdef {
 			_injector.map(EntityCreator).asSingleton();
 			_injector.map(TouchPoll).toValue(_touchPoll);
 			_injector.map(IsoMap).toValue(_map);
+			_injector.map(INode).toValue(_inode);
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
 			var stage:Stage = Starling.current.nativeStage;

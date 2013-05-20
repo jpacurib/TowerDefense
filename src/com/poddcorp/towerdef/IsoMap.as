@@ -1,6 +1,9 @@
 package com.poddcorp.towerdef
 {
 	import ash.core.Node;
+	import com.poddcorp.towerdef.components.Tile;
+	import flash.geom.Point;
+	import flash.display.Stage;
 	//import com.poddcorp.towerdef.graphics.TileView;
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
@@ -24,6 +27,8 @@ package com.poddcorp.towerdef
 		private var cols:int;
 		private var _tiles:Vector.<IsoTile> = new Vector.<IsoTile>();
 		
+		public var _path:Array = new Array();
+		
 		public var rowX:Number, rowY:Number;
 		private var counter:int = 0;
 		
@@ -46,8 +51,8 @@ package com.poddcorp.towerdef
 						{
 							if (touch.isTouching(tile))
 							{
-								
-								if (_startTile == null) {
+								//Click Start and End Tile
+								/*if (_startTile == null) {
 								   _startTile = tile;
 								   _startTile.highlight(0xFF0000);
 								   break;
@@ -63,8 +68,10 @@ package com.poddcorp.towerdef
 								if (_startTile && _endTile) {
 								   Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
 								   drawPath(Pathfinder.findPath(_startTile, _endTile, findConnectedNodes));
-								}
+								}*/
+								//End of Start and Click Tile
 								 
+								//Experiment: After 10 clicks for non traversal tile, redraw path
 								/* if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) == null)
 								 {
 									
@@ -84,6 +91,8 @@ package com.poddcorp.towerdef
 											//trace(tile.x, tile.y);
 									}
 								 }*/
+								 tile.highlight(0xCCCC00);
+								 tile.traversable = false;
 								
 							}
 						}
@@ -102,8 +111,6 @@ package com.poddcorp.towerdef
 			{
 				for (var col:int = 0; col < cols; col++)
 				{
-					//rowX = ((1024 / 2) - 32) + (col - row) * 64 / 2;
-					//rowY = (768 / 4) + (col + row) * 32 / 2;
 					var tile:IsoTile = new IsoTile(row, col);
 					tile.x = (col - row) * tile.width / 2;
 					tile.y = (row + col) * tile.height / 2;
@@ -111,21 +118,21 @@ package com.poddcorp.towerdef
 					
 					_tiles.push(tile);
 					
-					//starttile and endtile
-					/*if (row == rows - rows && col == cols - cols)
-						_startTile = tile;
+					if (row == rows - rows && col == cols - cols)
+						startTile = tile;
 					if (row == rows - 1 && col == cols - 1)
-						_endTile = tile;*/
+						endTile = tile;
 				}
 			}
 		}
 		
-		private function drawPath(tiles:Array):void
+		public function drawPath(tiles:Array):void
 		{
-			trace(tiles);
+			//trace(tiles);
 			for each (var tile:IsoTile in tiles)
 			{
 				tile.highlight(0x0000FF);
+				_path.push(tile);
 			}
 		}
 		
@@ -166,6 +173,17 @@ package com.poddcorp.towerdef
 		public function set startTile(value:IsoTile):void
 		{
 			_startTile = value;
+		}
+		
+		//GETTING TILES
+		public function getTile(row:int, col:int):IsoTile
+		{
+			for each(var node:IsoTile in _path)
+			{
+				if (node.row == row && node.col == col)
+					return node;
+			}
+			return node;
 		}
 	}
 
