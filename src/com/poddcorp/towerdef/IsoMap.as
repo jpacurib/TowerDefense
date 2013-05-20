@@ -178,6 +178,7 @@ package com.poddcorp.towerdef
 		//GETTING TILES
 		public function getTile(row:int, col:int):IsoTile
 		{
+			trace(_path);
 			for each(var node:IsoTile in _path)
 			{
 				if (node.row == row && node.col == col)
