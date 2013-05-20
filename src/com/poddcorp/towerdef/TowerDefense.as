@@ -1,12 +1,13 @@
 package com.poddcorp.towerdef {
 	import com.poddcorp.towerdef.input.TouchPoll;
 	import com.poddcorp.towerdef.pathfinding.INode;
+	import com.poddcorp.towerdef.pathfinding.Pathfinder;
 	import com.poddcorp.towerdef.systems.AnimationSystem;
 	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
-	import com.poddcorp.towerdef.systems.MonsterMovementSystem;
+	import com.poddcorp.towerdef.systems.MovementSystem;
 	import com.poddcorp.towerdef.systems.TileTraversalSystem;
 	import flash.display.Stage;
 
@@ -53,6 +54,14 @@ package com.poddcorp.towerdef {
 			_map.drawMap();
 			addChild(_map);
 			
+			var startTile:IsoTile = _map.getTile(0, 0);
+			var endTile:IsoTile = _map.getTile(14, 14);
+			
+			startTile.highlight(0xFF0000);
+			endTile.highlight(0x00FF00);
+			
+			Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
+			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(this);
 			_injector.map(GameConfig).asSingleton();
@@ -60,6 +69,8 @@ package com.poddcorp.towerdef {
 			_injector.map(TouchPoll).toValue(_touchPoll);
 			_injector.map(IsoMap).toValue(_map);
 			_injector.map(INode).toValue(_inode);
+			_injector.map(IsoTile, "start").toValue(startTile);
+			_injector.map(IsoTile, "end").toValue(endTile);
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
 			var stage:Stage = Starling.current.nativeStage;
@@ -71,7 +82,7 @@ package com.poddcorp.towerdef {
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
-			//_engine.addSystem(new MonsterMovementSystem(), SystemPriorities.move);
+			_engine.addSystem(new MovementSystem(), SystemPriorities.move);
 			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);

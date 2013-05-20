@@ -91,8 +91,13 @@ package com.poddcorp.towerdef
 											//trace(tile.x, tile.y);
 									}
 								 }*/
+								 //if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
+								 //{
 								 tile.highlight(0xCCCC00);
 								 tile.traversable = false;
+								 //}
+								 
+			
 								
 							}
 						}
@@ -114,14 +119,11 @@ package com.poddcorp.towerdef
 					var tile:IsoTile = new IsoTile(row, col);
 					tile.x = (col - row) * tile.width / 2;
 					tile.y = (row + col) * tile.height / 2;
+					
+					trace(tile.x, tile.y);
 					_tileHolder.addChild(tile);
 					
 					_tiles.push(tile);
-					
-					if (row == rows - rows && col == cols - cols)
-						startTile = tile;
-					if (row == rows - 1 && col == cols - 1)
-						endTile = tile;
 				}
 			}
 		}
@@ -132,7 +134,7 @@ package com.poddcorp.towerdef
 			for each (var tile:IsoTile in tiles)
 			{
 				tile.highlight(0x0000FF);
-				_path.push(tile);
+				//_path.push(tile);
 			}
 		}
 		
@@ -178,13 +180,13 @@ package com.poddcorp.towerdef
 		//GETTING TILES
 		public function getTile(row:int, col:int):IsoTile
 		{
-			trace(_path);
-			for each(var node:IsoTile in _path)
+
+			for each(var node:IsoTile in _tiles)
 			{
 				if (node.row == row && node.col == col)
 					return node;
 			}
-			return node;
+			return null;
 		}
 	}
 

@@ -10,12 +10,22 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.Tower;
 	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.components.GameState;
+	import com.poddcorp.towerdef.pathfinding.Pathfinder;
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
 	public class EntityCreator 
 	{
+		[Inject(name="start")]
+		public var startTile:IsoTile;
+		
+		[Inject(name="end")]
+		public var endTile:IsoTile;
+		
+		[Inject]
+		public var map:IsoMap;
+		
 		private var engine:Engine;
 		
 		public function EntityCreator(engine:Engine) 
@@ -36,12 +46,12 @@ package com.poddcorp.towerdef
 			engine.removeEntity(entity);
 		}
 		
-		public function createMonster(x:Number, y:Number, radius:Number):Entity
+		public function createMonster(currentTile:IsoTile):Entity
 		{
 			var monster:Entity = new Entity()
 				.add(new Monster())
-				.add(new Tile())
-				.add(new Position(x, y, 0))
+				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
+				.add(new Position(startTile.x, startTile.y, 0))
 				.add(new Motion(0, 0))
 				.add(new Display(new MonsterView()));
 				
