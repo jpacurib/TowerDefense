@@ -42,12 +42,12 @@ package com.poddcorp.towerdef
 		
 		private function createIngameButton():void
 		{
-			btnPause = new Button(UIAssets.getUITexture("pause"));
-			btnResume = new Button(UIAssets.getUITexture("btnOrange"));
-			btnSettings = new Button(UIAssets.getUITexture("btnBrown"));
-			btnBackMainMenu = new Button(UIAssets.getUITexture("btnYellow"));
-			btnBack = new Button(UIAssets.getUITexture("btnRed"));
-			btnP = new Image(UIAssets.getUITexture("play"));
+			btnPause = new Button(UIAssets.getAtlas().getTexture("btn_Pause"));
+			btnResume = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnSettings = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnBackMainMenu = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnBack = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnP = new Image(UIAssets.getAtlas().getTexture("btn_Play"));
 			
 			//btnResume.text = ("RESUME");
 			//btnSettings.text = ("SETTINGS");

@@ -3,6 +3,7 @@ com.poddcorp.towerdef{
 	import flash.display.Bitmap;
 	import flash.utils.Dictionary;
 	import starling.textures.Texture;
+	import starling.textures.TextureAtlas;
 	/**
 	 * ...
 	 * @author Jeremy
@@ -82,9 +83,25 @@ com.poddcorp.towerdef{
 	[Embed(source="../../../../assets/ModerneFraktur.ttf",fontFamily="MyFont",embedAsCFF="false")]	
 		public static var GameFont:Class;
 		
+			public static var UITextures:Dictionary = new Dictionary();
+		public static var UITextureAtlas:TextureAtlas;
 		
-		public static var UITextures:Dictionary = new Dictionary();
+		[Embed(source="../../../../assets/dok.PNG")]
+		public static const AtlasTextureUI:Class;
 		
+		[Embed(source = "../../../../assets/dok.xml", mimeType = "application/octet-stream")]
+		public static const AtlasXmlUI:Class;
+		
+		public static function getAtlas():TextureAtlas
+		{
+		  if (UITextureAtlas == null)
+		  {
+			  var texture:Texture = getUITexture("AtlasTextureUI");
+			  var xml:XML = XML(new AtlasXmlUI());
+			  UITextureAtlas = new TextureAtlas (texture, xml);
+		  }
+		  return UITextureAtlas; 
+		}
 		public static function getUITexture(myString:String):Texture
 		{
 			if (UITextures[myString] == undefined)

@@ -1,40 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:b27e4d01becc7171d5723a797e7bbf63$ -->
+<!-- $TexturePacker:SmartUpdate:f14f7776bcbb3fdc3799b66b1529ce27$ -->
 <TextureAtlas imagePath="dok.png">
-    <SubTexture name="bitmapfonts/A" x="2" y="2" width="14" height="14" frameX="-12" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/B" x="18" y="2" width="14" height="16" frameX="-12" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/C" x="34" y="2" width="12" height="16" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/D" x="48" y="2" width="16" height="14" frameX="-12" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/E" x="66" y="2" width="12" height="14" frameX="-13" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/F" x="80" y="2" width="12" height="18" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/G" x="94" y="2" width="14" height="16" frameX="-12" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/H" x="110" y="2" width="14" height="18" frameX="-12" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/I" x="126" y="2" width="14" height="16" frameX="-12" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/J" x="142" y="2" width="12" height="18" frameX="-12" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/K" x="156" y="2" width="14" height="16" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/L" x="172" y="2" width="12" height="14" frameX="-13" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/M" x="186" y="2" width="18" height="14" frameX="-13" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/N" x="206" y="2" width="14" height="16" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/O" x="222" y="2" width="14" height="16" frameX="-12" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/P" x="238" y="2" width="14" height="18" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/Q" x="254" y="2" width="14" height="16" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/R" x="270" y="2" width="14" height="16" frameX="-13" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/S" x="286" y="2" width="14" height="14" frameX="-12" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/T" x="302" y="2" width="12" height="14" frameX="-13" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/U" x="316" y="2" width="16" height="16" frameX="-12" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/V" x="334" y="2" width="14" height="16" frameX="-12" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/W" x="350" y="2" width="18" height="16" frameX="-13" frameY="-11" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/X" x="370" y="2" width="10" height="14" frameX="-13" frameY="-13" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/Y" x="382" y="2" width="12" height="18" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="bitmapfonts/Z" x="396" y="2" width="12" height="18" frameX="-13" frameY="-12" frameWidth="40" frameHeight="40"/>
-    <SubTexture name="buttonmetal" x="410" y="2" width="403" height="120"/>
-    <SubTexture name="lubi" x="815" y="2" width="32" height="32"/>
-    <SubTexture name="ply" x="849" y="2" width="25" height="25"/>
-    <SubTexture name="podd" x="2" y="124" width="512" height="165"/>
-    <SubTexture name="qlty" x="516" y="124" width="76" height="25"/>
-    <SubTexture name="scroll" x="594" y="124" width="382" height="364" frameX="-69" frameY="-7" frameWidth="512" frameHeight="384"/>
-    <SubTexture name="tile" x="978" y="124" width="33" height="17"/>
-    <SubTexture name="vol" x="2" y="490" width="76" height="25"/>
-    <SubTexture name="yes" x="80" y="490" width="30" height="13" frameX="-5" frameY="-5" frameWidth="40" frameHeight="25"/>
+    <SubTexture name="Img_PODD" x="2" y="2" width="1024" height="329"/>
+    <SubTexture name="O" x="1028" y="2" width="337" height="329"/>
+    <SubTexture name="btn_Backs" x="1367" y="2" width="50" height="50"/>
+    <SubTexture name="btn_Button" x="1419" y="2" width="378" height="58"/>
+    <SubTexture name="btn_No" x="1799" y="2" width="48" height="34"/>
+    <SubTexture name="btn_Pause" x="1849" y="2" width="50" height="50"/>
+    <SubTexture name="btn_Play" x="1901" y="2" width="50" height="50"/>
+    <SubTexture name="btn_Yes" x="1953" y="2" width="55" height="34"/>
+    <SubTexture name="btn_back" x="2" y="333" width="89" height="75"/>
+    <SubTexture name="btn_back" x="2" y="333" width="89" height="75"/>
+    <SubTexture name="btn_next" x="93" y="333" width="89" height="75"/>
+    <SubTexture name="img_Coin" x="184" y="333" width="36" height="35"/>
+    <SubTexture name="img_Quality" x="222" y="333" width="159" height="56"/>
+    <SubTexture name="img_Scroll" x="383" y="333" width="762" height="726" frameX="-139" frameY="-15" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="img_Title" x="1147" y="333" width="370" height="288"/>
+    <SubTexture name="img_Volume" x="1519" y="333" width="185" height="50"/>
 </TextureAtlas>

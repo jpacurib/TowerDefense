@@ -84,11 +84,11 @@ package com.poddcorp.towerdef
 			//MAIN
 			//setting textures
 			
-			btnStart = new Button(UIAssets.getUITexture("btnBlue"));
-			btnSetting = new Button(UIAssets.getUITexture("btnBrown"));
-			btnExit = new Button(UIAssets.getUITexture("btnGreen"));
-			btnBack = new Button(UIAssets.getUITexture("btnRed"));
-			btnHelp = new Button(UIAssets.getUITexture("btnHelp"));
+			btnStart = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnSetting = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnExit =new Button(UIAssets.getAtlas().getTexture("btn_Button"));
+			btnBack =new Button(UIAssets.getAtlas().getTexture("btn_back"));
+			btnHelp = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
 			
 			//texts
 			
@@ -111,24 +111,24 @@ package com.poddcorp.towerdef
 			btnSetting.x = btnStart.x;
 			btnExit.x = btnStart.x;
 			btnHelp.x = btnExit.x;
-			btnBack.x = btnHelp.x;
+			btnBack.x = 15;
 			
 			//Y coordinate config
 			btnStart.y = 450;
 			btnSetting.y = btnStart.y + 75;
 			btnHelp.y = btnSetting.y + 75;
 			btnExit.y = btnHelp.y + 75;
-			btnBack.y = btnHelp.y + 75;
+			btnBack.y = 680; 
 			
-			dok = new Image(UIAssets.getUITexture("dok"));
+			dok = new Image(UIAssets.getAtlas().getTexture("img_Title"));
 			dok.x = (stage.stageWidth / 2) - (widthButton / 2) - 125;
 			dok.y = btnStart.y - 250;
 			
 			bg = new Image(UIAssets.getUITexture("bgimge"));
 			this.addChild(bg);
 			
-			scrll = new Image(UIAssets.getUITexture("Scroll"));
-			scrll.x = dok.x - 290;
+			scrll = new Image(UIAssets.getAtlas().getTexture("img_Scroll"));
+			scrll.x; //= dok.x - 290;
 			
 			var shit:QuitGame = new QuitGame();
 			shit.btnNo.addEventListener(Event.TRIGGERED, hoho);
