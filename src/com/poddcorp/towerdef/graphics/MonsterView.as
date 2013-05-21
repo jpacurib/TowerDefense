@@ -28,6 +28,9 @@ package com.poddcorp.towerdef.graphics
 			bmpData.draw(monsterShape);
 			
 			this.addChild(new Image(Texture.fromBitmapData(bmpData)));
+			
+			this.pivotX = this.width / 2;
+			this.pivotY = this.height / 2;
 		}	
 	}
 

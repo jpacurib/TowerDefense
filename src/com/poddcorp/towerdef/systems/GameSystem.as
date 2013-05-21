@@ -44,6 +44,7 @@ package com.poddcorp.towerdef.systems {
 			{
 					if (node.state.monperwave > 0)
 					{
+						trace(startTile.x, startTile.y);
 						creator.createMonster(startTile);
 						node.state.monperwave--;
 					}

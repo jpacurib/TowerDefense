@@ -34,9 +34,7 @@ package com.poddcorp.towerdef.systems
 		
 		[Inject(name="end")]
 		public var endTile:IsoTile;
-		
-		private var arrayCounter:Number = 0;
-		
+			
 		public function TileTraversalSystem()
 		{
 			super(TileTraversalNode, updateNode);
@@ -44,62 +42,50 @@ package com.poddcorp.towerdef.systems
 		
 		private function updateNode(node:TileTraversalNode, time:Number):void
 		{
-			var motion:Motion = node.motion;
-			
+			var motion:Motion = node.motion;			
 			/*
 			   node.tile.currentTile
 			   node.tile.pathNodes
-			   //node.position
 			   node.motion
 			   startTile
 			   endTile
 			
 			 */
 			
-			/*if (node.tile.currentTile == node.next)
-			   {
-			   trace(node.tile.currentTile + " is equal to " + node.tile.pathNodes[node.tile.pathNodes.length - node.tile.pathNodes.length]);
-			 }*/
-			
-			if (node.tile.currentTile == endTile)
+			for (var i:int = 0; i < node.tile.pathNodes.length; i++)
 			{
-				trace("Human na");
+				var nextTile:IsoTile;
+				
+				if (node.tile.currentTile == node.tile.pathNodes[i])
+				{	
+					nextTile = node.tile.pathNodes[i + 1];
+					
+					if (nextTile == null)
+					{
+						nextTile = endTile;
+					}
+					
+					break;
+				}
+			}
+			
+			if (node.tile.currentTile.x + motion.velocity.x == nextTile.x && node.tile.currentTile.y + motion.velocity.y == nextTile.y)
+			{
+				node.tile.currentTile = nextTile;
+			}
+			
+			//movement
+			if (node.tile.currentTile == endTile && nextTile == null)
+			{
 				motion.velocity.x = 0;
 				motion.velocity.y = 0;
-				
 			}
-			
-			if (node.tile.currentTile != node.tile.pathNodes[arrayCounter])
+			else
 			{
-				motion.velocity.x = node.tile.currentTile.x - node.tile.pathNodes[arrayCounter].x;
-				motion.velocity.y = node.tile.pathNodes[arrayCounter].y - node.tile.currentTile.y;
+				motion.velocity.x = nextTile.x - node.tile.currentTile.x;
+				motion.velocity.y = nextTile.y - node.tile.currentTile.y;
 			}
-			if (node.tile.currentTile == node.tile.pathNodes[arrayCounter])
-			{
-				arrayCounter++;
-				trace(arrayCounter)
-			}
-		
-		/*if (node.tile.currentTile != node.tile.pathNodes[node.tile.pathNodes.length - 1])
-		   {
-		   if (node.tile.currentTile != node.tile.pathNodes[counter])
-		   {
-		   motion.velocity.x = node.tile.currentTile.x - node.tile.pathNodes[counter].x;
-		   motion.velocity.y = node.tile.pathNodes[counter].y - node.tile.currentTile.y;
-		   }
-		
-		   if (node.tile.currentTile.x == node.tile.pathNodes[counter].x && node.tile.currentTile.y == node.tile.pathNodes[counter].y)
-		   {
-		   node.tile.currentTile = node.tile.pathNodes[counter];
-		   trace(counter);
-		   counter++;
-		   }
-		   }
-		   else
-		   {
-		   //HUMAN
-		 }*/
-		
+	
 		}
 	
 	}

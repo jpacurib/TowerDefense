@@ -56,25 +56,23 @@ package com.poddcorp.towerdef
 								   _startTile = tile;
 								   _startTile.highlight(0xFF0000);
 								   break;
-								}
+								   }
 								
-								if (_startTile) {
-									if (_endTile == null) {
-										_endTile = tile;
-										_endTile.highlight(0x00FF00);
-									}
-								}			
-								 
-								if (_startTile && _endTile) {
+								   if (_startTile) {
+								   if (_endTile == null) {
+								   _endTile = tile;
+								   _endTile.highlight(0x00FF00);
+								   }
+								   }
+								
+								   if (_startTile && _endTile) {
 								   Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
 								   drawPath(Pathfinder.findPath(_startTile, _endTile, findConnectedNodes));
-								}*/
+								 }*/
 								//End of Start and Click Tile
 								
-								 tile.highlight(0xCCCC00);
-								 tile.traversable = false;
-								 
-			
+								tile.highlight(0xCCCC00);
+								tile.traversable = false;
 								
 							}
 						}
@@ -151,11 +149,16 @@ package com.poddcorp.towerdef
 			_startTile = value;
 		}
 		
+		public function get tileHolder():Sprite
+		{
+			return _tileHolder;
+		}
+		
 		//GETTING TILES
 		public function getTile(row:int, col:int):IsoTile
 		{
-
-			for each(var node:IsoTile in _tiles)
+			
+			for each (var node:IsoTile in _tiles)
 			{
 				if (node.row == row && node.col == col)
 					return node;

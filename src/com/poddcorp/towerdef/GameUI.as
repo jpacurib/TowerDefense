@@ -5,8 +5,6 @@ package com.poddcorp.towerdef
 	import flash.ui.Keyboard;
 	//import flash.net.SharedObject;
 	
-	import feathers.themes.MetalWorksMobileTheme;
-	
 //	import starling.display.DisplayObject;
 	import feathers.themes.AzureMobileTheme;
 	import starling.display.Button;

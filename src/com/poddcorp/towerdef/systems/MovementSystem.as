@@ -22,13 +22,14 @@ package com.poddcorp.towerdef.systems
 			var node:MovementNode;
 			var position:Position;
 			var motion:Motion;
+			
 			for (node = movementNodes.head; node; node = node.next)
 			{
 				position = node.position;
 				motion = node.motion;
 				
-				position.position.x += motion.velocity.x * time;
-				position.position.y += motion.velocity.y * time;
+				position.position.x += motion.velocity.x;// * time;
+				position.position.y += motion.velocity.y;// * time;
 				
 			}
 		}

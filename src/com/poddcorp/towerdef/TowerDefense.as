@@ -54,8 +54,8 @@ package com.poddcorp.towerdef {
 			_map.drawMap();
 			addChild(_map);
 			
-			var startTile:IsoTile = _map.getTile(0, 0);
-			var endTile:IsoTile = _map.getTile(14, 14);
+			var startTile:IsoTile = _map.getTile(14, 0);
+			var endTile:IsoTile = _map.getTile(0, 14);
 			
 			startTile.highlight(0xFF0000);
 			endTile.highlight(0x00FF00);
@@ -66,7 +66,7 @@ package com.poddcorp.towerdef {
 			
 			
 			_injector.map(Engine).toValue(_engine);
-			_injector.map(DisplayObjectContainer).toValue(this);
+			_injector.map(DisplayObjectContainer).toValue(_map.tileHolder);
 			_injector.map(GameConfig).asSingleton();
 			_injector.map(EntityCreator).asSingleton();
 			_injector.map(TouchPoll).toValue(_touchPoll);
@@ -80,8 +80,11 @@ package com.poddcorp.towerdef {
 			config.height = stage.stageHeight;
 			config.width = stage.stageWidth;
 			
-			_map.x = stage.stageWidth >> 1;
+			_map.x = (stage.stageWidth >> 1) + 25;
 			_map.y = stage.stageHeight - _map.height >> 1;
+			//_map.x = (stage.stageWidth * .5);
+
+			
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
