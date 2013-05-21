@@ -26,9 +26,7 @@ package com.poddcorp.towerdef.systems {
 		
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.GameNode")]
 		public var gameNodes:NodeList;
-					
-		private var isMapDrawn:Boolean = false;
-		
+							
 		public function GameSystem():void 
 		{
 			super();
@@ -44,15 +42,10 @@ package com.poddcorp.towerdef.systems {
 			{
 					if (node.state.monperwave > 0)
 					{
-						trace(startTile.x, startTile.y);
 						creator.createMonster(startTile);
 						node.state.monperwave--;
-					}
-					
-					
+					}					
 			}
-			
-			//Movement of Monster
 		}
 	}
 }

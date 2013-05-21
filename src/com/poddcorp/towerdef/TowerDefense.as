@@ -63,8 +63,6 @@ package com.poddcorp.towerdef {
 			Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
 			//_map.drawPath(Pathfinder.findPath(startTile, endTile, _map.findConnectedNodes));
 			
-			
-			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(_map.tileHolder);
 			_injector.map(GameConfig).asSingleton();
@@ -84,8 +82,6 @@ package com.poddcorp.towerdef {
 			_map.y = stage.stageHeight - _map.height >> 1;
 			//_map.x = (stage.stageWidth * .5);
 
-			
-			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
 			_engine.addSystem(new MovementSystem(), SystemPriorities.move);

@@ -28,8 +28,8 @@ package com.poddcorp.towerdef.systems
 				position = node.position;
 				motion = node.motion;
 				
-				position.position.x += motion.velocity.x;// * time;
-				position.position.y += motion.velocity.y;// * time;
+				position.position.x += motion.velocity.x * time;
+				position.position.y += motion.velocity.y * time;
 				
 			}
 		}

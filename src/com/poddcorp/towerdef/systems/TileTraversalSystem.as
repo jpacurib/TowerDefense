@@ -9,6 +9,7 @@ package com.poddcorp.towerdef.systems
 	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.IsoMap;
 	import com.poddcorp.towerdef.IsoTile;
+	import com.poddcorp.towerdef.nodes.GameNode;
 	import com.poddcorp.towerdef.nodes.MovementNode;
 	import com.poddcorp.towerdef.nodes.TileNode;
 	import com.poddcorp.towerdef.nodes.TileTraversalNode;
@@ -34,7 +35,7 @@ package com.poddcorp.towerdef.systems
 		
 		[Inject(name="end")]
 		public var endTile:IsoTile;
-			
+		
 		public function TileTraversalSystem()
 		{
 			super(TileTraversalNode, updateNode);
@@ -42,14 +43,14 @@ package com.poddcorp.towerdef.systems
 		
 		private function updateNode(node:TileTraversalNode, time:Number):void
 		{
-			var motion:Motion = node.motion;			
+			var motion:Motion = node.motion;
+			var position:Position = node.position;
 			/*
 			   node.tile.currentTile
 			   node.tile.pathNodes
 			   node.motion
 			   startTile
 			   endTile
-			
 			 */
 			
 			for (var i:int = 0; i < node.tile.pathNodes.length; i++)
@@ -57,7 +58,7 @@ package com.poddcorp.towerdef.systems
 				var nextTile:IsoTile;
 				
 				if (node.tile.currentTile == node.tile.pathNodes[i])
-				{	
+				{
 					nextTile = node.tile.pathNodes[i + 1];
 					
 					if (nextTile == null)
@@ -65,15 +66,16 @@ package com.poddcorp.towerdef.systems
 						nextTile = endTile;
 					}
 					
+					if (nextTile.traversable == false)
+					{
+						node.tile.pathNodes = Pathfinder.findPath(node.tile.currentTile, endTile, _map.findConnectedNodes);
+						nextTile = node.tile.pathNodes[1];
+					}
+					
 					break;
 				}
 			}
-			
-			if (node.tile.currentTile.x + motion.velocity.x == nextTile.x && node.tile.currentTile.y + motion.velocity.y == nextTile.y)
-			{
-				node.tile.currentTile = nextTile;
-			}
-			
+						
 			//movement
 			if (node.tile.currentTile == endTile && nextTile == null)
 			{
@@ -85,7 +87,10 @@ package com.poddcorp.towerdef.systems
 				motion.velocity.x = nextTile.x - node.tile.currentTile.x;
 				motion.velocity.y = nextTile.y - node.tile.currentTile.y;
 			}
-	
+			if (Point.distance(position.position, new Point(nextTile.x, nextTile.y)) < (nextTile.height / 2))
+			{
+				node.tile.currentTile = nextTile;
+			}
 		}
 	
 	}
