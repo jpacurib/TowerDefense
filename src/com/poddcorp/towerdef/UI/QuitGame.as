@@ -32,11 +32,11 @@ package com.poddcorp.towerdef.UI
 		public function Display():void
 		{
 			
-			quitText = new TextField(300, 150, "ARE YOU AFRAID TO DEFEND?", "myFont", 40, 0xDF8C4F);
+			quitText = new TextField(300, 150, "TOO AFRAID TO DEFEND?", "myFont", 40, 0xDF8C4F);
 			this.addChild(quitText);
 			
 			//quit pop up buttons
-			btnYes = new Button(UIAssets.getUITexture("yes"));
+			btnYes = new Button(UIAssets.getAtlas().getTexture("btn_Yes"));
 			btnYes.x = quitText.x + 55;
 			btnYes.y = quitText.y + 150;
 			this.addChild(btnYes);
@@ -46,7 +46,7 @@ package com.poddcorp.towerdef.UI
 			btnor.x = btnYes.x + 75;
 			btnor.y = btnYes.y;
 			
-			btnNo = new Button(UIAssets.getUITexture("no"));
+			btnNo = new Button(UIAssets.getAtlas().getTexture("btn_No"));
 			btnNo.x = btnor.x + 35;
 			btnNo.y = btnYes.y;
 			this.addChild(btnNo);

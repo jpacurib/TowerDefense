@@ -83,15 +83,13 @@ package com.poddcorp.towerdef {
 			
 			_map.x = (stage.stageWidth >> 1) + 25;
 			_map.y = stage.stageHeight - _map.height >> 1;
-			//_map.x = (stage.stageWidth * .5);
-
+			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
 			_engine.addSystem(new MovementSystem(), SystemPriorities.move);
 			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
-			
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();

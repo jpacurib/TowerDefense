@@ -46,7 +46,7 @@ package com.poddcorp.towerdef.UI
 		{
 			
 			//Volume Label
-			vol = new Image(UIAssets.getUITexture("Vol"));
+			vol = new Image(UIAssets.getAtlas().getTexture("img_Volume"));
 			vol.x = (stage.stageWidth / 2) - 275;
 			vol.y = 225;
 			this.addChild(vol);
@@ -69,7 +69,7 @@ package com.poddcorp.towerdef.UI
 			
 	
 			//Quality Label
-			qlty = new Image(UIAssets.getUITexture("Qlty"));
+			qlty = new Image(UIAssets.getAtlas().getTexture("img_Quality"));
 			qlty.x = (stage.stageWidth / 2) - (275);
 			qlty.y = vol.y + 150;
 			this.addChild(qlty);

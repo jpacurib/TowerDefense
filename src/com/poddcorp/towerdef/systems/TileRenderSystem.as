@@ -48,6 +48,18 @@ package com.poddcorp.towerdef.systems
 			var position:Position;
 			var display:Display;
 			var displayObject:DisplayObject;
+			
+			for (node = nodes.head; node; node = node.next)
+			{
+				display = node.display;
+				displayObject = display.displayObject;
+				position = node.position;
+				
+				displayObject.x = position.position.x;
+				displayObject.y = position.position.y;
+				displayObject.rotation = position.rotation * 180 / Math.PI;
+				
+			}
 		}
 
 	}
