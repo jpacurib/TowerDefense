@@ -57,6 +57,9 @@ package com.poddcorp.towerdef {
 			var startTile:IsoTile = _map.getTile(14, 0);
 			var endTile:IsoTile = _map.getTile(0, 14);
 			
+			_map._startTile = startTile;
+			_map._endTile = endTile;
+			
 			startTile.highlight(0xFF0000);
 			endTile.highlight(0x00FF00);
 			

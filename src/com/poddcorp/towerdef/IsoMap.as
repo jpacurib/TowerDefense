@@ -18,16 +18,17 @@ package com.poddcorp.towerdef
 	 */
 	public class IsoMap extends Sprite
 	{
+		public var config:GameConfig;
+		
+		public var _startTile:IsoTile;
+		public var _endTile:IsoTile;
+		
 		private var _tileHolder:Sprite
 		private var _nodes:Array;
 		
-		private var _startTile:IsoTile;
-		private var _endTile:IsoTile;
 		private var rows:int;
 		private var cols:int;
 		private var _tiles:Vector.<IsoTile> = new Vector.<IsoTile>();
-		
-		public var _path:Array = new Array();
 		
 		public var rowX:Number, rowY:Number;
 		private var counter:int = 0;
@@ -51,28 +52,24 @@ package com.poddcorp.towerdef
 						{
 							if (touch.isTouching(tile))
 							{
-								//Click Start and End Tile
-								/*if (_startTile == null) {
-								   _startTile = tile;
-								   _startTile.highlight(0xFF0000);
-								   break;
-								   }
+								if (tile.traversable == false)
+								{
+									//TOWER MENU
+								}
 								
-								   if (_startTile) {
-								   if (_endTile == null) {
-								   _endTile = tile;
-								   _endTile.highlight(0x00FF00);
-								   }
-								   }
-								
-								   if (_startTile && _endTile) {
-								   Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
-								   drawPath(Pathfinder.findPath(_startTile, _endTile, findConnectedNodes));
-								 }*/
-								//End of Start and Click Tile
-								
-								tile.highlight(0xCCCC00);
-								tile.traversable = false;
+								if (tile.traversable == true)
+								{
+									tile.traversable = false;
+									
+									if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
+									{
+										tile.highlight(0xCCCC00);
+									}
+									else
+									{
+										tile.traversable = true;
+									}
+								}
 								
 							}
 						}

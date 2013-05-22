@@ -19,9 +19,9 @@ package com.poddcorp.towerdef.graphics
 		public function MonsterView() 
 		{
 			monsterShape.graphics.lineStyle(1);
-			monsterShape.graphics.beginFill(0x00FF00);
-			//monsterShape.graphics.drawRect(0, 0, 32, 32);
-			monsterShape.graphics.drawEllipse(0, 0, 32, 32);
+			monsterShape.graphics.beginFill(0xFFFF00);
+			monsterShape.graphics.drawRect(0, 0, 32, 32);
+			//monsterShape.graphics.drawEllipse(0, 0, 10, 32);
 			monsterShape.graphics.endFill();
 			
 			var bmpData:BitmapData = new BitmapData(monsterShape.width, monsterShape.height);

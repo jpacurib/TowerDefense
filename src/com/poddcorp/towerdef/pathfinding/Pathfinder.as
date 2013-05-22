@@ -34,7 +34,6 @@ package com.poddcorp.towerdef.pathfinding
 			
 			while (currentNode != destinationNode)
 			{
-				
 				connectedNodes = connectedNodeFunction(currentNode);
 				
 				l = connectedNodes.length;
