@@ -45,13 +45,6 @@ package com.poddcorp.towerdef.systems
 		{
 			var motion:Motion = node.motion;
 			var position:Position = node.position;
-			/*
-			   node.tile.currentTile
-			   node.tile.pathNodes
-			   node.motion
-			   startTile
-			   endTile
-			 */
 			
 			for (var i:int = 0; i < node.tile.pathNodes.length; i++)
 			{
@@ -68,8 +61,15 @@ package com.poddcorp.towerdef.systems
 					
 					if (nextTile.traversable == false)
 					{
-						node.tile.pathNodes = Pathfinder.findPath(node.tile.currentTile, endTile, _map.findConnectedNodes);
-						nextTile = node.tile.pathNodes[1];
+						if (Pathfinder.findPath(node.tile.currentTile, endTile, _map.findConnectedNodes) == null)
+						{
+							nextTile = node.tile.currentTile;
+						}
+						else 
+						{
+							node.tile.pathNodes = Pathfinder.findPath(node.tile.currentTile, endTile, _map.findConnectedNodes);
+							nextTile = node.tile.pathNodes[1];
+						}
 					}
 					
 					break;
@@ -86,6 +86,42 @@ package com.poddcorp.towerdef.systems
 			{
 				motion.velocity.x = nextTile.x - node.tile.currentTile.x;
 				motion.velocity.y = nextTile.y - node.tile.currentTile.y;
+				
+				//DIRECTION
+				if (motion.velocity.x == 0)
+				{
+					if (motion.velocity.y > 0) {
+						position.direction = "S";
+					}
+					else position.direction = "N";
+				}
+				
+				if (motion.velocity.y == 0)
+				{
+					if (motion.velocity.x > 0) {
+						position.direction = "E";
+					}
+					else position.direction = "W";
+				}
+				
+				if (motion.velocity.x > 0 && motion.velocity.y > 0) {
+					position.direction = "SE";
+				}
+				
+				if (motion.velocity.x > 0 && motion.velocity.y < 0) {
+					position.direction = "NE";
+				}
+				
+				if (motion.velocity.x < 0 && motion.velocity.y > 0) {
+					position.direction = "SW";
+				}
+				
+				if (motion.velocity.x < 0 && motion.velocity.y < 0) {
+					position.direction = "NW";
+				}
+				
+				trace(position.direction);
+				
 			}
 			if (Point.distance(position.position, new Point(nextTile.x, nextTile.y)) < (nextTile.height / 2))
 			{

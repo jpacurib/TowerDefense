@@ -6,7 +6,6 @@ package com.poddcorp.towerdef.systems {
 	import com.poddcorp.towerdef.nodes.GameNode;
 	import com.poddcorp.towerdef.nodes.MovementNode;
 	import flash.geom.Point;
-	import starling.display.Sprite;
 	import ash.core.NodeList;
 	import ash.core.System;
 
@@ -44,7 +43,8 @@ package com.poddcorp.towerdef.systems {
 					{
 						creator.createMonster(startTile);
 						node.state.monperwave--;
-					}					
+					}
+
 			}
 		}
 	}

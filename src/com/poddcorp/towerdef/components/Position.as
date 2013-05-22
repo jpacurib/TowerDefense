@@ -8,12 +8,12 @@ package com.poddcorp.towerdef.components
 	public class Position 
 	{
 		public var position:Point;
-		public var rotation:Number;
+		public var direction:String;
 		
-		public function Position(x:Number, y:Number, rotation:Number) 
+		public function Position(x:Number, y:Number, direction:String) 
 		{
 			position = new Point(x, y);
-			this.rotation = rotation;
+			this.direction = direction;
 		}
 		
 	}

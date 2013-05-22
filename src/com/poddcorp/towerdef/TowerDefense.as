@@ -8,6 +8,7 @@ package com.poddcorp.towerdef {
 	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
 	import com.poddcorp.towerdef.systems.MovementSystem;
+	import com.poddcorp.towerdef.systems.TileRenderSystem;
 	import com.poddcorp.towerdef.systems.TileTraversalSystem;
 	import flash.display.Stage;
 
@@ -89,6 +90,7 @@ package com.poddcorp.towerdef {
 			_engine.addSystem(new MovementSystem(), SystemPriorities.move);
 			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
+			_engine.addSystem(new TileRenderSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);

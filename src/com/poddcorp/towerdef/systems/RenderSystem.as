@@ -1,14 +1,18 @@
-package com.poddcorp.towerdef.systems 
+package com.poddcorp.towerdef.systems
 {
 	import ash.core.NodeList;
 	import ash.core.System;
-
+	import com.poddcorp.towerdef.components.Monster;
+	import starling.display.MovieClip;
+	
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Position;
+	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.nodes.RenderNode;
-
+	
 	import starling.display.DisplayObject;
 	import starling.display.DisplayObjectContainer;
+	
 	/**
 	 * ...
 	 * @author Jeremy
@@ -18,10 +22,11 @@ package com.poddcorp.towerdef.systems
 		[Inject]
 		public var container:DisplayObjectContainer;
 		
-		[Inject(nodeType = "com.poddcorp.towerdef.nodes.RenderNode")]
+		[Inject(nodeType="com.poddcorp.towerdef.nodes.RenderNode")]
 		public var nodes:NodeList;
 		
 		[PostConstruct]
+		
 		public function setUpListeners():void
 		{
 			for (var node:RenderNode = nodes.head; node; node = node.next)
@@ -32,12 +37,12 @@ package com.poddcorp.towerdef.systems
 			nodes.nodeRemoved.add(removeFromDisplay);
 		}
 		
-		private function removeFromDisplay(node:RenderNode):void 
+		private function removeFromDisplay(node:RenderNode):void
 		{
 			container.removeChild(node.display.displayObject);
 		}
 		
-		private function addToDisplay(node:RenderNode):void 
+		private function addToDisplay(node:RenderNode):void
 		{
 			container.addChild(node.display.displayObject);
 		}
@@ -48,7 +53,7 @@ package com.poddcorp.towerdef.systems
 			var position:Position;
 			var display:Display;
 			var displayObject:DisplayObject;
-			
+				
 			for (node = nodes.head; node; node = node.next)
 			{
 				display = node.display;
@@ -57,10 +62,12 @@ package com.poddcorp.towerdef.systems
 				
 				displayObject.x = position.position.x;
 				displayObject.y = position.position.y;
-				displayObject.rotation = position.rotation * 180 / Math.PI;
+				//displayObject.rotation = position.rotation * 180 / Math.PI;
+				//
+				
 			}
 		}
-		
+	
 	}
 
 }

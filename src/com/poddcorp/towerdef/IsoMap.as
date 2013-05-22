@@ -18,8 +18,11 @@ package com.poddcorp.towerdef
 	 */
 	public class IsoMap extends Sprite
 	{
-		public var config:GameConfig;
+		[Inject]
+		public var creator:EntityCreator;
 		
+		public var config:GameConfig;
+
 		public var _startTile:IsoTile;
 		public var _endTile:IsoTile;
 		
@@ -63,7 +66,9 @@ package com.poddcorp.towerdef
 									
 									if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
 									{
+										//creator.createTower(tile.x, tile.y);
 										tile.highlight(0xCCCC00);
+										tile.traversable = false;
 									}
 									else
 									{
