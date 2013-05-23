@@ -17,7 +17,7 @@ package com.poddcorp.towerdef
 	 * @author Jeremy
 	 */
 	public class IsoMap extends Sprite
-	{
+	{	
 		[Inject]
 		public var creator:EntityCreator;
 		

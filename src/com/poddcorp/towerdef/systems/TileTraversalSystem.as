@@ -119,11 +119,9 @@ package com.poddcorp.towerdef.systems
 				if (motion.velocity.x < 0 && motion.velocity.y < 0) {
 					position.direction = "NW";
 				}
-				
-				trace(position.direction);
-				
+								
 			}
-			if (Point.distance(position.position, new Point(nextTile.x, nextTile.y)) < (nextTile.height / 2))
+			if (Point.distance(new Point(position.position.x+72, position.position.y+72), new Point(nextTile.x, nextTile.y)) < (nextTile.height / 4))
 			{
 				node.tile.currentTile = nextTile;
 			}

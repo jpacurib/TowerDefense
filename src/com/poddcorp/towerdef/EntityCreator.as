@@ -53,7 +53,7 @@ package com.poddcorp.towerdef
 			var monster:Entity = new Entity()
 				.add(new Monster())
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
-				.add(new Position(startTile.x, startTile.y, ""))
+				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //40, 25
 				.add(new Motion(0, 0))
 				.add(new TileDisplay(new MonsterView()));
 				
@@ -61,7 +61,7 @@ package com.poddcorp.towerdef
 			return monster;
 		}
 		
-		public function createTower(posX:Number, posY:Number)
+		public function createTower(posX:Number, posY:Number):Entity
 		{
 			var tower:Entity = new Entity()
 				.add(new Tower())
