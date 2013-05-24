@@ -18,11 +18,10 @@ package com.poddcorp.towerdef.UI
 	{
 		private var btnYes:Button;
 		public var btnNo:Button;
-		private var btnor:Image;
+		private var _Message:Image;
 		
-		private var quitText:TextField;
 		private var _parentCallOut:Callout;
-		
+		public var Click:ButtonClickTone = new ButtonClickTone();
 		public function QuitGame()
 		{
 			Display();
@@ -32,23 +31,18 @@ package com.poddcorp.towerdef.UI
 		public function Display():void
 		{
 			
-			quitText = new TextField(300, 150, "TOO AFRAID TO DEFEND?", "myFont", 40, 0xDF8C4F);
-			this.addChild(quitText);
+			_Message = new Image(UIAssets.getAtlas().getTexture("ConfirmationMessage"));
+			this.addChild(_Message);
 			
 			//quit pop up buttons
-			btnYes = new Button(UIAssets.getAtlas().getTexture("btn_Yes"));
-			btnYes.x = quitText.x + 55;
-			btnYes.y = quitText.y + 150;
+			btnYes = new Button(UIAssets.getAtlas().getTexture("btn_yespop"));
+			btnYes.x = _Message.x + 27;
+			btnYes.y = _Message.y + 175;
 			this.addChild(btnYes);
 			
-			btnor = new Image(UIAssets.getUITexture("or"));
-			this.addChild(btnor);
-			btnor.x = btnYes.x + 75;
-			btnor.y = btnYes.y;
-			
-			btnNo = new Button(UIAssets.getAtlas().getTexture("btn_No"));
-			btnNo.x = btnor.x + 35;
-			btnNo.y = btnYes.y;
+			btnNo = new Button(UIAssets.getAtlas().getTexture("btn_nopop"));
+			btnNo.x = btnYes.x + 90;
+			btnNo.y = btnYes.y + 3;
 			this.addChild(btnNo);
 			
 			btnYes.addEventListener(Event.TRIGGERED, onYes);
@@ -56,15 +50,19 @@ package com.poddcorp.towerdef.UI
 		
 		}
 		
-		public function closeThis():void
-		{
-			_parentCallOut.close();
-		}
-		
 		private function onYes():void
 		{
+			addChild(Click);
 			trace("You Click Yes.. Game will Quit");
 			fscommand("quit");
+			
+		}
+		
+		public function closeThis():void
+		{
+			addChild(Click);
+			_parentCallOut.close();
+
 		}
 		
 		public function get parentCallOut():Callout

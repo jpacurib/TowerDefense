@@ -9,7 +9,7 @@ package com.poddcorp.towerdef.nodes
 	 * ...
 	 * @author Jeremy
 	 */
-	public class MonsterCollisionNode extends Node
+	public class CollisionNode extends Node
 	{
 		public var monster:Monster;
 		public var position:Position;

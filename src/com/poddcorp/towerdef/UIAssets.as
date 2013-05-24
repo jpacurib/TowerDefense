@@ -1,8 +1,16 @@
 package com.poddcorp.towerdef
 {
+	import feathers.text.BitmapFontTextFormat;
 	import flash.display.Bitmap;
 	import flash.utils.Dictionary;
 	import starling.textures.Texture;
+	
+	import starling.text.BitmapFont;
+	import starling.text.TextField;
+	import starling.textures.Texture;
+	
+	import flash.utils.Dictionary;
+	
 	import starling.textures.TextureAtlas;
 	
 	/**
@@ -11,101 +19,40 @@ package com.poddcorp.towerdef
 	 */
 	public class UIAssets
 	{
-		[Embed(source="../../../../assets/yes.png")]
-		public static const yes:Class;
-		[Embed(source="../../../../assets/no.png")]
-		public static const no:Class;
-		[Embed(source="../../../../assets/or.png")]
-		public static const or:Class;
 		
-		[Embed(source="../../../../assets/scroll.png")]
-		public static const Scroll:Class;
+		[Embed(source="../../../../assets/sounds/12.mp3")]
+		public var _Btnclick:Class;
+		
+		[Embed(source="../../../../assets/sounds/frozenheart.mp3")]
+		public var _BGMySound:Class;
+		//assets for new game
+		//	[Embed(source="../../../../assets/newGame.png")]
+		//	public static const NewGame:Class;
+		//---------------------------------------------
+		
+		[Embed(source="../../../../assets/background.png")]
+		public static const SETTINGS:Class;
+		
+		[Embed(source="../../../../assets/menu title.PNG")]
+		public static const TitleMenu:Class;
 		
 		[Embed(source="../../../../assets/MainMenuBG.png")]
 		public static const bgimge:Class;
 		
-		[Embed(source="../../../../assets/btnStart.png")]
-		public static const btnBlue:Class;
-		
-		[Embed(source="../../../../assets/btnOptions.png")]
-		public static const btnBrown:Class;
-		
-		[Embed(source="../../../../assets/btnQuit.png")]
-		public static const btnGreen:Class;
-		
-		[Embed(source="../../../../assets/btnRsm.png")]
-		public static const btnOrange:Class;
-		
-		[Embed(source="../../../../assets/btnBack.png")]
-		public static const btnRed:Class;
-		
-		[Embed(source="../../../../assets/btnBM.png")]
-		public static const btnYellow:Class;
-		
-		[Embed(source="../../../../assets/btnHelp.png")]
-		public static const btnHelp:Class;
-		
-		[Embed(source="../../../../assets/dok.PNG")]
-		public static const dok:Class;
-		
-		[Embed(source="../../../../assets/ply.png")]
-		public static const play:Class;
-		
-		[Embed(source="../../../../assets/pause.PNG")]
-		public static const pause:Class;
-		
-		//[Embed(source = "../../../../assets/play.png")]
-		//	public static const play:Class;
-		
-		[Embed(source="../../../../assets/vol.PNG")]
-		public static const Vol:Class;
-		
-		[Embed(source="../../../../assets/qlty.PNG")]
-		public static const Qlty:Class;
-		
-		[Embed(source="../../../../assets/tile.png")]
-		public static const tile:Class;
-		
-		[Embed(source="../../../../assets/lubi.png")]
-		public static const lubi:Class;
-		
-		[Embed(source="../../../../assets/podd.png")]
-		public static const splash:Class;
-		
-		[Embed(source="../../../../assets/wall.png")]
-		public static const wall:Class;
-		
-		[Embed(source="../../../../assets/tower.png")]
-		public static const tower:Class;
-		
-		[Embed(source="../../../../assets/ModerneFraktur.ttf",fontFamily="MyFont",embedAsCFF="false")]
+		[Embed(source="../../../../assets/fontsGame/ModerneFraktur.ttf",fontFamily="MyFont",embedAsCFF="false")]
 		public static var GameFont:Class;
 		
-		public static var UITextures:Dictionary = new Dictionary();
-		public static var UITextureAtlas:TextureAtlas;
+		//=====================================================================
 		
-		[Embed(source="../../../../assets/dok.PNG")]
+		//=====================================================================
+		//spritesheets
+		
+		public static var UITextureAtlas:TextureAtlas;
+		[Embed(source="../../../../assets/Game_SpriteSheets.png")]
 		public static const AtlasTextureUI:Class;
 		
-		[Embed(source="../../../../assets/dok.xml",mimeType="application/octet-stream")]
+		[Embed(source="../../../../assets/Game_SpriteSheets.xml",mimeType="application/octet-stream")]
 		public static const AtlasXmlUI:Class;
-		
-		[Embed(source="../../../../assets/skull.png")]
-		public static const AtlasTextureSkull:Class;
-		
-		[Embed(source="../../../../assets/skull.xml", mimeType = "application/octet-stream")]
-		public static const AtlasXMLSkull:Class;
-		
-		public static function getSkullAtlas():TextureAtlas
-		{
-			if (UITextureAtlas == null)
-			{
-				var texture:Texture = getUITexture("AtlasTextureSkull");
-				var xml:XML = XML(new AtlasXMLSkull());
-				UITextureAtlas = new TextureAtlas(texture, xml);
-			}
-			return UITextureAtlas;
-		}
 		
 		public static function getAtlas():TextureAtlas
 		{
@@ -117,6 +64,72 @@ package com.poddcorp.towerdef
 			}
 			return UITextureAtlas;
 		}
+		
+		public static var AtlasSkull:TextureAtlas;
+		
+		[Embed(source="../../../../assets/skull.png")]
+		public static const AtlasTextureSkull:Class;
+		
+		[Embed(source="../../../../assets/skull.xml",mimeType="application/octet-stream")]
+		public static const AtlasXMLSkull:Class;
+		
+		public static function getSkullAtlas():TextureAtlas
+		{
+			if (AtlasSkull == null)
+			{
+				var texture:Texture = getUITexture("AtlasTextureSkull");
+				var xml:XML = XML(new AtlasXMLSkull());
+				AtlasSkull = new TextureAtlas(texture, xml);
+			}
+			return AtlasSkull;
+		}
+		
+		
+		[Embed(source="../../../../assets/tower.png")]
+		public static const AtlasTextureTower:Class;
+		
+		[Embed(source="../../../../assets/tower.xml",mimeType="application/octet-stream")]
+		public static const AtlasXMLTower:Class;
+		
+		public static var AtlasTower:TextureAtlas;
+		
+		public static function getAtlasTower():TextureAtlas
+		{
+			if (AtlasTower == null)
+			{
+				var texture:Texture = getUITexture("AtlasTextureTower");
+				var xml:XML = XML(new AtlasXMLTower());
+				AtlasTower = new TextureAtlas(texture, xml);
+			}
+			return AtlasTower;
+		}
+		
+		//=====================================================================
+		// Font
+		
+		//public var myfont1:star
+		[Embed(source="../../../../assets/fontsGame/MedevialFont.fnt",mimeType="application/octet-stream")]
+		public static var FontXml:Class;
+		
+		[Embed(source="../../../../assets/fontsGame/MedevialFont_0.png")]
+		public static var FontTexture:Class;
+		
+		//public static var Myfont:BitmapFont;
+		public static var myGamefont:BitmapFont;
+		
+		public static function getFont():BitmapFont
+		{
+			var fontTxtre:Texture = Texture.fromBitmap(new FontTexture());
+			var fontXml:XML = XML(new FontXml());
+			
+			myGamefont = new BitmapFont(fontTxtre, fontXml);
+			TextField.registerBitmapFont(myGamefont);
+			return myGamefont;
+		}
+		
+		//================================================================
+		// 
+		public static var UITextures:Dictionary = new Dictionary();
 		
 		public static function getUITexture(myString:String):Texture
 		{

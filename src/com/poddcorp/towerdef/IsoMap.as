@@ -2,9 +2,9 @@ package com.poddcorp.towerdef
 {
 	import ash.core.Node;
 	import com.poddcorp.towerdef.components.Tile;
+	import flash.display.DisplayObject;
 	import flash.geom.Point;
 	import flash.display.Stage;
-	//import com.poddcorp.towerdef.graphics.TileView;
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
 	import starling.display.Sprite;
@@ -17,12 +17,12 @@ package com.poddcorp.towerdef
 	 * @author Jeremy
 	 */
 	public class IsoMap extends Sprite
-	{	
+	{
 		[Inject]
 		public var creator:EntityCreator;
 		
 		public var config:GameConfig;
-
+		
 		public var _startTile:IsoTile;
 		public var _endTile:IsoTile;
 		
@@ -66,9 +66,10 @@ package com.poddcorp.towerdef
 									
 									if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
 									{
-										//creator.createTower(tile.x, tile.y);
-										tile.highlight(0xCCCC00);
 										tile.traversable = false;
+										tile.highlight(0xCCCCCC);
+										tile.createTower();
+										
 									}
 									else
 									{
@@ -76,6 +77,19 @@ package com.poddcorp.towerdef
 									}
 								}
 								
+							}
+						}
+						break;
+					
+					case TouchPhase.MOVED: 
+						for each (tile in _tiles)
+						{
+							var currentPosition:Point = touch.getLocation(tile);
+							var lastPosition:Point = touch.getPreviousLocation(tile);
+							
+							if (touch.isTouching(tile))
+							{
+								trace(currentPosition, lastPosition);
 							}
 						}
 						break;

@@ -1,23 +1,28 @@
-package com.poddcorp.towerdef 
+package com.poddcorp.towerdef
 {
 	import ash.core.Engine;
 	import ash.core.Entity;
+	import com.poddcorp.towerdef.components.Bullet;
+	import com.poddcorp.towerdef.components.Collision;
 	import com.poddcorp.towerdef.components.Display;
+	import com.poddcorp.towerdef.components.Gun;
 	import com.poddcorp.towerdef.components.Monster;
 	import com.poddcorp.towerdef.components.Motion;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.Tile;
 	import com.poddcorp.towerdef.components.TileDisplay;
 	import com.poddcorp.towerdef.components.Tower;
+	import com.poddcorp.towerdef.graphics.BulletView;
 	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.components.GameState;
 	import com.poddcorp.towerdef.graphics.TowerView;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
+	
 	/**
 	 * ...
 	 * @author Jeremy
 	 */
-	public class EntityCreator 
+	public class EntityCreator
 	{
 		[Inject(name="start")]
 		public var startTile:IsoTile;
@@ -30,7 +35,7 @@ package com.poddcorp.towerdef
 		
 		private var engine:Engine;
 		
-		public function EntityCreator(engine:Engine) 
+		public function EntityCreator(engine:Engine)
 		{
 			this.engine = engine;
 		}
@@ -53,29 +58,38 @@ package com.poddcorp.towerdef
 			var monster:Entity = new Entity()
 				.add(new Monster())
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
-				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //40, 25
+				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //Added values for trial image
 				.add(new Motion(0, 0))
 				.add(new TileDisplay(new MonsterView()));
-				
+			
 			engine.addEntity(monster);
 			return monster;
 		}
 		
-		public function createTower(posX:Number, posY:Number):Entity
+		public function createTower(tile:IsoTile):Entity
 		{
 			var tower:Entity = new Entity()
 				.add(new Tower())
-				.add(new Position(posX, posY, ""))
+				.add(new Position(tile.x, tile.y, ""))
 				.add(new TileDisplay(new TowerView()));
-				
+			
 			engine.addEntity(tower);
 			return tower;
-			
 		}
-		
-		
-		
-		
+	
+	public function createBullet(gun:Gun, parentPosition:Position):Entity
+	   {
+	   var bullet : Entity = new Entity()
+	   .add(new Bullet(gun.bulletLifeTime))
+	   .add(new Position(parentPosition.position.x, parentPosition.position.y, ""))
+	   .add(new Collision(0))
+	   .add(new Motion(0, 0))
+	   .add(new Display(new BulletView()));
+	
+	   engine.addEntity(bullet);
+	   return bullet;
+	
+	 }
 
 	}
 

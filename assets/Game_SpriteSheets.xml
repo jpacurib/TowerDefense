@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:253d0bb91b827570a7c5229bcda6c0c3$ -->
+<TextureAtlas imagePath="dok.png">
+    <SubTexture name="ConfirmationMessage" x="2" y="2" width="241" height="249"/>
+    <SubTexture name="Img_PODD" x="245" y="2" width="1024" height="329"/>
+    <SubTexture name="O" x="1271" y="2" width="337" height="329"/>
+    <SubTexture name="btn_Button" x="1610" y="2" width="378" height="58"/>
+    <SubTexture name="btn_No" x="1990" y="2" width="48" height="34"/>
+    <SubTexture name="btn_Pause" x="2" y="333" width="50" height="50"/>
+    <SubTexture name="btn_Play" x="54" y="333" width="50" height="50"/>
+    <SubTexture name="btn_Yes" x="106" y="333" width="55" height="34"/>
+    <SubTexture name="btn_back" x="163" y="333" width="89" height="75"/>
+    <SubTexture name="btn_next" x="254" y="333" width="89" height="75"/>
+    <SubTexture name="btn_nopop" x="345" y="333" width="50" height="38" frameX="-20" frameY="-5" frameWidth="90" frameHeight="50"/>
+    <SubTexture name="btn_yespop" x="397" y="333" width="64" height="42" frameX="-10" frameY="-5" frameWidth="90" frameHeight="50"/>
+    <SubTexture name="img_Coin" x="463" y="333" width="36" height="35"/>
+    <SubTexture name="img_Quality" x="501" y="333" width="159" height="56"/>
+    <SubTexture name="img_Scroll" x="662" y="333" width="762" height="726" frameX="-139" frameY="-15" frameWidth="1024" frameHeight="768"/>
+    <SubTexture name="img_Title" x="1426" y="333" width="370" height="288"/>
+    <SubTexture name="img_Volume" x="1798" y="333" width="185" height="50"/>
+</TextureAtlas>

@@ -2,8 +2,6 @@ package com.poddcorp.towerdef.graphics
 {
 	
 	import com.poddcorp.towerdef.components.Position;
-	import flash.display.BitmapData;
-	import flash.display.Shape;
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.MovieClip;
@@ -43,7 +41,6 @@ package com.poddcorp.towerdef.graphics
 			
 			movingEast = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking e"), 20);
 			movingWest = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking w"), 20);
-			
 			
 			addChild(movingNorth);
 			addChild(movingNorthEast);

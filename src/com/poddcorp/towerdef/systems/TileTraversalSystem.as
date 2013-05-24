@@ -25,6 +25,9 @@ package com.poddcorp.towerdef.systems
 	public class TileTraversalSystem extends ListIteratingSystem
 	{
 		[Inject]
+		public var creator:EntityCreator;
+		
+		[Inject]
 		public var _map:IsoMap;
 		
 		[Inject]
@@ -46,6 +49,7 @@ package com.poddcorp.towerdef.systems
 			var motion:Motion = node.motion;
 			var position:Position = node.position;
 			
+			/////////////////////
 			for (var i:int = 0; i < node.tile.pathNodes.length; i++)
 			{
 				var nextTile:IsoTile;
@@ -65,7 +69,7 @@ package com.poddcorp.towerdef.systems
 						{
 							nextTile = node.tile.currentTile;
 						}
-						else 
+						else
 						{
 							node.tile.pathNodes = Pathfinder.findPath(node.tile.currentTile, endTile, _map.findConnectedNodes);
 							nextTile = node.tile.pathNodes[1];
@@ -75,12 +79,13 @@ package com.poddcorp.towerdef.systems
 					break;
 				}
 			}
-						
+			
 			//movement
 			if (node.tile.currentTile == endTile && nextTile == null)
 			{
 				motion.velocity.x = 0;
 				motion.velocity.y = 0;
+				
 			}
 			else
 			{
@@ -90,38 +95,46 @@ package com.poddcorp.towerdef.systems
 				//DIRECTION
 				if (motion.velocity.x == 0)
 				{
-					if (motion.velocity.y > 0) {
+					if (motion.velocity.y > 0)
+					{
 						position.direction = "S";
 					}
-					else position.direction = "N";
+					else
+						position.direction = "N";
 				}
 				
 				if (motion.velocity.y == 0)
 				{
-					if (motion.velocity.x > 0) {
+					if (motion.velocity.x > 0)
+					{
 						position.direction = "E";
 					}
-					else position.direction = "W";
+					else
+						position.direction = "W";
 				}
 				
-				if (motion.velocity.x > 0 && motion.velocity.y > 0) {
+				if (motion.velocity.x > 0 && motion.velocity.y > 0)
+				{
 					position.direction = "SE";
 				}
 				
-				if (motion.velocity.x > 0 && motion.velocity.y < 0) {
+				if (motion.velocity.x > 0 && motion.velocity.y < 0)
+				{
 					position.direction = "NE";
 				}
 				
-				if (motion.velocity.x < 0 && motion.velocity.y > 0) {
+				if (motion.velocity.x < 0 && motion.velocity.y > 0)
+				{
 					position.direction = "SW";
 				}
 				
-				if (motion.velocity.x < 0 && motion.velocity.y < 0) {
+				if (motion.velocity.x < 0 && motion.velocity.y < 0)
+				{
 					position.direction = "NW";
 				}
-								
+				
 			}
-			if (Point.distance(new Point(position.position.x+72, position.position.y+72), new Point(nextTile.x, nextTile.y)) < (nextTile.height / 4))
+			if (Point.distance(new Point(position.position.x + 72, position.position.y + 72), new Point(nextTile.x, nextTile.y)) < (nextTile.height / 8))
 			{
 				node.tile.currentTile = nextTile;
 			}

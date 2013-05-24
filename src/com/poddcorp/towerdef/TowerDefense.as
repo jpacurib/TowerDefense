@@ -31,7 +31,7 @@ package com.poddcorp.towerdef {
 		public var _tickProvider:StarlingFrameTickProvider;
 		private var _injector:Injector;
 		private var _touchPoll:TouchPoll;
-		private var _map:IsoMap;
+		public var _map:IsoMap;
 		private var _inode:INode;
 		
 		public function TowerDefense():void
@@ -51,12 +51,12 @@ package com.poddcorp.towerdef {
 			_engine = new SwiftSuspendersEngine(_injector);
 			_touchPoll = new TouchPoll(this);
 			
-			_map = new IsoMap(15, 15);
+			_map = new IsoMap(12, 12);
 			_map.drawMap();
 			addChild(_map);
 			
-			var startTile:IsoTile = _map.getTile(14, 0);
-			var endTile:IsoTile = _map.getTile(0, 14);
+			var startTile:IsoTile = _map.getTile(11, 0);
+			var endTile:IsoTile = _map.getTile(0, 11);
 			
 			_map._startTile = startTile;
 			_map._endTile = endTile;
@@ -82,8 +82,8 @@ package com.poddcorp.towerdef {
 			config.height = stage.stageHeight;
 			config.width = stage.stageWidth;
 			
-			_map.x = (stage.stageWidth >> 1) + 25;
-			_map.y = stage.stageHeight - _map.height >> 1;
+			_map.x = (stage.stageWidth >> 1) + (startTile.width / 2);
+			_map.y = (stage.stageHeight - _map.height >> 1) + (startTile.height);
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);

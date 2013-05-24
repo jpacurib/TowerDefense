@@ -1,9 +1,12 @@
 package com.poddcorp.towerdef
 {
 	import com.poddcorp.towerdef.pathfinding.INode;
+	import flash.display.Bitmap;
 	import flash.display.BitmapData;
 	import flash.display.Shape;
+	import starling.core.Starling;
 	import starling.display.Image;
+	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.textures.Texture;
 	
@@ -13,6 +16,9 @@ package com.poddcorp.towerdef
 	 */
 	public class IsoTile extends Sprite implements INode
 	{
+		[Inject]
+		public var creator:EntityCreator;
+		
 		private var _f:Number;
 		private var _g:Number;
 		private var _h:Number;
@@ -71,7 +77,7 @@ package com.poddcorp.towerdef
 			var s:Shape = new Shape();
 			s.graphics.lineStyle(1, 0x000000);
 			s.graphics.beginFill(color);
-			s.graphics.drawRect(0, 0, 45, 45);
+			s.graphics.drawRect(0, 0, 90, 90);
 			s.graphics.endFill();
 			
 			var bmd:BitmapData = new BitmapData(s.width, s.height);
@@ -79,7 +85,19 @@ package com.poddcorp.towerdef
 			
 			var image:Image = new Image(Texture.fromBitmapData(bmd));
 			image.rotation = 40.1;
+			//image.alpha = 0;
 			return image;
+		}
+		
+		private function createTowerTile():MovieClip
+		{			
+			var tower:MovieClip = new MovieClip(UIAssets.getAtlasTower().getTextures("Lightning"), 20);
+			Starling.juggler.add(tower);
+			tower.height = 80;
+			tower.width = 80;
+			tower.pivotX = tower.width / 2;
+			tower.pivotY = tower.height / 2;
+			return tower;
 		}
 		
 		public function highlight(color:uint):void
@@ -89,6 +107,12 @@ package com.poddcorp.towerdef
 					this.removeChild(_tile);
 			
 			_tile = createTile(color);
+			this.addChild(_tile);
+		}
+		
+		public function createTower():void
+		{
+			_tile = createTowerTile();
 			this.addChild(_tile);
 		}
 		

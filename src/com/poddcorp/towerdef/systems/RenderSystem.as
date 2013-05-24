@@ -62,9 +62,6 @@ package com.poddcorp.towerdef.systems
 				
 				displayObject.x = position.position.x;
 				displayObject.y = position.position.y;
-				//displayObject.rotation = position.rotation * 180 / Math.PI;
-				//
-				
 			}
 		}
 	

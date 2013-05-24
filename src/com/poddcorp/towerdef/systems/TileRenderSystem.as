@@ -5,8 +5,10 @@ package com.poddcorp.towerdef.systems
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.components.TileDisplay;
+	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.graphics.ITileView;
 	import com.poddcorp.towerdef.graphics.MonsterView;
+	import com.poddcorp.towerdef.IsoTile;
 	import com.poddcorp.towerdef.nodes.RenderNode;
 	import com.poddcorp.towerdef.nodes.TileRenderNode;
 	import starling.display.DisplayObject;
@@ -20,6 +22,15 @@ package com.poddcorp.towerdef.systems
 	{
 		[Inject]
 		public var container:DisplayObjectContainer
+		
+		[Inject(name = "end")]
+		public var endTile:IsoTile;
+		
+		[Inject(name = "start")]
+		public var startTile:IsoTile;
+		
+		[Inject]
+		public var creator:EntityCreator;
 		
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.TileRenderNode")]
 		public var nodes:NodeList;
@@ -64,8 +75,7 @@ package com.poddcorp.towerdef.systems
 				(displayObject as DisplayObject).y = position.position.y;
 				
 				displayObject.updateDirection(position.direction);
-				
-				
+
 				//TRY LANG
 				
 				
