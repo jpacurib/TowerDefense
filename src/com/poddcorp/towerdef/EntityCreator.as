@@ -17,6 +17,7 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.GameState;
 	import com.poddcorp.towerdef.graphics.TowerView;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
+	import flash.geom.Point;
 	
 	/**
 	 * ...
@@ -66,30 +67,31 @@ package com.poddcorp.towerdef
 			return monster;
 		}
 		
-		public function createTower(tile:IsoTile):Entity
+		public function createTower(pt:Point):Entity
 		{
 			var tower:Entity = new Entity()
 				.add(new Tower())
-				.add(new Position(tile.x, tile.y, ""))
+				.add(new Position(pt.x, pt.y, ""))
+				.add(new Gun(pt, 0, 3))
 				.add(new TileDisplay(new TowerView()));
 			
 			engine.addEntity(tower);
 			return tower;
 		}
 	
-	public function createBullet(gun:Gun, parentPosition:Position):Entity
-	   {
-	   var bullet : Entity = new Entity()
-	   .add(new Bullet(gun.bulletLifeTime))
-	   .add(new Position(parentPosition.position.x, parentPosition.position.y, ""))
-	   .add(new Collision(0))
-	   .add(new Motion(0, 0))
-	   .add(new Display(new BulletView()));
+		public function createBullet(gun:Gun, parentPosition:Position):Entity
+	    {
+		   var bullet : Entity = new Entity()
+			   .add(new Bullet(gun.bulletLifeTime))
+			   .add(new Position(parentPosition.position.x, parentPosition.position.y, ""))
+			   .add(new Collision(0))
+			   .add(new Motion(0, 0))
+			   .add(new Display(new BulletView()));
 	
-	   engine.addEntity(bullet);
-	   return bullet;
+		   engine.addEntity(bullet);
+		   return bullet;
 	
-	 }
+	    }
 
 	}
 

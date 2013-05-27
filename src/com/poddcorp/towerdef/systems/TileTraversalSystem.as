@@ -23,10 +23,7 @@ package com.poddcorp.towerdef.systems
 	 * @author Jeremy
 	 */
 	public class TileTraversalSystem extends ListIteratingSystem
-	{
-		[Inject]
-		public var creator:EntityCreator;
-		
+	{	
 		[Inject]
 		public var _map:IsoMap;
 		

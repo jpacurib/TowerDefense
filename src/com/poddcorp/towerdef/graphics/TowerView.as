@@ -17,7 +17,7 @@ package com.poddcorp.towerdef.graphics
 		private var direction:String;
 		
 		public function TowerView() {
-			tower = new Image(UIAssets.getAtlas().getTexture("btn_Back"));
+			tower = new Image(UIAssets.getAtlas().getTexture("img_Coin"));
 			this.addChild(tower);
 		}
 		

@@ -1,62 +1,106 @@
-package com.poddcorp.towerdef.input 
+package com.poddcorp.towerdef.input
 {
 	import ash.core.NodeList;
-	//import com.poddcorp.towerdef.graphics.TileView;
-	import com.poddcorp.towerdef.nodes.TileNode;
-	import com.poddcorp.towerdef.pathfinding.INode;
+	import com.poddcorp.towerdef.components.Display;
+	import com.poddcorp.towerdef.EntityCreator;
+	import com.poddcorp.towerdef.UI.TowerButton;
+	import flash.display.Stage;
+	import flash.geom.Point;
 	import flash.utils.ByteArray;
 	import flash.utils.getQualifiedClassName;
+	import starling.core.Starling;
 	import starling.display.DisplayObject;
+	import starling.display.Sprite;
 	import starling.events.EventDispatcher;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.events.Touch;
+	
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class TouchPoll 
+	public class TouchPoll extends Sprite
 	{
-		[Inject(nodeType = "com.poddcorp.towerdef.nodes.TileNode")]
-		public var tileNode:NodeList;		
+		[Inject]
+		public var creator:EntityCreator;
 		
 		private var _displayObject:DisplayObject;
-		public var isPressed:Boolean = false;
+		private var _stage:Stage = Starling.current.nativeStage;
 		
-		private var _startNode:INode;
-		private var _endNode:INode;
-		
-		public function TouchPoll(displayObject:DisplayObject) 
+		public function TouchPoll(displayObject:DisplayObject)
 		{
 			_displayObject = displayObject;
 			_displayObject.addEventListener(TouchEvent.TOUCH, onTouchEvent);
 		}
 		
-		private function onTouchEvent(e:TouchEvent):void 
+		private function onTouchEvent(e:TouchEvent):void
 		{
 			var touchVector:Vector.<Touch> = e.getTouches(_displayObject);
-			var node:TileNode;
 			
 			if (touchVector.length == 1)
 			{
 				var touch:Touch = touchVector[0];
 				var target:EventDispatcher = touch.target;
 				var className:String = getQualifiedClassName(target);
+				var dspButton:DisplayObject = e.target as DisplayObject;
 				
-				if (touch.phase == TouchPhase.BEGAN)
+				switch (touch.phase)
 				{
-					isPressed = !(className == "com.poddcorp.towerdef.components.Tile");
-
-				}
-				else if (touch.phase == TouchPhase.ENDED)
-				{
-					isPressed = (className == "com.poddcorp.towerdef.components.Tile");
+					case TouchPhase.BEGAN: 
+						towerTouchBegan();
+						break;
+					
+					case TouchPhase.MOVED: 
+						towerTouchMoved(dspButton, touchVector);
+						break;
+					
+					case TouchPhase.ENDED: 
+						towerTouchEnded(dspButton, touchVector);
+						break;
+					default: 
 				}
 			}
 		}
 		
-		//PATH FINDING
+		public function towerTouchBegan():void
+		{
+			trace("began");
+		}
 		
+		public function towerTouchMoved(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
+		{
+			if (displayButton.name == "")
+			{
+				displayButton.x = touchVector[0].globalX - 20;
+				displayButton.y = touchVector[0].globalY - 20;
+			}
+		}
+		
+		public function towerTouchEnded(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
+		{
+			trace("ended");
+			if (displayButton.name == "")
+			{
+				var pt:Point = new Point(touchVector[0].globalX, touchVector[0].globalY);
+				
+				//Tower Snapping to Grid Coordinates
+				var positionToGrid:Point = new Point(Math.floor(pt.x / 128) * 128, Math.floor(pt.y / 64) * 64);
+				//creator.createTower(positionToGrid);
+				
+				//Returns display button to original position
+				/*displayButton.x = _stage.stageWidth - 100;
+				displayButton.y = _stage.stageHeight - 100;*/
+				//creator.createTower(pt);
+				
+				displayButton.x = positionToGrid.x;
+				displayButton.y = positionToGrid.y;
+				trace(pt, positionToGrid, creator);
+			}
+		}
+	
+		//PATH FINDING
+	
 	}
 
 }

@@ -13,9 +13,9 @@ package com.poddcorp.towerdef.components
 		public var shotInterval:Number = 0;
 		public var bulletLifeTime:Number = 0;
 		
-		public function Gun(offsetX:Number, offsetY:Number, shotInterval:Number, bulletLifeTime:Number) 
+		public function Gun(offset:Point, shotInterval:Number, bulletLifeTime:Number) 
 		{
-			offsetTower = new Point(offsetX, offsetY);
+			offsetTower = new Point(offset.x, offset.y);
 			this.shotInterval = shotInterval;
 			this.bulletLifeTime = bulletLifeTime;
 		}

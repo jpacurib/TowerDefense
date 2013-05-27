@@ -2,6 +2,7 @@ package com.poddcorp.towerdef
 {
 	import ash.core.Node;
 	import com.poddcorp.towerdef.components.Tile;
+	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.DisplayObject;
 	import flash.geom.Point;
 	import flash.display.Stage;
@@ -20,6 +21,9 @@ package com.poddcorp.towerdef
 	{
 		[Inject]
 		public var creator:EntityCreator;
+		
+		/*[Inject]
+		public var towerButton:TowerButton;*/
 		
 		public var config:GameConfig;
 		
@@ -81,18 +85,6 @@ package com.poddcorp.towerdef
 						}
 						break;
 					
-					case TouchPhase.MOVED: 
-						for each (tile in _tiles)
-						{
-							var currentPosition:Point = touch.getLocation(tile);
-							var lastPosition:Point = touch.getPreviousLocation(tile);
-							
-							if (touch.isTouching(tile))
-							{
-								trace(currentPosition, lastPosition);
-							}
-						}
-						break;
 					default: 
 				}
 			}
@@ -110,7 +102,7 @@ package com.poddcorp.towerdef
 					var tile:IsoTile = new IsoTile(row, col);
 					tile.x = (col - row) * tile.width / 2;
 					tile.y = (row + col) * tile.height / 2;
-					
+										
 					_tileHolder.addChild(tile);
 					
 					_tiles.push(tile);

@@ -1,4 +1,5 @@
 package com.poddcorp.towerdef {
+	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.input.TouchPoll;
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
@@ -7,10 +8,13 @@ package com.poddcorp.towerdef {
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
 	import ash.integration.swiftsuspenders.SwiftSuspendersEngine;
+	import com.poddcorp.towerdef.systems.GunControlSystem;
 	import com.poddcorp.towerdef.systems.MovementSystem;
 	import com.poddcorp.towerdef.systems.TileRenderSystem;
 	import com.poddcorp.towerdef.systems.TileTraversalSystem;
+	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
+	import flash.geom.Point;
 
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -34,6 +38,9 @@ package com.poddcorp.towerdef {
 		public var _map:IsoMap;
 		private var _inode:INode;
 		
+		//FOR TOWER
+		private var _towerButton:TowerButton;
+		
 		public function TowerDefense():void
 		{
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
@@ -43,6 +50,9 @@ package com.poddcorp.towerdef {
 			removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 			prepare();
 			start();
+			
+			//FOR TOWER
+			createButton();
 		}
 		
 		private function prepare():void 
@@ -65,7 +75,6 @@ package com.poddcorp.towerdef {
 			endTile.highlight(0x00FF00);
 			
 			Pathfinder.heuristic = Pathfinder.euclidianHeuristic;
-			//_map.drawPath(Pathfinder.findPath(startTile, endTile, _map.findConnectedNodes));
 			
 			_injector.map(Engine).toValue(_engine);
 			_injector.map(DisplayObjectContainer).toValue(_map.tileHolder);
@@ -76,6 +85,8 @@ package com.poddcorp.towerdef {
 			_injector.map(INode).toValue(_inode);
 			_injector.map(IsoTile, "start").toValue(startTile);
 			_injector.map(IsoTile, "end").toValue(endTile);
+			
+			_injector.map(TowerButton).toValue(_towerButton);
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
 			var stage:Stage = Starling.current.nativeStage;
@@ -91,11 +102,23 @@ package com.poddcorp.towerdef {
 			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new TileRenderSystem(), SystemPriorities.prerender);
+			//_engine.addSystem(new GunControlSystem(), SystemPriorities.update);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
 			
+			creator.createTower(new Point(200, 200));
+		}
+		
+		//FOR TOWER
+		private function createButton():void
+		{
+			_towerButton = new TowerButton();
+			addChild(_towerButton);
+			
+			_towerButton.x = stage.stageWidth - 100;
+			_towerButton.y = stage.stageHeight - 100;
 		}
 		
 		public function start():void
