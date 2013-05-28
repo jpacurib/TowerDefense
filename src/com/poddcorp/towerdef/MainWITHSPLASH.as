@@ -26,7 +26,7 @@ package com.poddcorp.towerdef
 	{
 		
 		//[Embed(source="../../../../assets/podd.png")]
-		[Embed(source="../../../../lib/pOdd.swf",mimeType="application/octet-stream")]
+		[Embed(source="../../../../lib/splash_logo.swf",mimeType="application/octet-stream")]
 		private var mypodd:Class;
 		private var loader:Loader = new Loader();
 		private var _starlingApp:Starling;

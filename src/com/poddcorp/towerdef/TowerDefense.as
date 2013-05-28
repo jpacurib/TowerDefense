@@ -4,6 +4,7 @@ package com.poddcorp.towerdef {
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
 	import com.poddcorp.towerdef.systems.AnimationSystem;
+	import com.poddcorp.towerdef.systems.BulletAgeSystem;
 	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
@@ -102,7 +103,8 @@ package com.poddcorp.towerdef {
 			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new TileRenderSystem(), SystemPriorities.prerender);
-			//_engine.addSystem(new GunControlSystem(), SystemPriorities.update);
+			_engine.addSystem(new GunControlSystem(), SystemPriorities.update);
+			_engine.addSystem(new BulletAgeSystem(), SystemPriorities.update);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);

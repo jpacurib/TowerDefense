@@ -74,10 +74,7 @@ package com.poddcorp.towerdef.systems
 				(displayObject as DisplayObject).x = position.position.x;
 				(displayObject as DisplayObject).y = position.position.y;
 				
-				displayObject.updateDirection(position.direction);
-
-				//TRY LANG
-				
+				displayObject.updateDirection(position.direction);				
 				
 			}
 		}

@@ -91,11 +91,9 @@ package com.poddcorp.towerdef.input
 				//Returns display button to original position
 				/*displayButton.x = _stage.stageWidth - 100;
 				displayButton.y = _stage.stageHeight - 100;*/
-				//creator.createTower(pt);
 				
 				displayButton.x = positionToGrid.x;
 				displayButton.y = positionToGrid.y;
-				trace(pt, positionToGrid, creator);
 			}
 		}
 	

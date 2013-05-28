@@ -1,5 +1,6 @@
 package com.poddcorp.towerdef.graphics 
 {
+	import com.poddcorp.towerdef.UIAssets;
 	import flash.display.BitmapData;
 	import flash.display.Shape;
 	import starling.textures.Texture;
@@ -9,21 +10,21 @@ package com.poddcorp.towerdef.graphics
 	 * ...
 	 * @author Jeremy
 	 */
-	public class BulletView extends Sprite
+	public class BulletView extends Sprite implements ITileView
 	{
+		private var bullet:Image;
 		
 		public function BulletView() 
+		{			
+			bullet = new Image(UIAssets.getUITexture("arrow"));
+			addChild(bullet);
+		}
+		
+		/* INTERFACE com.poddcorp.towerdef.graphics.ITileView */
+		
+		public function updateDirection(direction:String):void 
 		{
-			var bullet:Shape = new Shape();
 			
-			bullet.graphics.beginFill(0xFF0000);
-			bullet.graphics.drawCircle(0, 0, 4);
-			bullet.graphics.endFill();
-			
-			var btmp:BitmapData = new BitmapData(bullet.width, bullet.y);
-			btmp.draw(bullet);
-			
-			var image:Image = new Image(Texture.fromBitmapData(btmp));
 		}
 		
 	}

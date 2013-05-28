@@ -7,7 +7,6 @@ package com.poddcorp.towerdef.components
 	 */
 	public class Animation 
 	{
-		
 		public var animation:Animatable;
 		
 		public function Animation(animation:Animatable) 

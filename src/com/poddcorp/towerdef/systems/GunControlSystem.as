@@ -3,6 +3,7 @@ package com.poddcorp.towerdef.systems
 	import ash.core.NodeList;
 	import ash.core.System;
 	import com.poddcorp.towerdef.components.Gun;
+	import com.poddcorp.towerdef.components.Motion;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.nodes.GunControlNode;
@@ -38,15 +39,15 @@ package com.poddcorp.towerdef.systems
 				
 				for (tileNode = tileNodes.head; tileNode; tileNode = tileNode.next)
 				{
-					if (Point.distance(position.position, tileNode.position.position) < 100)
-					{
-						gun.shooting = true; //determine with Point.distance					
-					}
-					else
-						gun.shooting = false;
-						
+					trace(tileNode.display.displayObject);
+					/*if (Point.distance(position.position, tileNode.position.position) < 200)
+					   {
+					
+					   }
+					   else
+					 gun.shooting = false;*/
+					gun.shooting = true; //DETERMINE WITH Point.distance
 					gun.timeSinceLast += time;
-					trace(gun.shooting);
 					
 					if (gun.shooting && gun.timeSinceLast >= gun.shotInterval)
 					{
@@ -54,6 +55,7 @@ package com.poddcorp.towerdef.systems
 						gun.timeSinceLast = 0;
 					}
 				}
+				
 			}
 		}
 	}

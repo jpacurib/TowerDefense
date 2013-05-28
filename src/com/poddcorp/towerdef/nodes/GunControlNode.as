@@ -2,6 +2,7 @@ package com.poddcorp.towerdef.nodes
 {
 	import ash.core.Node;
 	import com.poddcorp.towerdef.components.Gun;
+	import com.poddcorp.towerdef.components.Motion;
 	import com.poddcorp.towerdef.components.Position;
 	/**
 	 * ...
@@ -12,5 +13,4 @@ package com.poddcorp.towerdef.nodes
 		public var position:Position;
 		public var gun:Gun;
 	}
-
 }

@@ -11,11 +11,9 @@ package com.poddcorp.towerdef.nodes
 	 */
 	public class BulletCollisionNode extends Node
 	{
-		
 		public var bullet:Bullet;
 		public var collision:Collision;
 		public var position:Position;
-		
 	}
 
 }

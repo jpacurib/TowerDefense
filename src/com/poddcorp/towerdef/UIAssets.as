@@ -20,6 +20,9 @@ package com.poddcorp.towerdef
 	public class UIAssets
 	{
 		
+		[Embed(source = "../../../../assets/img_arrow1.png")]
+		public static const arrow:Class;
+		
 		[Embed(source="../../../../assets/sounds/12.mp3")]
 		public var _Btnclick:Class;
 		
