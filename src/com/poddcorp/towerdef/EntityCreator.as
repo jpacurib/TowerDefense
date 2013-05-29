@@ -60,7 +60,7 @@ package com.poddcorp.towerdef
 				.add(new Monster())
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
 				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //Added values for trial image
-				.add(new Collision(startTile.height))
+				.add(new Collision(20))
 				.add(new Motion(0, 0))
 				.add(new TileDisplay(new MonsterView()));
 			
@@ -73,8 +73,8 @@ package com.poddcorp.towerdef
 			var tower:Entity = new Entity()
 				.add(new Tower())
 				.add(new Position(pt.x, pt.y, ""))
-				.add(new Gun(pt, 2, 3))
-				.add(new TileDisplay(new TowerView()));
+				.add(new Gun(pt, 2, 1))
+				.add(new Display(new TowerView()));
 			
 			engine.addEntity(tower);
 			return tower;
@@ -84,10 +84,10 @@ package com.poddcorp.towerdef
 	    {
 		   var bullet : Entity = new Entity()
 			   .add(new Bullet(gun.bulletLifeTime))
-			   .add(new Position(parentPosition.position.x, parentPosition.position.y, ""))
-			   .add(new Collision(10))
-			   .add(new Motion(40, 40))
-			   .add(new Display(new BulletView()));
+			   .add(new Position(parentPosition.position.x + 50, parentPosition.position.y + 50, ""))
+			   .add(new Collision(32))
+			   .add(new Motion(0, 0))
+			   .add(new TileDisplay(new BulletView()));
 	
 		   engine.addEntity(bullet);
 		   return bullet;

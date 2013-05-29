@@ -26,9 +26,7 @@ package com.poddcorp.towerdef.graphics
 		private var movingWest:MovieClip;
 		
 		public function MonsterView()
-		{		
-			var monsterString:String = "AtlasTextureSkull";
-			
+		{					
 			this.pivotX = this.width / 2;
 			this.pivotY = this.height / 2;
 					

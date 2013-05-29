@@ -21,9 +21,9 @@ package com.poddcorp.towerdef.input
 	 * @author ...
 	 */
 	public class TouchPoll extends Sprite
-	{
+	{		
 		[Inject]
-		public var creator:EntityCreator;
+		private var creator:EntityCreator;
 		
 		private var _displayObject:DisplayObject;
 		private var _stage:Stage = Starling.current.nativeStage;

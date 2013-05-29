@@ -6,7 +6,12 @@ package com.poddcorp.towerdef.components
 	 */
 	public class Monster 
 	{
-				
+		public var life:Number;
+		
+		public function Monster()
+		{
+			life = 2;
+		}
 	}
 
 }

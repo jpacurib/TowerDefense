@@ -92,7 +92,7 @@ package com.poddcorp.towerdef
 			return AtlasSkull;
 		}
 		
-		
+		//TRIAL TOWER
 		[Embed(source="../../../../assets/tower.png")]
 		public static const AtlasTextureTower:Class;
 		
@@ -111,6 +111,26 @@ package com.poddcorp.towerdef
 			}
 			return AtlasTower;
 		}
+		
+		// INGAME ATLAS
+		/*[Embed(source = "../../../../assets/Ingame_Sprites.png")]
+		public static const AtlasTextureIngame:Class;
+		
+		[Embed(source = "../../../../assets/Ingame_Sprites.xml". mimeType="application/octet-stream")]
+		public static const AtlasXMLIngame:Class;
+		
+		public static var AtlasIngame:TextureAtlas;
+		
+		public static function getIngameAtlas():TextureAtlas
+		{
+			if (AtlasTower == null)
+			{
+				var texture:Texture = getUITexture("AtlasTextureIngame");
+				var xml:XML = XML(new AtlasXMLIngame());
+				AtlasIngame = new TextureAtlas(texture, xml);
+			}
+			return AtlasIngame;
+		}*/
 		
 		//=====================================================================
 		// Font

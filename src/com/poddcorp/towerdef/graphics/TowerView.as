@@ -1,11 +1,9 @@
 package com.poddcorp.towerdef.graphics 
 {
 	import com.poddcorp.towerdef.UIAssets;
-	import flash.display.BitmapData;
-	import flash.display.Shape;
-	import starling.display.MovieClip;
 	import starling.display.Sprite;
 	import starling.display.Image;
+	import starling.filters.BlurFilter;
 	import starling.textures.Texture;
 	/**
 	 * ...
@@ -13,12 +11,12 @@ package com.poddcorp.towerdef.graphics
 	 */
 	public class TowerView extends Sprite implements ITileView
 	{
-		private var tower:Image;
-		private var direction:String;
+		private var basic_tower:Image;
 		
-		public function TowerView() {
-			tower = new Image(UIAssets.getAtlas().getTexture("img_Coin"));
-			this.addChild(tower);
+		public function TowerView() 
+		{
+			basic_tower = new Image(UIAssets.getAtlas().getTexture("tower_basic"));
+			this.addChild(basic_tower);
 		}
 		
 		/* INTERFACE com.poddcorp.towerdef.graphics.ITileView */

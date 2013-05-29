@@ -1,6 +1,7 @@
 package com.poddcorp.towerdef.nodes 
 {
 	import ash.core.Node;
+	import com.poddcorp.towerdef.components.Motion;
 
 	import com.poddcorp.towerdef.components.Bullet;
 	import com.poddcorp.towerdef.components.Collision;
@@ -14,6 +15,7 @@ package com.poddcorp.towerdef.nodes
 		public var bullet:Bullet;
 		public var collision:Collision;
 		public var position:Position;
+		public var motion:Motion;
 	}
 
 }

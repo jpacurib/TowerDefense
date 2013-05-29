@@ -32,20 +32,19 @@
     </define>
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\src</path-element>
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\swift_suspenders_source</path-element>
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\AzureMobileTheme\source</path-element>
-      <path-element>C:\Users\OJT\New folder\Downloads\feathers-1.0.1</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\src</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\swift_suspenders_source</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\AzureMobileTheme\source</path-element>
       <path-element>C:\Program Files\FlashDevelop\Library\AS3\classes</path-element>
     </source-path>
     <library-path append="true">
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\lib\Ash.swc</path-element>
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\lib\feathers.swc</path-element>
-      <path-element>C:\Users\OJT\Desktop\TowerDefense\lib\starling.swc</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\lib\Ash.swc</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\lib\feathers.swc</path-element>
+      <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\lib\starling.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>
-    <path-element>C:\Users\OJT\Desktop\TowerDefense\src\com\poddcorp\towerdef\MainWITHSPLASH.as</path-element>
+    <path-element>C:\Documents and Settings\OJT\Desktop\TowerDefense\src\com\poddcorp\towerdef\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

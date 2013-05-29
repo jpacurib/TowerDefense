@@ -1,10 +1,13 @@
-package com.poddcorp.towerdef {
+package com.poddcorp.towerdef
+{
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.input.TouchPoll;
 	import com.poddcorp.towerdef.pathfinding.INode;
 	import com.poddcorp.towerdef.pathfinding.Pathfinder;
 	import com.poddcorp.towerdef.systems.AnimationSystem;
 	import com.poddcorp.towerdef.systems.BulletAgeSystem;
+	import com.poddcorp.towerdef.systems.BulletSystem;
+	import com.poddcorp.towerdef.systems.CollisionSystem;
 	import com.poddcorp.towerdef.systems.GameSystem;
 	import ash.core.Engine;
 	import ash.integration.starling.StarlingFrameTickProvider;
@@ -16,19 +19,18 @@ package com.poddcorp.towerdef {
 	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
 	import flash.geom.Point;
-
+	
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
 	import starling.display.Sprite;
 	import starling.events.Event;
-
+	
 	import com.poddcorp.towerdef.systems.RenderSystem;
 	import com.poddcorp.towerdef.systems.SystemPriorities;
-
+	
 	import org.swiftsuspenders.Injector;
 	
 	//import flash.display.Sprite;
-	
 	
 	public class TowerDefense extends Sprite
 	{
@@ -46,8 +48,9 @@ package com.poddcorp.towerdef {
 		{
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
 		}
-
-		private function onEnterFrame(event:Event) : void {
+		
+		private function onEnterFrame(event:Event):void
+		{
 			removeEventListener(Event.ENTER_FRAME, onEnterFrame);
 			prepare();
 			start();
@@ -56,7 +59,7 @@ package com.poddcorp.towerdef {
 			createButton();
 		}
 		
-		private function prepare():void 
+		private function prepare():void
 		{
 			_injector = new Injector();
 			_engine = new SwiftSuspendersEngine(_injector);
@@ -100,9 +103,10 @@ package com.poddcorp.towerdef {
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
 			_engine.addSystem(new MovementSystem(), SystemPriorities.move);
-			//_engine.addSystem(new TileSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new TileRenderSystem(), SystemPriorities.prerender);
+			_engine.addSystem(new BulletSystem(), SystemPriorities.prerender);
+			_engine.addSystem(new CollisionSystem(), SystemPriorities.update);
 			_engine.addSystem(new GunControlSystem(), SystemPriorities.update);
 			_engine.addSystem(new BulletAgeSystem(), SystemPriorities.update);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
@@ -110,7 +114,7 @@ package com.poddcorp.towerdef {
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
 			
-			creator.createTower(new Point(200, 200));
+			creator.createTower(new Point(50, 135));
 		}
 		
 		//FOR TOWER
@@ -129,7 +133,7 @@ package com.poddcorp.towerdef {
 			_tickProvider.add(_engine.update);
 			_tickProvider.start();
 		}
-
+	
 	}
 
 }
