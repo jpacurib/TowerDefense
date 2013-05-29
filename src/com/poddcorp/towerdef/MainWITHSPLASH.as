@@ -22,7 +22,7 @@ package com.poddcorp.towerdef
 	
 	[SWF(width="2048",height="1538",frameRate="60",backgroundColor="#FFFFFF")]
 	
-	public class Main extends MovieClip
+	public class MainWITHSPLASH extends MovieClip
 	{
 		
 		//[Embed(source="../../../../assets/podd.png")]
@@ -32,7 +32,7 @@ package com.poddcorp.towerdef
 		private var _starlingApp:Starling;
 		private var _timer:Timer;
 		
-		public function Main():void
+		public function  MainWITHSPLASH():void
 		
 		{
 			super();
@@ -90,7 +90,7 @@ package com.poddcorp.towerdef
 				
 				//entry point
 				trace("Starting Mobile App");
-				_starlingApp = new Starling(TowerDefense, stage, viewPort);
+				_starlingApp = new Starling(GameUI, stage, viewPort);
 				_starlingApp.simulateMultitouch = false;
 				_starlingApp.enableErrorChecking = false;
 				_starlingApp.showStats = true;

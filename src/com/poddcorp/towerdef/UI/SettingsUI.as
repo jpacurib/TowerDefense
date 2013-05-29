@@ -1,7 +1,7 @@
 package com.poddcorp.towerdef.UI
 {
 	//import adobe.utils.CustomActions;
-	import com.poddcorp.towerdef.Main;
+	//import com.poddcorp.towerdef.Main;
 	//import flash.automation.StageCaptureEvent;
 	import starling.core.Starling;
 	import flash.display.Stage;
@@ -101,7 +101,6 @@ package com.poddcorp.towerdef.UI
 			tabQuality.useHandCursor = true;
 			tabQuality.x = (nativeStage.stageWidth - tabQuality.width) / 2 - 150;
 			tabQuality.y = qlty.y + 75;
-			
 			tabQuality.setSize(300, 50);
 			this.addChild(tabQuality);
 			
@@ -113,32 +112,31 @@ package com.poddcorp.towerdef.UI
 			
 			TabObject = SharedObject.getLocal("TabDetailObject");
 			tabQuality.selectedIndex = TabObject.data.tabvalue;
-			//var TabIndex:Number = new Number();
-			// TabIndex = TabObject.data.tabvalue;
-			//trace(TabIndex);
+			
 		}
 		
 		private function tabs_changeHandler(event:Event):void
 		{
+			
+			addChild(Click);
 			tab = TabBar(event.currentTarget);
 			TabObject = SharedObject.getLocal("TabDetailObject");
 			TabObject.data.tabvalue = tab.selectedIndex;
-			addChild(Click);
+			TabObject.flush();
+			
+			
 			trace("tab.value change:", tab.selectedIndex)
 		}
 		
 		public function slider_changeHandler(event:Event):void
 		{
 			
-			slider = Slider(event.currentTarget);
-			
+			slider = Slider(event.currentTarget); 
 			SliderObject = SharedObject.getLocal("ShareObjct");
-			
-			_music = new BGmusic();
 			SliderObject.data.value = sliderVolume.value;
 			SliderObject.flush();
 			
-			//trace(SliderObject.data.value);
+			
 			trace("slider.value changed:", slider.value);
 		
 		}

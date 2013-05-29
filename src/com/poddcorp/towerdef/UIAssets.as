@@ -45,11 +45,16 @@ package com.poddcorp.towerdef
 		[Embed(source="../../../../assets/fontsGame/ModerneFraktur.ttf",fontFamily="MyFont",embedAsCFF="false")]
 		public static var GameFont:Class;
 		
-		//=====================================================================
+		
+		
+		[Embed(source="../../../../assets/fontsGame/TrajanPro-Bold.otf",fontFamily="MyFont1",embedAsCFF="false")]
+		public static var GameFont1:Class;
+		
+		
+	
 		
 		//=====================================================================
 		//spritesheets
-		
 		public static var UITextureAtlas:TextureAtlas;
 		[Embed(source="../../../../assets/Game_SpriteSheets.png")]
 		public static const AtlasTextureUI:Class;
@@ -110,14 +115,14 @@ package com.poddcorp.towerdef
 		//=====================================================================
 		// Font
 		
-		//public var myfont1:star
+		
 		[Embed(source="../../../../assets/fontsGame/MedevialFont.fnt",mimeType="application/octet-stream")]
 		public static var FontXml:Class;
 		
 		[Embed(source="../../../../assets/fontsGame/MedevialFont_0.png")]
 		public static var FontTexture:Class;
 		
-		//public static var Myfont:BitmapFont;
+
 		public static var myGamefont:BitmapFont;
 		
 		public static function getFont():BitmapFont

@@ -32,7 +32,7 @@ package com.poddcorp.towerdef
 		public var btnPlay:Image;
 		private var heightButton:Number = 50;
 		private var widthButton:Number = 650;
-		private var TExt:TextField;
+		private var Fieldtext :TextField;
 		public var UIsettings:SettingsUI;
 		private var btnNew:Button;
 		private var _towerDefense:TowerDefense = new TowerDefense();
@@ -69,18 +69,42 @@ package com.poddcorp.towerdef
 			
 			btnResume.text = ("RESUME");
 			btnSettings.text = ("SETTINGS");
-			btnBackMainMenu.text = ("BACK TO MAIN MENU");
+			btnBackMainMenu.text = ("MAIN MENU");
 			btnBack.text = ("BACK");
+			
+			
+			
+			btnResume.fontName = "MyFont1";
+			btnResume.fontColor = 0x0000FF;
+			btnResume.fontBold = true;
+			btnResume.fontSize = 25;
+			
+			btnSettings.fontName = "MyFont1";
+			btnSettings.fontColor = 0x0000FF;
+			btnSettings.fontBold = true;
+			btnSettings.fontSize = 25;
+			
+			btnBackMainMenu.fontName = "MyFont1";
+			btnBackMainMenu.fontColor = 0x0000FF;
+			btnBackMainMenu.fontBold = true;
+			btnBackMainMenu.fontSize = 25;
+			
+			btnBack.fontName = "MyFont1";
+			btnBack.fontColor = 0x0000FF;
+			btnBack.fontBold = true;
+			btnBack.fontSize = 25;
+			
+			
 			
 			var nativeStage:Stage = Starling.current.nativeStage;
 			
-			TExt = new TextField(500, 300, "Defense of the Kingdom", UIAssets.getFont().name, 50, 0x0000FF);
+			Fieldtext = new TextField(500, 300, "Defense of the Castle", UIAssets.getFont().name, 50, 0x0000FF);
 			
-			TExt.x = (nativeStage.stageWidth - TExt.width) / 2;
-			TExt.y = -100
-			TExt.vAlign = VAlign.CENTER;
-			TExt.hAlign = HAlign.CENTER;
-			this.addChild(TExt);
+			Fieldtext.x = (nativeStage.stageWidth - Fieldtext.width) / 2;
+			Fieldtext.y = -100
+			Fieldtext.vAlign = VAlign.CENTER;
+			Fieldtext.hAlign = HAlign.CENTER;
+			this.addChild(Fieldtext);
 			
 			btnResume.x = (nativeStage.stageWidth - btnResume.width) / 2;
 			btnSettings.x = btnResume.x;
@@ -92,7 +116,7 @@ package com.poddcorp.towerdef
 			btnSettings.y = btnResume.y + 75;
 			btnBackMainMenu.y = btnSettings.y + 75;
 			btnPause.y = 30;
-			btnBack.y = btnBackMainMenu.y + 210;
+			btnBack.y = btnBackMainMenu.y + 250;
 			
 			btnPause.addEventListener(Event.TRIGGERED, onPauseEvent);
 			btnResume.addEventListener(Event.TRIGGERED, onResumeEvent);
