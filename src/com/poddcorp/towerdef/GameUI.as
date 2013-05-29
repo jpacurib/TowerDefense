@@ -126,10 +126,36 @@ package com.poddcorp.towerdef
 			//var text:Label = new Label();
 			//Txt = tex;
 			
+		btnStart.text = ("START");
 			btnSetting.text = ("SETTINGS");
 			btnHelp.text = ("HELP");
 			btnExit.text = ("EXIT");
 			btnBack.text = ("BACK");
+			
+			btnStart.fontName = "MyFont1";
+			btnStart.fontColor = 0x0000FF;
+			btnStart.fontBold = true;
+			btnStart.fontSize = 25;
+			
+			btnSetting.fontName = "MyFont1";
+			btnSetting.fontColor =0x0000FF;
+			btnSetting.fontBold = true;
+			btnSetting.fontSize = 25;
+			
+			btnHelp.fontName = "MyFont1";
+			btnHelp.fontColor = 0x0000FF;
+			btnHelp.fontBold = true;
+			btnHelp.fontSize = 25;
+			
+			btnExit.fontName = "MyFont1";
+			btnExit.fontColor = 0x0000FF;
+			btnExit.fontBold = true;
+			btnExit.fontSize = 25;
+			
+			btnBack.fontName = "MyFont1";
+			btnBack.fontColor = 0x0000FF;
+			btnBack.fontBold = true;
+			btnBack.fontSize = 25;
 			
 			//events
 			btnStart.addEventListener(Event.TRIGGERED, onStartEvent);
@@ -196,7 +222,8 @@ package com.poddcorp.towerdef
 			}
 			MainMenuRemove();
 			addChild(BtnClk);
-		
+			
+			BackGroundMusic._content.stop();
 		}
 		
 		private function onSettingEvent(e:Event):void
