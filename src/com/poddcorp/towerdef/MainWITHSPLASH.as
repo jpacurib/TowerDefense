@@ -43,6 +43,29 @@ package com.poddcorp.towerdef
 		
 		}
 		
+		private function onResize(event:Event):void
+		{
+			Starling.current.viewPort = getViewPort();
+			
+			// Avoid scaling up the content so adjust the starling instance stage size.
+			_starlingApp.stage.stageWidth = stage.stageWidth;
+			_starlingApp.stage.stageHeight = stage.stageHeight;
+		}
+		
+		
+		private function getViewPort():Rectangle
+		{
+			var viewPort:Rectangle = new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
+			if (viewPort.width == 768) // iPad 1+2
+				viewPort.setTo(64, 32, 640, 960);
+			else if (viewPort.width == 1536) // iPad 3
+				viewPort.setTo(128, 64, 1280, 1920);
+			else
+				viewPort.setTo(0, 0, stage.stageWidth, stage.stageHeight);
+			
+			return viewPort;
+		}
+		
 		private function init(e:Event = null):void
 		
 		{
@@ -82,20 +105,16 @@ package com.poddcorp.towerdef
 				//touch or gesture?2
 				Multitouch.inputMode = MultitouchInputMode.TOUCH_POINT;
 				
-				var viewPort:Rectangle = new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight);
-				if (viewPort.width == 768) // iPad 1+2
-					viewPort.setTo(64, 32, 640, 960);
-				else if (viewPort.width == 1536) // iPad 3
-					viewPort.setTo(128, 64, 1280, 1920);
-				
 				//entry point
 				trace("Starting Mobile App");
-				_starlingApp = new Starling(GameUI, stage, viewPort);
+				_starlingApp = new Starling(GameUI, stage, getViewPort());
 				_starlingApp.simulateMultitouch = false;
 				_starlingApp.enableErrorChecking = false;
 				_starlingApp.showStats = true;
 				_starlingApp.antiAliasing = 0;
 				_starlingApp.start();
+				
+				stage.addEventListener(Event.RESIZE, onResize);
 				
 			}
 		}

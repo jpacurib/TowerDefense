@@ -98,7 +98,7 @@ package com.poddcorp.towerdef
 			
 			var nativeStage:Stage = Starling.current.nativeStage;
 			
-			Fieldtext = new TextField(500, 300, "Defense of the Castle", UIAssets.getFont().name, 50, 0x0000FF);
+			Fieldtext = new TextField(500, 300, "Defense of the Kingdom", UIAssets.getFont().name, 50, 0xFFFFFF);
 			
 			Fieldtext.x = (nativeStage.stageWidth - Fieldtext.width) / 2;
 			Fieldtext.y = -100
@@ -126,6 +126,8 @@ package com.poddcorp.towerdef
 	
 					
 			gbg = new Image(UIAssets.getUITexture("bgimge"));
+			gbg.x = 0;
+			gbg.y = 0;
 		
 		
 		}

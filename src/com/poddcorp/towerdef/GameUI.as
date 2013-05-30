@@ -10,6 +10,8 @@ package com.poddcorp.towerdef
 	import feathers.controls.Slider;
 	import feathers.events.CollectionEventType;
 	import feathers.events.FeathersEventType;
+	import flash.geom.Rectangle;
+	import starling.events.ResizeEvent;
 	import starling.text.BitmapFont;
 	//import feathers.text.BitmapFontTextFormat;
 	import starling.text.TextField;
@@ -64,11 +66,14 @@ package com.poddcorp.towerdef
 		private var Gametheme:AzureMobileTheme;
 		private var Nxt:Button;
 		private var Prev:Button;
+		private var towerdefense:TowerDefense;
 		
 		public var Txt:BitmapFont;
 		
 		public var BtnClk:ButtonClickTone = new ButtonClickTone();
 		public var BackGroundMusic:BGmusic = new BGmusic();
+		
+		public var nativeStage:Rectangle = Starling.current.viewPort;
 		
 		public function GameUI()
 		{
@@ -84,6 +89,19 @@ package com.poddcorp.towerdef
 			MainMenuAdd();
 			this.Gametheme = new AzureMobileTheme(this.stage);
 			this.addChild(this.BackGroundMusic);
+			Starling.current.stage.addEventListener(ResizeEvent.RESIZE, onResize);
+		}
+		
+		private function onResize(event:ResizeEvent):void
+		{
+
+			// UPDATE YOUR UI HERE
+			trace("resized");
+			updateUI();
+			if (towerdefense)
+			{
+				towerdefense.updateUI();
+			}
 		}
 		
 		public function MainMenuAdd():void
@@ -126,7 +144,7 @@ package com.poddcorp.towerdef
 			//var text:Label = new Label();
 			//Txt = tex;
 			
-		btnStart.text = ("START");
+			btnStart.text = ("START");
 			btnSetting.text = ("SETTINGS");
 			btnHelp.text = ("HELP");
 			btnExit.text = ("EXIT");
@@ -138,7 +156,7 @@ package com.poddcorp.towerdef
 			btnStart.fontSize = 25;
 			
 			btnSetting.fontName = "MyFont1";
-			btnSetting.fontColor =0x0000FF;
+			btnSetting.fontColor = 0x0000FF;
 			btnSetting.fontBold = true;
 			btnSetting.fontSize = 25;
 			
@@ -164,41 +182,60 @@ package com.poddcorp.towerdef
 			btnBack.addEventListener(Event.TRIGGERED, onBackEvent);
 			btnHelp.addEventListener(Event.TRIGGERED, onHelpMenu);
 			
-			var nativeStage:Stage = Starling.current.nativeStage;
+			
 			
 			//centered button X coordinate
-			btnStart.x = (nativeStage.stageWidth - btnStart.width) / 2;
+			
+			
+			//Y coordinate config
+			
+			
+			dok = new Image(UIAssets.getAtlas().getTexture("img_Title"));
+			//trace(dok.pivotX, dok.pivotY);
+			
+			
+			bg = new Image(UIAssets.getUITexture("bgimge"));
+			this.addChild(bg);
+			
+			
+			scrll = new Image(UIAssets.getAtlas().getTexture("img_Scroll"));
+			
+			//scrll.x = dok.x - 150;
+			//Nxt = new Button(UIAssets.getAtlas().getTexture("btn_next"));
+			//Nxt.x = stage.width - Nxt.width;
+			//Nxt.y = (stage.height - Nxt.height) - 50;
+			//Nxt.y = (nativeStage.height / 2)  - (Nxt.height - 260) ;
+			//Prev = new Button(UIAssets.getAtlas().getTexture("btn_back"));
+			//Prev.x = 0;
+			//Prev.y = (stage.height - Prev.height) - 50;
+			
+			updateUI();
+		}
+		
+		private function updateUI():void
+		{
+			btnStart.x = (nativeStage.width - btnStart.width) / 2;
 			btnSetting.x = btnStart.x;
 			btnExit.x = btnSetting.x;
 			btnHelp.x = btnExit.x;
 			btnBack.x = btnHelp.x;
 			
-			//Y coordinate config
-			btnStart.y = (nativeStage.stageHeight / 2) + 50;
+			btnStart.y = (nativeStage.height / 2) + 50;
 			btnSetting.y = btnStart.y + 75;
 			btnHelp.y = btnSetting.y + 75;
 			btnExit.y = btnHelp.y + 75;
 			btnBack.y = btnHelp.y + 75;
 			
-			dok = new Image(UIAssets.getAtlas().getTexture("img_Title"));
-			//trace(dok.pivotX, dok.pivotY);
-			dok.x = (nativeStage.stageWidth - dok.width) / 2;
-			dok.y = (nativeStage.stageHeight / 2) - dok.height;
+			dok.x = (nativeStage.width - dok.width) / 2;
+			dok.y = (nativeStage.height / 2) - dok.height;
 			
-			bg = new Image(UIAssets.getUITexture("bgimge"));
-			this.addChild(bg);
-			bg.x = (nativeStage.stageWidth - bg.width) * .5;
-			bg.y = (nativeStage.stageHeight - bg.height) * .5;
+			bg.x = (nativeStage.width - bg.width) * .5;
+			bg.y = (nativeStage.height - bg.height) * .5;
 			
-			scrll = new Image(UIAssets.getAtlas().getTexture("img_Scroll"));
-			//scrll.x = dok.x - 150;
-			//Nxt = new Button(UIAssets.getAtlas().getTexture("btn_next"));
-			//Nxt.x = stage.width - Nxt.width;
-			//Nxt.y = (stage.height - Nxt.height) - 50;
-			//Nxt.y = (nativeStage.stageHeight / 2)  - (Nxt.height - 260) ;
-			//Prev = new Button(UIAssets.getAtlas().getTexture("btn_back"));
-			//Prev.x = 0;
-			//Prev.y = (stage.height - Prev.height) - 50;
+			scrll.x = (nativeStage.width - scrll.width) * .5;
+			scrll.y = (nativeStage.height - scrll.height) * .5;
+			
+			
 		}
 		
 		private function onBackEvent(e:Event):void
@@ -213,11 +250,11 @@ package com.poddcorp.towerdef
 		private function onStartEvent(e:Event):void
 		{
 			myGame = new InGame();
-			var towerdefense:TowerDefense = new TowerDefense();
+			towerdefense = new TowerDefense();
 			this.removeChildren(0, -1);
 			if (!this.contains(towerdefense))
 			{
-				this.addChild(new TowerDefense());
+				this.addChild(towerdefense);
 				this.addChild(myGame);
 			}
 			MainMenuRemove();

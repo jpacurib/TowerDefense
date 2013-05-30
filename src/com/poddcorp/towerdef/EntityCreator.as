@@ -3,6 +3,7 @@ package com.poddcorp.towerdef
 	import ash.core.Engine;
 	import ash.core.Entity;
 	import com.poddcorp.towerdef.components.Bullet;
+	import com.poddcorp.towerdef.components.Coin;
 	import com.poddcorp.towerdef.components.Collision;
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.components.Gun;
@@ -13,6 +14,7 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.TileDisplay;
 	import com.poddcorp.towerdef.components.Tower;
 	import com.poddcorp.towerdef.graphics.BulletView;
+	import com.poddcorp.towerdef.graphics.CoinView;
 	import com.poddcorp.towerdef.graphics.MonsterOrcView;
 	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.components.GameState;
@@ -123,6 +125,16 @@ package com.poddcorp.towerdef
 		   return bullet;
 	
 	    }
+		
+	/*	public function createCoin(pos:Position):Entity 
+		{
+			var coin:Entity = new Entity()
+				.add(new Coin(1))
+				.add(new Position(pos.position.x, pos.position.y, ""))
+				.add(TileDisplay(new CoinView()));
+			engine.addEntity(coin);
+			return coin;
+		}*/
 
 	}
 

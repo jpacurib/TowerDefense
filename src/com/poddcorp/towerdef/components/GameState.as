@@ -17,6 +17,8 @@ package com.poddcorp.towerdef.components
 		
 		public var gold:int;
 		
+		public var totalMonster:int;
+		
 		/**
 		 * Gives specific value to global variable for state of game.
 		 */
@@ -26,6 +28,8 @@ package com.poddcorp.towerdef.components
 			wave = 10;
 			monperwave = 1;
 			gold = 50;
+			
+			totalMonster = 0;
 		}
 	}
 

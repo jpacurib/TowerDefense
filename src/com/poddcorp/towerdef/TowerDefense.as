@@ -19,7 +19,9 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import starling.display.Image;
+	import starling.text.TextField;
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -44,7 +46,12 @@ package com.poddcorp.towerdef
 		
 		private var _grassmap:Image;
 		private var _towerHolder:Image;
+		private var _hudVertical:Image;
 		
+		//Texts
+		public var _village:TextField;
+		//public var _life:TextField;
+				
 		//FOR TOWER
 		private var _towerButton:TowerButton;
 		
@@ -60,8 +67,28 @@ package com.poddcorp.towerdef
 			prepare();
 			start();
 			
-			//FOR TOWER
-			createButton();
+			//creates UI
+			createUI();
+		}
+		
+		public function updateUI():void
+		{
+			var viewPort:Rectangle = Starling.current.viewPort;
+			_hudVertical.x = viewPort.width - _hudVertical.width;
+			_hudVertical.y = 10;
+			
+			_towerButton.x = viewPort.width - 150;
+			_towerButton.y = viewPort.height - 200;
+			
+			_towerHolder.x = viewPort.width - 160;
+			_towerHolder.y = viewPort.height - 210;
+			
+			
+			_village.text = "Orto Village";
+			_village.x = _hudVertical.x;
+			_village.y = 10;
+			
+			trace(viewPort);
 		}
 		
 		private function prepare():void
@@ -132,18 +159,23 @@ package com.poddcorp.towerdef
 		}
 		
 		//FOR TOWER
-		private function createButton():void
+		private function createUI():void
 		{
 			_towerButton = new TowerButton();
 			_towerHolder = new Image(UIAssets.getAtlas().getTexture("hud_towerholder"));
+			_hudVertical = new Image(UIAssets.getAtlas().getTexture("hud_game"));
+			_village = new TextField(_hudVertical.width, _hudVertical.height, "", "MyFont1", 20, 0xFFFFFF); 
+			//_life = new TextField(_hudVertical.width, _hudVertical.height, "", "MyFont1", 20, 0xFFFFFF); 
+			
+			addChild(_hudVertical);
 			addChild(_towerHolder);
 			addChild(_towerButton);
+
+			addChild(_village);
 			
-			_towerButton.x = stage.stageWidth - 150;
-			_towerButton.y = stage.stageHeight - 200;
+			updateUI();
 			
-			_towerHolder.x = stage.stageWidth - 160;
-			_towerHolder.y = stage.stageHeight - 210;
+			
 		}
 		
 		public function start():void

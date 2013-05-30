@@ -6,12 +6,14 @@ package com.poddcorp.towerdef.input
 	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
 	import flash.utils.ByteArray;
 	import flash.utils.getQualifiedClassName;
 	import starling.core.Starling;
 	import starling.display.DisplayObject;
 	import starling.display.Sprite;
 	import starling.events.EventDispatcher;
+	import starling.events.ResizeEvent;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.events.Touch;
@@ -28,12 +30,19 @@ package com.poddcorp.towerdef.input
 		public var myStage:Stage = Starling.current.nativeStage;
 		
 		private var _displayObject:DisplayObject;
-		private var _stage:Stage = Starling.current.nativeStage;
+		private var viewPort:Rectangle = Starling.current.viewPort;
 		
 		public function TouchPoll(displayObject:DisplayObject)
 		{
 			_displayObject = displayObject;
 			_displayObject.addEventListener(TouchEvent.TOUCH, onTouchEvent);
+			Starling.current.stage.addEventListener(ResizeEvent.RESIZE, onResize);
+		}
+		
+		private function onResize(e:ResizeEvent):void 
+		{
+			viewPort = Starling.current.viewPort;
+		
 		}
 		
 		private function onTouchEvent(e:TouchEvent):void
@@ -89,14 +98,14 @@ package com.poddcorp.towerdef.input
 				//Tower Snapping to Grid Coordinates
 				var positionToGrid:Point = new Point(Math.floor(pt.x / 128) * 128 - 45, Math.floor(pt.y / 64) * 64 - 15);
 				
-				positionToGrid.x = positionToGrid.x - (myStage.stageWidth / 2) - 60;
-				positionToGrid.y = positionToGrid.y - (myStage.stageHeight / 5) + 10;
+				positionToGrid.x = positionToGrid.x - (viewPort.width / 2) - 60;
+				positionToGrid.y = positionToGrid.y - (viewPort.height / 5) + 10;
 				
 				creator.createTower(positionToGrid);
 				
 				//Returns display button to original position
-				displayButton.x = _stage.stageWidth - 150;
-				displayButton.y = _stage.stageHeight - 200;
+				displayButton.x = viewPort.width - 150;
+				displayButton.y = viewPort.height - 200;
 				
 				/*displayButton.x = positionToGrid.x;
 				displayButton.y = positionToGrid.y;*/

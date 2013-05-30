@@ -8,6 +8,7 @@ package com.poddcorp.towerdef.systems
 	import com.poddcorp.towerdef.nodes.MonsterCollisionNode;
 	import com.poddcorp.towerdef.nodes.TileRenderNode;
 	import com.poddcorp.towerdef.nodes.TowerNode;
+	import com.poddcorp.towerdef.TowerDefense;
 	import flash.geom.Point;
 	
 	/**
@@ -41,14 +42,15 @@ package com.poddcorp.towerdef.systems
 					if (Point.distance(monster.position.position, bullet.position.position) <= monster.collision.radius)
 					{
 						monster.monster.life--;
-						creator.destroyEntity(bullet.entity);
-						
+						creator.destroyEntity(bullet.entity);						
 					}
 					
 					if (monster.monster.life == 0)
 					{
 						
 						creator.destroyEntity(monster.entity);
+						//creator.createCoin(monster.position);
+						
 						if (Math.random() >= 0 && Math.random() <= .2)
 						{
 							creator.createSkullMonster(startTile);

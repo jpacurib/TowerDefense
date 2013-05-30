@@ -8,6 +8,7 @@ package com.poddcorp.towerdef.systems
 	import com.poddcorp.towerdef.nodes.GameNode;
 	import com.poddcorp.towerdef.nodes.MovementNode;
 	import com.poddcorp.towerdef.nodes.TileTraversalNode;
+	import com.poddcorp.towerdef.TowerDefense;
 	import flash.geom.Point;
 	import ash.core.NodeList;
 	import ash.core.System;
@@ -59,7 +60,11 @@ package com.poddcorp.towerdef.systems
 						if ((Point.distance(new Point(monsterNode.position.position.x + 72, monsterNode.position.position.y + 72), new Point(endTile.x, endTile.y)) < (endTile.height / 2)))
 						{
 							node.state.lives--;
+							node.state.totalMonster++;
+							
 							creator.destroyEntity(monsterNode.entity);
+							
+							var monsters:TowerDefense = new TowerDefense();
 							
 							if (Math.random() >= 0 && Math.random() <= .3)
 							{
