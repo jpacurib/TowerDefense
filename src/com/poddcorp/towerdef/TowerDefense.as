@@ -77,10 +77,10 @@ package com.poddcorp.towerdef
 			_hudVertical.x = viewPort.width - _hudVertical.width;
 			_hudVertical.y = 10;
 			
-			_towerButton.x = viewPort.width - 150;
+			_towerButton.x = viewPort.width - 200;
 			_towerButton.y = viewPort.height - 200;
 			
-			_towerHolder.x = viewPort.width - 160;
+			_towerHolder.x = viewPort.width - 210;
 			_towerHolder.y = viewPort.height - 210;
 			
 			
@@ -88,7 +88,6 @@ package com.poddcorp.towerdef
 			_village.x = _hudVertical.x;
 			_village.y = 10;
 			
-			trace(viewPort);
 		}
 		
 		private function prepare():void
@@ -155,7 +154,9 @@ package com.poddcorp.towerdef
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
 			
-			_touchPoll.creator = creator;
+			//_touchPoll.creator = creator;
+			_map.creator = creator;
+			_touchPoll.map = _map;
 		}
 		
 		//FOR TOWER

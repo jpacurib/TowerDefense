@@ -13,7 +13,7 @@ package com.poddcorp.towerdef.components
 		//Sets life variable to specific value
 		public function Monster()
 		{
-			life = 2;
+			life = 3;
 		}
 	}
 

@@ -85,19 +85,8 @@ package com.poddcorp.towerdef
 			
 			var image:Image = new Image(Texture.fromBitmapData(bmd));
 			image.rotation = 40.1;
-			image.alpha = 0;
+			//image.alpha = 0;
 			return image;
-		}
-		
-		private function createTowerTile():MovieClip
-		{			
-			var tower:MovieClip = new MovieClip(UIAssets.getAtlasTower().getTextures("Lightning"), 20);
-			Starling.juggler.add(tower);
-			tower.height = 80;
-			tower.width = 80;
-			tower.pivotX = tower.width / 2;
-			tower.pivotY = tower.height / 2;
-			return tower;
 		}
 		
 		public function highlight(color:uint):void
@@ -109,13 +98,7 @@ package com.poddcorp.towerdef
 			_tile = createTile(color);
 			this.addChild(_tile);
 		}
-		
-		public function createTower():void
-		{
-			_tile = createTowerTile();
-			this.addChild(_tile);
-		}
-		
+				
 		/* INTERFACE com.poddcorp.towerdef.pathfinding.INode */
 		
 		public function get f():Number

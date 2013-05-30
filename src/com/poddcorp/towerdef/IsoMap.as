@@ -19,11 +19,10 @@ package com.poddcorp.towerdef
 	 */
 	public class IsoMap extends Sprite
 	{
-		[Inject]
 		public var creator:EntityCreator;
 		
 		/*[Inject]
-		public var towerButton:TowerButton;*/
+		 public var towerButton:TowerButton;*/
 		
 		public var config:GameConfig;
 		
@@ -50,44 +49,70 @@ package com.poddcorp.towerdef
 		private function onTouch(e:TouchEvent):void
 		{
 			var touches:Vector.<Touch> = e.getTouches(this);
+			
 			for each (var touch:Touch in touches)
 			{
 				switch (touch.phase)
 				{
 					case TouchPhase.BEGAN: 
-						for each (var tile:IsoTile in _tiles)
-						{
-							if (touch.isTouching(tile))
-							{
-								if (tile.traversable == false)
-								{
-									//TOWER MENU
-								}
-								
-								if (tile.traversable == true)
-								{
-									tile.traversable = false;
-									
-									if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
-									{
-										tile.traversable = false;
-										tile.highlight(0xCCCCCC);
-										//tile.createTower();
-										
-									}
-									else
-									{
-										tile.traversable = true;
-									}
-								}
-								
-							}
-						}
+						onTouchBegan();
+						break;
+					case TouchPhase.MOVED: 
+						onTouchMoved(touches, touch);
+						break;
+					case TouchPhase.ENDED: 
+						onTouchEnded(touches, touch);
 						break;
 					
 					default: 
 				}
 			}
+		}
+		
+		//TOUCH ENDED
+		public function onTouchEnded(touches:Vector.<Touch>, touch:Touch):void
+		{
+			for each (var tile:IsoTile in _tiles)
+			{
+				if (touch.isTouching(tile))
+				{
+					if (tile.traversable == false)
+					{
+						//TOWER MENU
+					}
+					
+					if (tile.traversable == true)
+					{
+						tile.traversable = false;
+						
+						if (Pathfinder.findPath(_startTile, _endTile, findConnectedNodes) != null)
+						{
+							tile.traversable = false;
+							tile.highlight(0xCCCCCC);
+							creator.createTower(new Point(tile.x - tile.width, tile.y - (tile.height + tile.height / 2)));
+							
+						}
+						else
+						{
+							tile.traversable = true;
+						}
+					}
+					
+				}
+			}
+			trace("ended");
+		}
+		
+		//TOUCH BEGAN
+		public function onTouchBegan():void
+		{
+			//trace("began");
+		}
+		
+		//TOUCH MOVED
+		public function onTouchMoved(touches:Vector.<Touch>, touch:Touch):void
+		{
+			
 		}
 		
 		public function drawMap():void
@@ -102,7 +127,7 @@ package com.poddcorp.towerdef
 					var tile:IsoTile = new IsoTile(row, col);
 					tile.x = (col - row) * tile.width / 2;
 					tile.y = (row + col) * tile.height / 2;
-										
+					
 					_tileHolder.addChild(tile);
 					
 					_tiles.push(tile);

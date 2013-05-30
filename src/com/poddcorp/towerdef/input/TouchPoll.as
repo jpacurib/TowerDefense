@@ -3,6 +3,7 @@ package com.poddcorp.towerdef.input
 	import ash.core.NodeList;
 	import com.poddcorp.towerdef.components.Display;
 	import com.poddcorp.towerdef.EntityCreator;
+	import com.poddcorp.towerdef.IsoMap;
 	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
 	import flash.geom.Point;
@@ -23,9 +24,12 @@ package com.poddcorp.towerdef.input
 	 * @author ...
 	 */
 	public class TouchPoll extends Sprite
-	{	
+	{
 		[Inject]
 		public var creator:EntityCreator;
+		
+		[Inject]
+		public var map:IsoMap;
 		
 		public var myStage:Stage = Starling.current.nativeStage;
 		
@@ -39,10 +43,9 @@ package com.poddcorp.towerdef.input
 			Starling.current.stage.addEventListener(ResizeEvent.RESIZE, onResize);
 		}
 		
-		private function onResize(e:ResizeEvent):void 
+		private function onResize(e:ResizeEvent):void
 		{
 			viewPort = Starling.current.viewPort;
-		
 		}
 		
 		private function onTouchEvent(e:TouchEvent):void
@@ -74,45 +77,34 @@ package com.poddcorp.towerdef.input
 			}
 		}
 		
-		public function towerTouchBegan():void
-		{
-			trace("began");
-		}
-		
-		public function towerTouchMoved(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
+		private function towerTouchEnded(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
 		{
 			if (displayButton.name == "")
 			{
-				displayButton.x = (touchVector[0].globalX - 64) ;
-				displayButton.y = (touchVector[0].globalY - 64) ;
+				displayButton.x = viewPort.width - 200;
+				displayButton.y = viewPort.height - 200;
+				
+				for each(var touch:Touch in touchVector)
+				{
+					trace(touch);
+					map.onTouchEnded(touchVector, touch);
+				}
 			}
 		}
 		
-		public function towerTouchEnded(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
+		private function towerTouchMoved(displayButton:DisplayObject, touchVector:Vector.<Touch>):void
 		{
-			trace("ended");
 			if (displayButton.name == "")
-			{			
-				var pt:Point = new Point(touchVector[0].globalX, touchVector[0].globalY);
-				
-				//Tower Snapping to Grid Coordinates
-				var positionToGrid:Point = new Point(Math.floor(pt.x / 128) * 128 - 45, Math.floor(pt.y / 64) * 64 - 15);
-				
-				positionToGrid.x = positionToGrid.x - (viewPort.width / 2) - 60;
-				positionToGrid.y = positionToGrid.y - (viewPort.height / 5) + 10;
-				
-				creator.createTower(positionToGrid);
-				
-				//Returns display button to original position
-				displayButton.x = viewPort.width - 150;
-				displayButton.y = viewPort.height - 200;
-				
-				/*displayButton.x = positionToGrid.x;
-				displayButton.y = positionToGrid.y;*/
+			{
+				displayButton.x = (touchVector[0].globalX - 64);
+				displayButton.y = (touchVector[0].globalY - 64);
 			}
 		}
-	
-		//PATH FINDING
+		
+		private function towerTouchBegan():void
+		{
+
+		}
 	
 	}
 
