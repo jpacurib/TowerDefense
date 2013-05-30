@@ -1,24 +1,31 @@
 package com.poddcorp.towerdef.components 
 {
 	/**
-	 * ...
-	 * @author Jeremy
+	 * GameState stores data of the game
+	 * 
 	 */
 	public class GameState 
 	{
+		//Declare global variable for lives
 		public var lives:int;
-		public var level:int;
-		public var points:int;
+				
+		//Declare global variable for waves
 		public var wave:int;
+		
+		//Declare global variable for monster per wave
 		public var monperwave:int;
 		
+		public var gold:int;
+		
+		/**
+		 * Gives specific value to global variable for state of game.
+		 */
 		public function GameState()
 		{
-			lives = 50;
-			level = 0;
-			points = 0;
+			lives = 5;
 			wave = 10;
 			monperwave = 1;
+			gold = 50;
 		}
 	}
 

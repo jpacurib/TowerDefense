@@ -19,7 +19,7 @@ package com.poddcorp.towerdef.systems
 		[Inject]
 		public var creator:EntityCreator;
 		
-		[Inject(name = "start")]
+		[Inject(name="start")]
 		public var startTile:IsoTile;
 		
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.BulletCollisionNode")]
@@ -33,22 +33,39 @@ package com.poddcorp.towerdef.systems
 			var bullet:BulletCollisionNode;
 			var monster:MonsterCollisionNode;
 			
-			for (monster = monsters.head; monster; monster = monster.next)
+			for (bullet = bullets.head; bullet; bullet = bullet.next)
 			{
-				for (bullet = bullets.head; bullet; bullet = bullet.next)
+				for (monster = monsters.head; monster; monster = monster.next)
 				{
 					
 					if (Point.distance(monster.position.position, bullet.position.position) <= monster.collision.radius)
 					{
 						monster.monster.life--;
-						creator.destroyEntity(bullet.entity);						
+						creator.destroyEntity(bullet.entity);
+						
 					}
 					
 					if (monster.monster.life == 0)
 					{
+						
 						creator.destroyEntity(monster.entity);
-						creator.createMonster(startTile);
+						if (Math.random() >= 0 && Math.random() <= .2)
+						{
+							creator.createSkullMonster(startTile);
+						}
+						
+						else if (Math.random() > .2 && Math.random() <= .4)
+						{
+							creator.createOrcMonster(startTile);
+						}
+						
+						else
+						{
+							creator.createVoodooMonster(startTile);
+						}
+						
 					}
+					
 				}
 			}
 		}

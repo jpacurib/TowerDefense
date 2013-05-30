@@ -103,7 +103,7 @@ package com.poddcorp.towerdef.graphics
 					break;
 	
 				default:
-					arrowNorth.visible = true;
+					hideAllArrows();
 					break;
 			}
 		}

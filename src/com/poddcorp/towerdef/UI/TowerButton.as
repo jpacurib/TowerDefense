@@ -25,7 +25,7 @@ package com.poddcorp.towerdef.UI
 		
 		private function myDefaultSkin():Image 
 		{
-			var texture:Texture = UIAssets.getAtlas().getTexture("btn_Pause");
+			var texture:Texture = UIAssets.getAtlas().getTexture("tower_basic");
 			return new Image(texture);
 		}
 		
@@ -43,7 +43,7 @@ package com.poddcorp.towerdef.UI
 			
 			var image:Image = new Image(Texture.fromBitmapData(bmd));*/
 			//
-			var texture:Texture = UIAssets.getAtlas().getTexture("btn_Play");
+			var texture:Texture = UIAssets.getAtlas().getTexture("tower_basic");
 			var image:Image = new Image(texture);
 			image.filter = glow;
 			return image;

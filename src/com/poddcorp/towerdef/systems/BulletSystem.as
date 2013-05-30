@@ -44,13 +44,13 @@ package com.poddcorp.towerdef.systems
 						tempX = (monster.position.position.x - gun.position.position.x);
 						tempY = (monster.position.position.y - gun.position.position.y);
 						
-						if (tempY > 0) bullet.motion.velocity.y = 150;
+						if (tempY > 0) bullet.motion.velocity.y = 300;
 						else if (tempY == 0) tempY = 0;
-						else bullet.motion.velocity.y = -150
+						else bullet.motion.velocity.y = -300
 						
-						if (tempX > 0) bullet.motion.velocity.x = 150;
+						if (tempX > 0) bullet.motion.velocity.x = 300;
 						else if (tempX == 0) tempX = 0;
-						else bullet.motion.velocity.x = -150
+						else bullet.motion.velocity.x = -300
 						
 						//DIRECTION
 						if (bullet.motion.velocity.x == 0)

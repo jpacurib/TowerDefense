@@ -19,10 +19,6 @@ package com.poddcorp.towerdef
 	 */
 	public class UIAssets
 	{
-		
-		[Embed(source = "../../../../assets/img_arrow1.png")]
-		public static const arrow:Class;
-		
 		[Embed(source="../../../../assets/sounds/12.mp3")]
 		public var _Btnclick:Class;
 		
@@ -32,6 +28,9 @@ package com.poddcorp.towerdef
 		//	[Embed(source="../../../../assets/newGame.png")]
 		//	public static const NewGame:Class;
 		//---------------------------------------------
+		
+		[Embed(source = "../../../../assets/plainmap.png")]
+		public static const plainMap:Class;
 		
 		[Embed(source="../../../../assets/background.png")]
 		public static const SETTINGS:Class;
@@ -112,25 +111,6 @@ package com.poddcorp.towerdef
 			return AtlasTower;
 		}
 		
-		// INGAME ATLAS
-		/*[Embed(source = "../../../../assets/Ingame_Sprites.png")]
-		public static const AtlasTextureIngame:Class;
-		
-		[Embed(source = "../../../../assets/Ingame_Sprites.xml". mimeType="application/octet-stream")]
-		public static const AtlasXMLIngame:Class;
-		
-		public static var AtlasIngame:TextureAtlas;
-		
-		public static function getIngameAtlas():TextureAtlas
-		{
-			if (AtlasTower == null)
-			{
-				var texture:Texture = getUITexture("AtlasTextureIngame");
-				var xml:XML = XML(new AtlasXMLIngame());
-				AtlasIngame = new TextureAtlas(texture, xml);
-			}
-			return AtlasIngame;
-		}*/
 		
 		//=====================================================================
 		// Font

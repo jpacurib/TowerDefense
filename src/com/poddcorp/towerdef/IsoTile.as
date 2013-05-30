@@ -76,16 +76,16 @@ package com.poddcorp.towerdef
 		{
 			var s:Shape = new Shape();
 			s.graphics.lineStyle(1, 0x000000);
-			s.graphics.beginFill(color);
+			s.graphics.beginFill(color, .2);
 			s.graphics.drawRect(0, 0, 90, 90);
 			s.graphics.endFill();
-			
+						
 			var bmd:BitmapData = new BitmapData(s.width, s.height);
 			bmd.draw(s);
 			
 			var image:Image = new Image(Texture.fromBitmapData(bmd));
 			image.rotation = 40.1;
-			//image.alpha = 0;
+			image.alpha = 0;
 			return image;
 		}
 		

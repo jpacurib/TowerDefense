@@ -21,9 +21,11 @@ package com.poddcorp.towerdef.input
 	 * @author ...
 	 */
 	public class TouchPoll extends Sprite
-	{		
+	{	
 		[Inject]
-		private var creator:EntityCreator;
+		public var creator:EntityCreator;
+		
+		public var myStage:Stage = Starling.current.nativeStage;
 		
 		private var _displayObject:DisplayObject;
 		private var _stage:Stage = Starling.current.nativeStage;
@@ -72,8 +74,8 @@ package com.poddcorp.towerdef.input
 		{
 			if (displayButton.name == "")
 			{
-				displayButton.x = touchVector[0].globalX - 20;
-				displayButton.y = touchVector[0].globalY - 20;
+				displayButton.x = (touchVector[0].globalX - 64) ;
+				displayButton.y = (touchVector[0].globalY - 64) ;
 			}
 		}
 		
@@ -81,19 +83,23 @@ package com.poddcorp.towerdef.input
 		{
 			trace("ended");
 			if (displayButton.name == "")
-			{
+			{			
 				var pt:Point = new Point(touchVector[0].globalX, touchVector[0].globalY);
 				
 				//Tower Snapping to Grid Coordinates
-				var positionToGrid:Point = new Point(Math.floor(pt.x / 128) * 128, Math.floor(pt.y / 64) * 64);
-				//creator.createTower(positionToGrid);
+				var positionToGrid:Point = new Point(Math.floor(pt.x / 128) * 128 - 45, Math.floor(pt.y / 64) * 64 - 15);
+				
+				positionToGrid.x = positionToGrid.x - (myStage.stageWidth / 2) - 60;
+				positionToGrid.y = positionToGrid.y - (myStage.stageHeight / 5) + 10;
+				
+				creator.createTower(positionToGrid);
 				
 				//Returns display button to original position
-				/*displayButton.x = _stage.stageWidth - 100;
-				displayButton.y = _stage.stageHeight - 100;*/
+				displayButton.x = _stage.stageWidth - 150;
+				displayButton.y = _stage.stageHeight - 200;
 				
-				displayButton.x = positionToGrid.x;
-				displayButton.y = positionToGrid.y;
+				/*displayButton.x = positionToGrid.x;
+				displayButton.y = positionToGrid.y;*/
 			}
 		}
 	

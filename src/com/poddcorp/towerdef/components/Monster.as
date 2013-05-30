@@ -1,13 +1,16 @@
 package com.poddcorp.towerdef.components 
 {
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Monster class for each entity created
+	 * 
+	 * 
 	 */
 	public class Monster 
 	{
+		//Declare global variable for life of monster
 		public var life:Number;
 		
+		//Sets life variable to specific value
 		public function Monster()
 		{
 			life = 2;

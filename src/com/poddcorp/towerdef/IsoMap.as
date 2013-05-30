@@ -72,7 +72,7 @@ package com.poddcorp.towerdef
 									{
 										tile.traversable = false;
 										tile.highlight(0xCCCCCC);
-										tile.createTower();
+										//tile.createTower();
 										
 									}
 									else

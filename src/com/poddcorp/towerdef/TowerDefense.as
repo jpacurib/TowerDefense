@@ -19,6 +19,7 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.UI.TowerButton;
 	import flash.display.Stage;
 	import flash.geom.Point;
+	import starling.display.Image;
 	
 	import starling.core.Starling;
 	import starling.display.DisplayObjectContainer;
@@ -41,12 +42,16 @@ package com.poddcorp.towerdef
 		public var _map:IsoMap;
 		private var _inode:INode;
 		
+		private var _grassmap:Image;
+		private var _towerHolder:Image;
+		
 		//FOR TOWER
 		private var _towerButton:TowerButton;
 		
 		public function TowerDefense():void
 		{
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
+			_grassmap = new Image(UIAssets.getUITexture("plainMap"));
 		}
 		
 		private function onEnterFrame(event:Event):void
@@ -65,7 +70,10 @@ package com.poddcorp.towerdef
 			_engine = new SwiftSuspendersEngine(_injector);
 			_touchPoll = new TouchPoll(this);
 			
+			addChild(_grassmap);
+			
 			_map = new IsoMap(12, 12);
+			
 			_map.drawMap();
 			addChild(_map);
 			
@@ -94,6 +102,7 @@ package com.poddcorp.towerdef
 			
 			var config:GameConfig = _injector.getInstance(GameConfig);
 			var stage:Stage = Starling.current.nativeStage;
+			
 			config.height = stage.stageHeight;
 			config.width = stage.stageWidth;
 			
@@ -102,29 +111,39 @@ package com.poddcorp.towerdef
 			
 			_engine.addSystem(new GameSystem(), SystemPriorities.preUpdate);
 			_engine.addSystem(new AnimationSystem(), SystemPriorities.animate);
+			
 			_engine.addSystem(new MovementSystem(), SystemPriorities.move);
+			
 			_engine.addSystem(new TileTraversalSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new TileRenderSystem(), SystemPriorities.prerender);
-			_engine.addSystem(new BulletSystem(), SystemPriorities.prerender);
+			_engine.addSystem(new GunControlSystem(), SystemPriorities.move);
+			
 			_engine.addSystem(new CollisionSystem(), SystemPriorities.update);
-			_engine.addSystem(new GunControlSystem(), SystemPriorities.update);
+			
 			_engine.addSystem(new BulletAgeSystem(), SystemPriorities.update);
+			
+			//_engine.addSystem(new BulletSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
 			creator.createGame();
 			
-			creator.createTower(new Point(50, 135));
+			_touchPoll.creator = creator;
 		}
 		
 		//FOR TOWER
 		private function createButton():void
 		{
 			_towerButton = new TowerButton();
+			_towerHolder = new Image(UIAssets.getAtlas().getTexture("hud_towerholder"));
+			addChild(_towerHolder);
 			addChild(_towerButton);
 			
-			_towerButton.x = stage.stageWidth - 100;
-			_towerButton.y = stage.stageHeight - 100;
+			_towerButton.x = stage.stageWidth - 150;
+			_towerButton.y = stage.stageHeight - 200;
+			
+			_towerHolder.x = stage.stageWidth - 160;
+			_towerHolder.y = stage.stageHeight - 210;
 		}
 		
 		public function start():void
