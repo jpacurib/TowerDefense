@@ -37,9 +37,10 @@ package com.poddcorp.towerdef.UI
 		public var TabObject:SharedObject;
 		public var slider:Slider;
 		public var tab:TabBar
+		public static var val:Number;
 		private var SetImage:Image;
 		private var Titleimg:Image;
-		private var _music:BGmusic;
+		
 		
 		public function SettingsUI()
 		{
@@ -130,6 +131,12 @@ package com.poddcorp.towerdef.UI
 		
 		public function slider_changeHandler(event:Event):void
 		{
+			
+			
+			val = sliderVolume.value / 100;
+			Sounds.SetVolume(val);
+			
+			//Sounds.IngameSound(val);
 			
 			slider = Slider(event.currentTarget); 
 			SliderObject = SharedObject.getLocal("ShareObjct");

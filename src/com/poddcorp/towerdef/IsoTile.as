@@ -85,7 +85,7 @@ package com.poddcorp.towerdef
 			
 			var image:Image = new Image(Texture.fromBitmapData(bmd));
 			image.rotation = 40.1;
-			//image.alpha = 0;
+			image.alpha = 0;
 			return image;
 		}
 		

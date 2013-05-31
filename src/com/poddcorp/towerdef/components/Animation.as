@@ -16,6 +16,7 @@ package com.poddcorp.towerdef.components
 		*/
 		public function Animation(animation:Animatable) 
 		{
+			//sets local animation to value of parameter
 			this.animation = animation;			
 		}
 		

@@ -51,7 +51,8 @@ package com.poddcorp.towerdef.systems
 						creator.destroyEntity(monster.entity);
 						//creator.createCoin(monster.position);
 						
-						if (Math.random() >= 0 && Math.random() <= .2)
+						//creates enemy
+						/*if (Math.random() >= 0 && Math.random() <= .2)
 						{
 							creator.createSkullMonster(startTile);
 						}
@@ -64,7 +65,7 @@ package com.poddcorp.towerdef.systems
 						else
 						{
 							creator.createVoodooMonster(startTile);
-						}
+						}*/
 						
 					}
 					

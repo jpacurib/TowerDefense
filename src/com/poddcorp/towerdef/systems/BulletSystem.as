@@ -35,68 +35,79 @@ package com.poddcorp.towerdef.systems
 			
 			for (gun = guns.head; gun; gun = gun.next)
 			{
-				for (monster = monsters.head; monster; monster = monster.next)
+				
+				for (bullet = bullets.head; bullet; bullet = bullet.next)
 				{
-					gun.gun.shooting = checkRange(gun.position, monster.position);
-					
-					for (bullet = bullets.head; bullet; bullet = bullet.next)
+					for (monster = monsters.head; monster; monster = monster.next)
 					{
+						gun.gun.shooting = checkRange(gun.position, monster.position);
 						tempX = (monster.position.position.x - gun.position.position.x);
 						tempY = (monster.position.position.y - gun.position.position.y);
 						
-						if (tempY > 0) bullet.motion.velocity.y = 300;
-						else if (tempY == 0) tempY = 0;
-						else bullet.motion.velocity.y = -300
+						if (tempY > 0)
+							bullet.motion.velocity.y = 300;
+						else if (tempY == 0)
+							tempY = 0;
+						else
+							bullet.motion.velocity.y = -300
 						
-						if (tempX > 0) bullet.motion.velocity.x = 300;
-						else if (tempX == 0) tempX = 0;
-						else bullet.motion.velocity.x = -300
+						if (tempX > 0)
+							bullet.motion.velocity.x = 300;
+						else if (tempX == 0)
+							tempX = 0;
+						else
+							bullet.motion.velocity.x = -300
 						
-						//DIRECTION
-						if (bullet.motion.velocity.x == 0)
-						{
-							if (bullet.motion.velocity.y > 0)
-							{
-								bullet.position.direction = "S";
-							}
-							else
-								bullet.position.direction = "N";
-						}
-						
-						if (bullet.motion.velocity.y == 0)
-						{
-							if (bullet.motion.velocity.x > 0)
-							{
-								bullet.position.direction = "E";
-							}
-							else
-								bullet.position.direction = "W";
-						}
-						
-						if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y > 0)
-						{
-							bullet.position.direction = "SE";
-						}
-						
-						if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y < 0)
-						{
-							bullet.position.direction = "NE";
-						}
-						
-						if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y > 0)
-						{
-							bullet.position.direction = "SW";
-						}
-						
-						if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y < 0)
-						{
-							bullet.position.direction = "NW";
-						}
+						getDirection(bullet);
 						
 					}
 				}
 			}
 		
+		}
+		
+		private function getDirection(bullet:BulletCollisionNode):void
+		{
+			//DIRECTION
+			if (bullet.motion.velocity.x == 0)
+			{
+				if (bullet.motion.velocity.y > 0)
+				{
+					bullet.position.direction = "S";
+				}
+				else
+					bullet.position.direction = "N";
+			}
+			
+			if (bullet.motion.velocity.y == 0)
+			{
+				if (bullet.motion.velocity.x > 0)
+				{
+					bullet.position.direction = "E";
+				}
+				else
+					bullet.position.direction = "W";
+			}
+			
+			if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y > 0)
+			{
+				bullet.position.direction = "SE";
+			}
+			
+			if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y < 0)
+			{
+				bullet.position.direction = "NE";
+			}
+			
+			if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y > 0)
+			{
+				bullet.position.direction = "SW";
+			}
+			
+			if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y < 0)
+			{
+				bullet.position.direction = "NW";
+			}
 		}
 		
 		private function checkRange(tower:Position, monster:Position):Boolean

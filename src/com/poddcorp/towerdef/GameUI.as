@@ -2,10 +2,11 @@ package com.poddcorp.towerdef
 {
 	//import adobe.utils.CustomActions;
 	
-	import com.poddcorp.towerdef.UI.BGmusic;
+	import com.poddcorp.towerdef.UI.Sounds;
 	import com.poddcorp.towerdef.UI.ButtonClickTone;
 	import com.poddcorp.towerdef.UI.QuitGame;
 	import com.poddcorp.towerdef.UI.SettingsUI;
+	import com.poddcorp.towerdef.UI.Sounds;
 	import feathers.controls.Label;
 	import feathers.controls.Slider;
 	import feathers.events.CollectionEventType;
@@ -71,7 +72,7 @@ package com.poddcorp.towerdef
 		public var Txt:BitmapFont;
 		
 		public var BtnClk:ButtonClickTone = new ButtonClickTone();
-		public var BackGroundMusic:BGmusic = new BGmusic();
+		
 		
 		public var nativeStage:Rectangle = Starling.current.viewPort;
 		
@@ -79,7 +80,7 @@ package com.poddcorp.towerdef
 		{
 			super();
 			addEventListener(Event.ENTER_FRAME, onEnterFrame);
-		
+				playBGmusic();
 		}
 		
 		private function onEnterFrame(event:Event):void
@@ -88,7 +89,7 @@ package com.poddcorp.towerdef
 			SetButtonSettings();
 			MainMenuAdd();
 			this.Gametheme = new AzureMobileTheme(this.stage);
-			this.addChild(this.BackGroundMusic);
+			
 			Starling.current.stage.addEventListener(ResizeEvent.RESIZE, onResize);
 		}
 		
@@ -198,7 +199,7 @@ package com.poddcorp.towerdef
 			this.addChild(bg);
 			
 			
-			scrll = new Image(UIAssets.getAtlas().getTexture("img_Scroll"));
+			scrll = new Image(UIAssets.getAtlas().getTexture("img_scroll"));
 			
 			//scrll.x = dok.x - 150;
 			//Nxt = new Button(UIAssets.getAtlas().getTexture("btn_next"));
@@ -259,8 +260,17 @@ package com.poddcorp.towerdef
 			}
 			MainMenuRemove();
 			addChild(BtnClk);
+			Sounds.Newinit();
+			Sounds.Stopinit();
 			
-			BackGroundMusic._content.stop();
+		
+		}
+		public function playBGmusic():void 
+		{
+			Sounds.init();
+			var SliderObject:SharedObject = SharedObject.getLocal("ShareObjct");
+			Sounds.SetVolume(Number(SliderObject.data.value) / 100);
+			
 		}
 		
 		private function onSettingEvent(e:Event):void

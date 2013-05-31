@@ -36,8 +36,6 @@ package com.poddcorp.towerdef.systems
 			var bullet:BulletCollisionNode;
 			var node:GunControlNode;
 			
-			
-			
 			var position:Position;
 			var gun:Gun;
 			
@@ -58,70 +56,6 @@ package com.poddcorp.towerdef.systems
 						creator.createBullet(gun, position);
 						position.direction = "N";
 						gun.timeSinceLast = 0;
-					}
-					
-					for (bullet = bullets.head; bullet; bullet = bullet.next)
-					{
-						var tempX:Number, tempY:Number;
-						
-						tempX = (monster.position.position.x - node.position.position.x);
-						tempY = (monster.position.position.y - node.position.position.y);
-						
-						if (tempY > 0)
-							bullet.motion.velocity.y = 300;
-						else if (tempY == 0)
-							tempY = 0;
-						else
-							bullet.motion.velocity.y = -300
-						
-						if (tempX > 0)
-							bullet.motion.velocity.x = 300;
-						else if (tempX == 0)
-							tempX = 0;
-						else
-							bullet.motion.velocity.x = -300
-						
-						//DIRECTION
-						if (bullet.motion.velocity.x == 0)
-						{
-							if (bullet.motion.velocity.y > 0)
-							{
-								bullet.position.direction = "S";
-							}
-							else
-								bullet.position.direction = "N";
-						}
-						
-						if (bullet.motion.velocity.y == 0)
-						{
-							if (bullet.motion.velocity.x > 0)
-							{
-								bullet.position.direction = "E";
-							}
-							else
-								bullet.position.direction = "W";
-						}
-						
-						if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y > 0)
-						{
-							bullet.position.direction = "SE";
-						}
-						
-						if (bullet.motion.velocity.x > 0 && bullet.motion.velocity.y < 0)
-						{
-							bullet.position.direction = "NE";
-						}
-						
-						if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y > 0)
-						{
-							bullet.position.direction = "SW";
-						}
-						
-						if (bullet.motion.velocity.x < 0 && bullet.motion.velocity.y < 0)
-						{
-							bullet.position.direction = "NW";
-						}
-						
 					}
 				}
 				

@@ -14,7 +14,6 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.components.TileDisplay;
 	import com.poddcorp.towerdef.components.Tower;
 	import com.poddcorp.towerdef.graphics.BulletView;
-	import com.poddcorp.towerdef.graphics.CoinView;
 	import com.poddcorp.towerdef.graphics.MonsterOrcView;
 	import com.poddcorp.towerdef.graphics.MonsterView;
 	import com.poddcorp.towerdef.components.GameState;
@@ -24,22 +23,30 @@ package com.poddcorp.towerdef
 	import flash.geom.Point;
 	
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Creates or Destroys Entity
+	 * 
 	 */
 	public class EntityCreator
 	{
+		//Request instance for start tile
 		[Inject(name="start")]
 		public var startTile:IsoTile;
 		
+		//Request instance for end tile
 		[Inject(name="end")]
 		public var endTile:IsoTile;
 		
+		//Request instance for map
 		[Inject]
 		public var map:IsoMap;
 		
+		//Declares a variable engine in ASH
 		private var engine:Engine;
 		
+		/**
+		 * 
+		 * @param	engine
+		 */
 		public function EntityCreator(engine:Engine)
 		{
 			this.engine = engine;
@@ -58,10 +65,12 @@ package com.poddcorp.towerdef
 			engine.removeEntity(entity);
 		}
 		
+		
+		//MONSTERS
 		public function createSkullMonster(currentTile:IsoTile):Entity
 		{
 			var monster:Entity = new Entity()
-				.add(new Monster())
+				.add(new Monster(4))
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
 				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //Added values for trial image
 				.add(new Collision(startTile.width / 2))
@@ -75,9 +84,9 @@ package com.poddcorp.towerdef
 		public function createVoodooMonster(currentTile:IsoTile):Entity
 		{
 			var monster:Entity = new Entity()
-				.add(new Monster())
+				.add(new Monster(1))
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
-				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //Added values for trial image
+				.add(new Position(startTile.x-72, startTile.y-50, "")) //Added values for trial image
 				.add(new Collision(startTile.width / 2))
 				.add(new Motion(0, 0))
 				.add(new TileDisplay(new MonsterVoodooView()));
@@ -89,9 +98,9 @@ package com.poddcorp.towerdef
 		public function createOrcMonster(currentTile:IsoTile):Entity
 		{
 			var monster:Entity = new Entity()
-				.add(new Monster())
+				.add(new Monster(3))
 				.add(new Tile(currentTile, Pathfinder.findPath(startTile, endTile, map.findConnectedNodes)))
-				.add(new Position(startTile.x - 72, startTile.y - 72, "")) //Added values for trial image
+				.add(new Position(startTile.x - 72, startTile.y - 50, "")) //Added values for trial image
 				.add(new Collision(startTile.width / 2))
 				.add(new Motion(0, 0))
 				.add(new TileDisplay(new MonsterOrcView()));
@@ -100,18 +109,20 @@ package com.poddcorp.towerdef
 			return monster;
 		}
 		
+		//TOWER
 		public function createTower(pt:Point):Entity
 		{
 			var tower:Entity = new Entity()
 				.add(new Tower())
 				.add(new Position(pt.x, pt.y, ""))
-				.add(new Gun(pt, 2, .5))
+				.add(new Gun(pt, 2, 1))
 				.add(new Display(new TowerView()));
 			
 			engine.addEntity(tower);
 			return tower;
 		}
-	
+		
+		//BULLET
 		public function createBullet(gun:Gun, parentPosition:Position):Entity
 	    {
 		   var bullet : Entity = new Entity()
@@ -125,16 +136,6 @@ package com.poddcorp.towerdef
 		   return bullet;
 	
 	    }
-		
-	/*	public function createCoin(pos:Position):Entity 
-		{
-			var coin:Entity = new Entity()
-				.add(new Coin(1))
-				.add(new Position(pos.position.x, pos.position.y, ""))
-				.add(TileDisplay(new CoinView()));
-			engine.addEntity(coin);
-			return coin;
-		}*/
 
 	}
 

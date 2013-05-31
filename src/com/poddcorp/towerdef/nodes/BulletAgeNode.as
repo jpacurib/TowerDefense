@@ -6,11 +6,12 @@ package com.poddcorp.towerdef.nodes
 
 	import com.poddcorp.towerdef.components.Bullet;
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Bullet Age for every object with bullet as display
+	 * 
 	 */
 	public class BulletAgeNode extends Node
 	{
+		//Declares new bullet with Bullet data type or class
 		public var bullet:Bullet;
 	}
 

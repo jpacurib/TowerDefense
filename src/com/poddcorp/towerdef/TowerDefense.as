@@ -17,6 +17,7 @@ package com.poddcorp.towerdef
 	import com.poddcorp.towerdef.systems.TileRenderSystem;
 	import com.poddcorp.towerdef.systems.TileTraversalSystem;
 	import com.poddcorp.towerdef.UI.TowerButton;
+	import com.poddcorp.towerdef.UI.TowerUpgrade;
 	import flash.display.Stage;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -33,12 +34,14 @@ package com.poddcorp.towerdef
 	
 	import org.swiftsuspenders.Injector;
 	
-	//import flash.display.Sprite;
+	/**
+	 * Tower Defense Class for Main Game
+	 */
 	
 	public class TowerDefense extends Sprite
 	{
 		private var _engine:Engine;
-		public var _tickProvider:StarlingFrameTickProvider;
+		
 		private var _injector:Injector;
 		private var _touchPoll:TouchPoll;
 		public var _map:IsoMap;
@@ -47,6 +50,7 @@ package com.poddcorp.towerdef
 		private var _grassmap:Image;
 		private var _towerHolder:Image;
 		private var _hudVertical:Image;
+		private var _towerUpgrade:TowerUpgrade;
 		
 		//Texts
 		public var _village:TextField;
@@ -54,6 +58,8 @@ package com.poddcorp.towerdef
 				
 		//FOR TOWER
 		private var _towerButton:TowerButton;
+		
+		public var _tickProvider:StarlingFrameTickProvider = new StarlingFrameTickProvider(Starling.current.juggler);
 		
 		public function TowerDefense():void
 		{
@@ -95,6 +101,7 @@ package com.poddcorp.towerdef
 			_injector = new Injector();
 			_engine = new SwiftSuspendersEngine(_injector);
 			_touchPoll = new TouchPoll(this);
+			_towerUpgrade = new TowerUpgrade();
 			
 			addChild(_grassmap);
 			
@@ -148,7 +155,7 @@ package com.poddcorp.towerdef
 			
 			_engine.addSystem(new BulletAgeSystem(), SystemPriorities.update);
 			
-			//_engine.addSystem(new BulletSystem(), SystemPriorities.prerender);
+			_engine.addSystem(new BulletSystem(), SystemPriorities.prerender);
 			_engine.addSystem(new RenderSystem(), SystemPriorities.render);
 			
 			var creator:EntityCreator = _injector.getInstance(EntityCreator);
@@ -175,15 +182,18 @@ package com.poddcorp.towerdef
 			addChild(_village);
 			
 			updateUI();
-			
-			
 		}
 		
 		public function start():void
 		{
-			_tickProvider = new StarlingFrameTickProvider(Starling.current.juggler);
+			//_tickProvider = ;
 			_tickProvider.add(_engine.update);
 			_tickProvider.start();
+		}
+		
+		public function stop():void
+		{
+			_tickProvider.stop();
 		}
 	
 	}

@@ -11,11 +11,12 @@ package com.poddcorp.towerdef.graphics
 	import com.poddcorp.towerdef.UIAssets;
 	
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Orc Monster Graphics Class for display in the stage
+	 * 
 	 */
 	public class MonsterOrcView extends Sprite implements ITileView
 	{
+		//Declares a movieclip handler for every direction
 		private var movingNorth:MovieClip;
 		private var movingNorthEast:MovieClip;
 		private var movingNorthWest:MovieClip;
@@ -27,22 +28,25 @@ package com.poddcorp.towerdef.graphics
 		
 		public function MonsterOrcView()
 		{					
+			//Sets pivot of the class
 			this.pivotX = this.width / 2;
 			this.pivotY = this.height / 2;
-					
-			movingNorth = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE_"), 20);
 			
-			movingNorthEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE_"), 20);
-			movingNorthWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NW_"), 20);
+			//Sets movieclip graphics of variables from the spritesheet
+			movingNorth = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE"), 20);
 			
-			movingSouth = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE_"), 20);
+			movingNorthEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE"), 20);
+			movingNorthWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NW"), 20);
 			
-			movingSouthEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SE_"), 20);
-			movingSouthWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SW_"), 20);
+			movingSouth = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_back_NE"), 20);
 			
-			movingEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SE_"), 20);
-			movingWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SW_"), 20);
+			movingSouthEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SE"), 20);
+			movingSouthWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SW"), 20);
 			
+			movingEast = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SE"), 20);
+			movingWest = new MovieClip(UIAssets.getAtlas().getTextures("Orc-minions_SW"), 20);
+			
+			//Adds all movieclip to the stage
 			addChild(movingNorth);
 			addChild(movingNorthEast);
 			addChild(movingNorthWest);
@@ -55,6 +59,7 @@ package com.poddcorp.towerdef.graphics
 			hideAllAnimation();
 		}
 		
+		//Hides all movieclips
 		private function hideAllAnimation():void {
 			movingNorth.visible = false;
 			movingNorthEast.visible = false;
@@ -66,6 +71,7 @@ package com.poddcorp.towerdef.graphics
 			movingWest.visible = false;
 		}
 		
+		//Changes image of orc monster in every update in direction
 		public function updateDirection(direction:String):void
 		{		
 			hideAllAnimation();

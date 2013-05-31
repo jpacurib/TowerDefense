@@ -33,6 +33,8 @@ package com.poddcorp.towerdef.systems
 		[Inject(nodeType="com.poddcorp.towerdef.nodes.TileTraversalNode")]
 		public var monsterNodes:NodeList;
 		
+		private var delay:Number = new Number();
+		
 		public function GameSystem():void
 		{
 			super();
@@ -47,12 +49,15 @@ package com.poddcorp.towerdef.systems
 			//Constant Check
 			for (node = gameNodes.head; node; node = node.next)
 			{
+				
+				delay += time;
 				if (node.state.lives > 0)
 				{
-					if (node.state.monperwave > 0)
+					if (delay >= Math.random() * 100)
 					{
-						creator.createVoodooMonster(startTile);
-						node.state.monperwave--;
+						createRandomEnemy();
+						node.state.totalMonster++;
+						delay = 0;
 					}
 					
 					for (monsterNode = monsterNodes.head; monsterNode; monsterNode = monsterNode.next)
@@ -62,25 +67,9 @@ package com.poddcorp.towerdef.systems
 							node.state.lives--;
 							node.state.totalMonster++;
 							
+							trace(node.state.lives);
+							
 							creator.destroyEntity(monsterNode.entity);
-							
-							var monsters:TowerDefense = new TowerDefense();
-							
-							if (Math.random() >= 0 && Math.random() <= .3)
-							{
-								creator.createSkullMonster(startTile);
-							}
-							
-							else if (Math.random() > .3 && Math.random() <= .5)
-							{
-								creator.createOrcMonster(startTile);
-							}
-							
-							else
-							{
-								creator.createVoodooMonster(startTile);
-							}
-							
 						}
 						
 					}
@@ -91,6 +80,24 @@ package com.poddcorp.towerdef.systems
 				}
 			}
 		
+		}
+		
+		private function createRandomEnemy():void
+		{
+			if (Math.random() >= 0 && Math.random() <= .3)
+			{
+				creator.createSkullMonster(startTile);
+			}
+			
+			else if (Math.random() > .3 && Math.random() <= .5)
+			{
+				creator.createOrcMonster(startTile);
+			}
+			
+			else
+			{
+				creator.createVoodooMonster(startTile);
+			}
 		}
 	}
 }

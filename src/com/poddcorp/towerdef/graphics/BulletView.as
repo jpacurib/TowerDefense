@@ -7,25 +7,38 @@ package com.poddcorp.towerdef.graphics
 	import starling.display.Image;
 	import starling.display.Sprite;
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Bullet Graphics Class for display in the stage
+	 * 
 	 */
 	public class BulletView extends Sprite implements ITileView
 	{
+		//Declares image for arrow going east
 		private var arrowEast:Image;
+		
+		//Declares image for arrow going west
 		private var arrowWest:Image;
 		
+		//Declares image for arrow going north east
 		private var arrowNorthEast:Image;
+		
+		//Declares image for arrow going south east
 		private var arrowSouthEast:Image;
 		
+		//Declares image for arrow going north
 		private var arrowNorth:Image;
+		
+		//Declares image for arrow going south
 		private var arrowSouth:Image;
 		
+		//Declares image for arrow going north west
 		private var arrowNorthWest:Image;
+		
+		//Declares image for arrow going south west
 		private var arrowSouthWest:Image;
 		
 		public function BulletView() 
 		{			
+			//Sets display to a new image in Spritesheet
 			arrowEast = new Image(UIAssets.getAtlas().getTexture("arrow_E"));
 			arrowWest = new Image(UIAssets.getAtlas().getTexture("arrow_W"));
 			
@@ -38,6 +51,7 @@ package com.poddcorp.towerdef.graphics
 			arrowNorthWest = new Image(UIAssets.getAtlas().getTexture("arrow_NW"));
 			arrowSouthWest = new Image(UIAssets.getAtlas().getTexture("arrow_SW"));
 			
+			//Adds all display to the stage
 			addChild(arrowEast);
 			addChild(arrowWest);
 			addChild(arrowNorth);
@@ -50,6 +64,7 @@ package com.poddcorp.towerdef.graphics
 			hideAllArrows();
 		}
 		
+		//Hides all arrow images
 		private function hideAllArrows():void 
 		{
 			arrowEast.visible = false;
@@ -64,6 +79,7 @@ package com.poddcorp.towerdef.graphics
 		
 		/* INTERFACE com.poddcorp.towerdef.graphics.ITileView */
 		
+		//Changes image of arrow in every update in direction
 		public function updateDirection(direction:String):void 
 		{
 			hideAllArrows();

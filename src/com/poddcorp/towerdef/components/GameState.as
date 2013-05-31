@@ -15,8 +15,10 @@ package com.poddcorp.towerdef.components
 		//Declare global variable for monster per wave
 		public var monperwave:int;
 		
+		//Declare global variable for gold
 		public var gold:int;
 		
+		//Declare global variable for total monster
 		public var totalMonster:int;
 		
 		/**
@@ -24,11 +26,10 @@ package com.poddcorp.towerdef.components
 		 */
 		public function GameState()
 		{
-			lives = 5;
+			lives = 10;
 			wave = 10;
-			monperwave = 1;
+			monperwave = 50;
 			gold = 50;
-			
 			totalMonster = 0;
 		}
 	}

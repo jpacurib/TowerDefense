@@ -11,11 +11,12 @@ package com.poddcorp.towerdef.graphics
 	import com.poddcorp.towerdef.UIAssets;
 	
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Skull Monster Graphics Class for display in the stage
+	 * 
 	 */
 	public class MonsterView extends Sprite implements ITileView
 	{
+		//Declares a movieclip handler for every direction
 		private var movingNorth:MovieClip;
 		private var movingNorthEast:MovieClip;
 		private var movingNorthWest:MovieClip;
@@ -26,10 +27,12 @@ package com.poddcorp.towerdef.graphics
 		private var movingWest:MovieClip;
 		
 		public function MonsterView()
-		{					
+		{				
+			//Sets pivot of the class
 			this.pivotX = this.width / 2;
 			this.pivotY = this.height / 2;
 					
+			//Sets movieclip graphics of variables from the spritesheet
 			movingNorth = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking n"), 20);
 			movingNorthEast = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking ne"), 20);
 			movingNorthWest = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking nw"), 20);
@@ -40,6 +43,7 @@ package com.poddcorp.towerdef.graphics
 			movingEast = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking e"), 20);
 			movingWest = new MovieClip(UIAssets.getSkullAtlas().getTextures("walking w"), 20);
 			
+			//Adds all movieclip to the stage
 			addChild(movingNorth);
 			addChild(movingNorthEast);
 			addChild(movingNorthWest);
@@ -51,7 +55,7 @@ package com.poddcorp.towerdef.graphics
 			
 			hideAllAnimation();
 		}
-		
+		//Hides all movieclips
 		private function hideAllAnimation():void {
 			movingNorth.visible = false;
 			movingNorthEast.visible = false;
@@ -63,6 +67,7 @@ package com.poddcorp.towerdef.graphics
 			movingWest.visible = false;
 		}
 		
+		//Changes image of skull monster in every update in direction
 		public function updateDirection(direction:String):void
 		{		
 			hideAllAnimation();

@@ -4,8 +4,8 @@ package com.poddcorp.towerdef.nodes
 
 	import com.poddcorp.towerdef.components.GameState;
 	/**
-	 * ...
-	 * @author Jeremy
+	 * Game Node 
+	 * 
 	 */
 	public class GameNode extends Node
 	{

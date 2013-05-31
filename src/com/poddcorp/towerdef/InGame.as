@@ -40,6 +40,8 @@ package com.poddcorp.towerdef
 		private var backtoGameUI:GameUI
 		public var Click:ButtonClickTone = new ButtonClickTone()
 		public var gbg:Image;
+		
+		public var towerDef:Image;
 				
 		public function InGame()
 		{
@@ -62,6 +64,9 @@ package com.poddcorp.towerdef
 			btnBackMainMenu = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
 			btnBack = new Button(UIAssets.getAtlas().getTexture("btn_Button"));
 			btnPlay = new Image(UIAssets.getAtlas().getTexture("btn_Play"));
+			
+			towerDef = new Image(UIAssets.getAtlas().getTexture("ingame_banner"));
+			
 			btnPlay.y = 30;
 			btnPlay.x = 0;
 			
@@ -71,7 +76,6 @@ package com.poddcorp.towerdef
 			btnSettings.text = ("SETTINGS");
 			btnBackMainMenu.text = ("MAIN MENU");
 			btnBack.text = ("BACK");
-			
 			
 			
 			btnResume.fontName = "MyFont1";
@@ -98,13 +102,17 @@ package com.poddcorp.towerdef
 			
 			var nativeStage:Stage = Starling.current.nativeStage;
 			
-			Fieldtext = new TextField(500, 300, "Defense of the Kingdom", UIAssets.getFont().name, 50, 0xFFFFFF);
+			/*Fieldtext = new TextField(500, 300, "Defense of the Kingdom", UIAssets.getFont().name, 50, 0xFFFFFF);
 			
 			Fieldtext.x = (nativeStage.stageWidth - Fieldtext.width) / 2;
 			Fieldtext.y = -100
 			Fieldtext.vAlign = VAlign.CENTER;
 			Fieldtext.hAlign = HAlign.CENTER;
-			this.addChild(Fieldtext);
+			this.addChild(Fieldtext);*/
+			
+			addChild(towerDef);
+			towerDef.x = (nativeStage.stageWidth - towerDef.width) / 2;
+			towerDef.y = 10;
 			
 			btnResume.x = (nativeStage.stageWidth - btnResume.width) / 2;
 			btnSettings.x = btnResume.x;
@@ -183,7 +191,6 @@ package com.poddcorp.towerdef
 			this.removeChild(btnResume);
 			this.removeChild(btnSettings);
 			this.removeChild(btnBackMainMenu);
-		
 		}
 		
 		private function onPauseEvent(e:Event):void
@@ -193,14 +200,12 @@ package com.poddcorp.towerdef
 			removeChild(btnPause);
 			addChild(btnPlay);
 			addChild(Click);
+			_towerDefense.stop();
 		}
 		
 		private function showPauseMenu():void
 		{
 			addChild(Click);
-			
-			//this.addChild(btnNew);
-			
 			this.addChild(btnResume);
 			this.addChild(btnSettings);
 			this.addChild(btnBackMainMenu);

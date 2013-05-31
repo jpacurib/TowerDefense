@@ -10,10 +10,13 @@ package com.poddcorp.towerdef.components
 		//Declare global variable for life of monster
 		public var life:Number;
 		
-		//Sets life variable to specific value
-		public function Monster()
+		/**
+		 * Sets life variable to specific value
+		 * @param	life	Life of monster
+		 */
+		public function Monster(life:Number)
 		{
-			life = 3;
+			this.life = life;
 		}
 	}
 
