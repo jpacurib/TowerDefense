@@ -84,10 +84,10 @@ package com.poddcorp.towerdef.input
 				displayButton.x = viewPort.width - 200;
 				displayButton.y = viewPort.height - 200;
 				
-				for each(var touch:Touch in touchVector)
+				for each (var touch:Touch in touchVector)
 				{
-					trace(touch);
 					map.onTouchEnded(touchVector, touch);
+					//trace(map.onTouchEnded(touchVector, touch));
 				}
 			}
 		}
@@ -103,7 +103,7 @@ package com.poddcorp.towerdef.input
 		
 		private function towerTouchBegan():void
 		{
-
+		
 		}
 	
 	}

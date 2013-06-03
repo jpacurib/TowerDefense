@@ -33,16 +33,6 @@ package com.poddcorp.towerdef.UI
 		{
 			var glow:BlurFilter = BlurFilter.createGlow();
 			
-			/*range.graphics.lineStyle(0, 0x000000);
-			range.graphics.beginFill(0x00CC00, .2);
-			range.graphics.drawEllipse(0, 0, 200, 200);
-			range.graphics.endFill();
-			
-			var bmd:BitmapData = new BitmapData(range.width, range.height);
-			bmd.draw(range);
-			
-			var image:Image = new Image(Texture.fromBitmapData(bmd));*/
-			//
 			var texture:Texture = UIAssets.getAtlas().getTexture("tower_basic");
 			var image:Image = new Image(texture);
 			image.filter = glow;

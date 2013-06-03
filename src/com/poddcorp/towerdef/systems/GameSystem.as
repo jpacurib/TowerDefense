@@ -1,6 +1,7 @@
 package com.poddcorp.towerdef.systems
 {
 	
+	import com.poddcorp.towerdef.components.GameState;
 	import com.poddcorp.towerdef.components.Position;
 	import com.poddcorp.towerdef.EntityCreator;
 	import com.poddcorp.towerdef.IsoMap;
@@ -12,6 +13,7 @@ package com.poddcorp.towerdef.systems
 	import flash.geom.Point;
 	import ash.core.NodeList;
 	import ash.core.System;
+	import starling.text.TextField;
 	
 	/**
 	 * @author christiannoelmascarinas
@@ -20,7 +22,7 @@ package com.poddcorp.towerdef.systems
 	{
 		[Inject]
 		public var creator:EntityCreator;
-		
+			
 		[Inject(name="start")]
 		public var startTile:IsoTile;
 		
@@ -64,6 +66,7 @@ package com.poddcorp.towerdef.systems
 					{
 						if ((Point.distance(new Point(monsterNode.position.position.x + 72, monsterNode.position.position.y + 72), new Point(endTile.x, endTile.y)) < (endTile.height / 2)))
 						{
+							
 							node.state.lives--;
 							node.state.totalMonster++;
 							

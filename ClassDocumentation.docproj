@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<docProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <pageTitle>TowerDefense</pageTitle>
+  <classPaths>src;swift_suspenders_source;AzureMobileTheme\source;C:\Documents and Settings\OJT\Desktop\Experiments\Libraries\PrimaryFeather-Starling-Framework-v1.3-0-g0ac3592\PrimaryFeather-Starling-Framework-0ac3592\starling\src;C:\Documents and Settings\OJT\Desktop\Experiments\Libraries\feathers-1.0.1\source;C:\Documents and Settings\OJT\Desktop\Experiments\Libraries\Ash-master\src</classPaths>
+  <sourcesList />
+  <outputDirectory>C:\Documents and Settings\OJT\Desktop</outputDirectory>
+  <activeCompiler>1</activeCompiler>
+  <extraOptions />
+</docProject>

@@ -3,6 +3,7 @@ package com.poddcorp.towerdef.graphics
 	import com.poddcorp.towerdef.UI.TowerUpgrade;
 	import com.poddcorp.towerdef.UIAssets;
 	import feathers.controls.Callout;
+	import flash.desktop.InteractiveIcon;
 	import flash.events.Event;
 	import starling.display.Button;
 	import starling.display.Sprite;
@@ -38,14 +39,16 @@ package com.poddcorp.towerdef.graphics
 		//Declares callout menu for tower menu
 		private var towerCallOut:Callout;
 		
+		private var upgrade:int = 0;
+		
 		public function TowerView()
 		{
 			//sets initial direction as basic
 			direction = 'basic';
 			
 			//Sets image for each tower from the spritesheet
-			tower_basic = new Image(UIAssets.getAtlas().getTexture("tower_basic"));			
-			tower_stone = new Image(UIAssets.getAtlas().getTexture("tower_stone"));			
+			tower_basic = new Image(UIAssets.getAtlas().getTexture("tower_basic"));
+			tower_stone = new Image(UIAssets.getAtlas().getTexture("tower_stone"));
 			tower_metal = new Image(UIAssets.getAtlas().getTexture("tower_metal"));
 			
 			//Adds graphic images to stage
@@ -105,17 +108,25 @@ package com.poddcorp.towerdef.graphics
 		
 		private function onTouchUpgrade(e:TouchEvent):void
 		{
-			if (direction == 'basic')
+			if (upgrade == 1)
 			{
-				updateDirection("stone");
-				direction = "stone";
+				if (direction == 'stone')
+				{
+					updateDirection("metal");
+					direction = "metal";
+				}
 			}
 			
-			if (direction == 'stone')
+			else
 			{
-				updateDirection("metal");
-				direction = "metal";
+				if (direction == 'basic')
+				{
+					updateDirection("stone");
+					direction = "stone";
+					upgrade++;
+				}
 			}
+			
 		}
 		
 		/* INTERFACE com.poddcorp.towerdef.graphics.ITileView */

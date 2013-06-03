@@ -21,9 +21,6 @@ package com.poddcorp.towerdef
 	{
 		public var creator:EntityCreator;
 		
-		/*[Inject]
-		 public var towerButton:TowerButton;*/
-		
 		public var config:GameConfig;
 		
 		public var _startTile:IsoTile;
@@ -73,7 +70,9 @@ package com.poddcorp.towerdef
 		public function onTouchEnded(touches:Vector.<Touch>, touch:Touch):void
 		{
 			for each (var tile:IsoTile in _tiles)
-			{
+			{				
+				trace(touch.isTouching(tile));
+				
 				if (touch.isTouching(tile))
 				{
 					if (tile.traversable == false)
@@ -100,7 +99,6 @@ package com.poddcorp.towerdef
 					
 				}
 			}
-			trace("ended");
 		}
 		
 		//TOUCH BEGAN
@@ -112,7 +110,7 @@ package com.poddcorp.towerdef
 		//TOUCH MOVED
 		public function onTouchMoved(touches:Vector.<Touch>, touch:Touch):void
 		{
-			
+			//trace("moved");
 		}
 		
 		public function drawMap():void
